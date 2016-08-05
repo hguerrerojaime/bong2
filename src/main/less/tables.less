@@ -1,0 +1,77 @@
+@table-padding: 5px;
+@table-header-bg: #eee;
+@actions-column-width: 150px;
+@table-wrapper-bg: lighten(@brand-primary, 50%);
+
+table {
+    font-size: @font-size-base;
+}
+
+table a {
+    color: @text-color;
+}
+
+.table-wrapper {
+    border-radius: @border-radius-base @border-radius-base @border-radius-base @border-radius-base;
+    -moz-border-radius: @border-radius-base @border-radius-base @border-radius-base @border-radius-base;
+    -webkit-border-radius: @border-radius-base @border-radius-base @border-radius-base @border-radius-base;
+    padding: @table-padding;
+    background-color: @table-wrapper-bg;
+    border: 1px solid darken(@table-wrapper-bg,20%);
+}
+
+
+
+table.dt thead, table.dt tfoot {
+    border: 1px solid darken(@table-header-bg,20%);
+}
+
+table.dt thead tr th:first-child {
+    border-radius: @border-radius-base 0 0 @border-radius-base !important;
+    -moz-border-radius: @border-radius-base 0 0 @border-radius-base !important;
+    -webkit-border-radius: @border-radius-base 0 0 @border-radius-base !important;
+}
+
+
+table.dt thead tr th {
+    
+    line-height: 15px;
+    
+    background-color: @table-header-bg;
+
+    border-bottom: 1px solid darken(@table-header-bg,20%);
+    
+    #gradient > .horizontal(@start-color: darken(@table-header-bg, 6%); @end-color: darken(@table-header-bg, 3%) );
+    
+    .reset-filter(); // Disable gradients for IE9 because filter bleeds through rounded corners; see https://github.com/twbs/bootstrap/issues/10620
+    background-repeat: repeat-x;
+    border-color: darken(@table-header-bg, 14%);
+    
+    &:hover,
+    &:focus  {
+     
+    }
+    
+    
+    
+}
+
+table.dt thead tr th.actions-column {
+    width: @actions-column-width;
+}
+
+table.dt tbody tr td {
+    vertical-align: middle;
+}
+
+
+table.dt tfoot tr td.paginator,
+table.dt thead tr td.paginator {
+    background-color: @table-header-bg;
+    border-top: @gray-lighter;
+}
+
+nav.pagination { 
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

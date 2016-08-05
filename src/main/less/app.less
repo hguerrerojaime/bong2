@@ -1,0 +1,73 @@
+.navbar-brand {
+    position: relative;
+    top: 0px;
+    left: 72px;
+}
+
+.shadow {
+    -webkit-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.25);
+    -moz-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.25);
+    box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.25);
+}
+
+.btn i {
+    line-height: @line-height-base;
+}
+
+body { 
+    padding-top: 41px; 
+    padding-bottom: 0px;
+    background-color: @navbar-default-bg;
+}
+
+
+#wrapper {
+    width: 100%;
+}
+
+#page-wrapper {
+    padding: 15px 15px;
+    min-height: 568px;
+    background-color: @body-bg;
+}
+
+@media(min-width:768px) {
+    #page-wrapper {
+        position: inherit;
+        margin: 0 0 0 250px;
+        padding: 15px 15px;
+        border-left: 1px solid #ccc;
+    }
+}
+
+.navbar-right {
+    margin-right: 15px;
+}
+
+.modal-body .form-group {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.nopadding:first-child {
+   padding-right: 0 !important;
+   margin-right: 0 !important;
+}
+
+.nopadding:last-child {
+   padding-left: 0 !important;
+   margin-left: 0 !important;
+}
+
+.nopadding:not(:first-child):not(:last-child) {
+	padding-right: 0 !important;
+    margin-right: 0 !important;
+	padding-left: 0 !important;
+    margin-left: 0 !important;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

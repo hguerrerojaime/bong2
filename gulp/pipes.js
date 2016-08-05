@@ -1,0 +1,1 @@
+var pipes = module.exports = {};

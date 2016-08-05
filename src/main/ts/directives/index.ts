@@ -1,0 +1,1 @@
+export { TextOptionsDirective } from './text.options.directive';

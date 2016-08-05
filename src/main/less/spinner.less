@@ -1,0 +1,46 @@
+.spinner-overlay {
+  background-color: white;
+  cursor: wait;
+  filter: alpha(opacity=50);
+}
+
+.spinner-message-container {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0;
+  height: 0;
+  text-align: center;
+  z-index: 10001;
+  cursor: wait;
+}
+
+.spinner-message {
+  display: inline-block;
+  text-align: left;
+  background-color: #fff;
+  color: #555;
+  padding-top: 3px;
+  padding-left: 7px;
+  padding-bottom: 7px;
+  padding-right: 7px;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: bold;
+  filter: alpha(opacity=50);
+}
+
+.modal-backdrop.in {
+    filter: alpha(opacity=50);
+    opacity: .5;
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    background-color: #888;
+}
