@@ -24,6 +24,8 @@ pipes.buildAppScripts = function(evt) {
 	if (typeof evt.path === "string") {
 		src = evt.path;
 	}
+	
+	console.log('BUILDING SCRIPTS '+SCRIPTS_SRC);
     
 	return gulp.src(src)
 			.pipe(gulp.dest(SCRIPTS_TARGET))

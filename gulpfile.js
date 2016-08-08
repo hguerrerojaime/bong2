@@ -31,3 +31,7 @@ gulp.task('compile',['build-skin','build-scripts','build-templates']);
 /** COMPILE AND RUN SERVER **/
 gulp.task('server',['compile'],pipes.server);
 
+gulp.task('compile-tests',pipes.compileTests);
+
+gulp.task('run-tests',['compile-tests'],pipes.runTests);
+

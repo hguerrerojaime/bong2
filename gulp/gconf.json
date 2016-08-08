@@ -31,8 +31,8 @@
             "dist":"target/main"
         },
         "test": {
-            "specs":"target/test/specs",
-            "scripts":"target/test/scripts"
+            "scripts":"target/test/scripts",
+            "specs":"target/test/scripts/**/*.spec.js"
         }
     }
 }

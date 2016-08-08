@@ -5,7 +5,8 @@ import { DivRowComponent } from './div.row.component';
 import { DivColComponent } from './div.col.component';
 import { AsyncOutputComponent } from './async.output.component';
 import { LookupGridComponent } from './lookup.grid.component';
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 declare var jQuery:any;
 
@@ -52,7 +53,7 @@ export class InputLookupComponent extends InputJqueryComponent implements OnInit
     @Input()
     inputWidth:number = 6;
 
-    value: Observable<any>;
+    behaviourSubject:BehaviorSubject;
     valueTitle:string;
         
     icons:any = {
@@ -68,7 +69,7 @@ export class InputLookupComponent extends InputJqueryComponent implements OnInit
     }
     
     lookupBtnClick() {
-       this.lookupGrid.loadValue(new Observable(observer => {
+       this.lookupGrid.loadValues(new Observable(observer => {
            
            let data = [
              { key: 'ETN', value: 'ENLACES TERRESTRES NACIONALES' },
@@ -76,12 +77,9 @@ export class InputLookupComponent extends InputJqueryComponent implements OnInit
              { key: 'PP', value: 'PRIMERA PLUS' },
              { key: 'OM', value: 'OMNIBUS DE MEXICO' }
            ];
-           
-           setTimeout(() => {
-               observer.next(data);
-           },5000);
-           
-       }));
+
+           observer.next(data);
+       }),this.behaviorSubject);
         
        this.lookupModal.show();
        
@@ -89,24 +87,22 @@ export class InputLookupComponent extends InputJqueryComponent implements OnInit
     
     lookupValue() {
         
-        let $this = this;
-
-        this.value = new Observable(observer => {
+        let service = new Observable(observer => {
             
-            $this.brand = "default";
-            $this.valueTitle = null;
+            this.brand = "default";
+            this.valueTitle = null;
             
-            if ($this.model == null || $this.model === "") {
+            if (this.value == null || this.value === "") {
                  observer.next(null);
             } else {
             
                 setTimeout(() => {
-                    if ($this.model == "ETN") {
-                        $this.brand = "success";
-                        $this.valueTitle = "ENLACES TERRESTRES NACIONALES";
-                        observer.next($this.valueTitle);  
+                    if (this.value == "ETN") {
+                        this.brand = "success";
+                        this.valueTitle = "ENLACES TERRESTRES NACIONALES";
+                        observer.next(this.valueTitle);  
                     } else {
-                        $this.brand = "error";
+                        this.brand = "error";
                         observer.next("invalid key"); 
                     }
                     observer.complete();
@@ -118,6 +114,14 @@ export class InputLookupComponent extends InputJqueryComponent implements OnInit
         
         this.lookupOutput.loadValue(this.value);
 
+    }
+    
+    ngOnInit() {
+        this.behaviourSubject = new BehaviorSubject(this.value);
+        
+        this.behaviourSubject.subscribe((result) => {
+            this.value = result;
+        });
     }
     
 

@@ -3,6 +3,7 @@ import { CommandButtonComponent } from './command.button.component';
 import { InlineLoaderComponent } from './inline.loader.component';
 import { InputTextComponent } from './input.text.component';
 import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { ValueLoader, ArrayUtils } from '@bong/core';
 
 @Component({
@@ -19,7 +20,12 @@ import { ValueLoader, ArrayUtils } from '@bong/core';
             </thead>
             <tbody>
                 <tr *ngFor="let item of data">
-                    <td><command-button size="sm" [label]="item.key" blockWidth="true"></command-button></td>
+                    <td><command-button 
+                                size="sm" 
+                                [label]="item.key" 
+                                blockWidth="true" 
+                                (click)="onSelectItem(item)" 
+                        ></command-button></td>
                     <td>{{item.value}}</td>
                 </tr>
             </tbody>
@@ -44,24 +50,29 @@ export class LookupGridComponent implements ValueLoader {
      private isLoading:boolean = false;
      private data:Array<any> = [];
      private fullData:Array<any> = [];
+     private subject:BehaviorSubject;
      
-     
-     loadValue(value:Observable<any>) {
+     loadValues(values:Observable<any>, subject:BehaviorSubject) {
         this.search = null;
         this.data = [];
         this.fullData = [];
         this.isLoading = true;
         
-        value.subscribe((result) => {
+        values.subscribe((result) => {
             this.isLoading = false;
             this.fullData = result;
             this.doSearch();
         });
-        
+ 
     }
     
     doSearch() {
         this.data = ArrayUtils.findAllLike(this.fullData,this.search);
+    }
+    
+    onSelectItem(item) {
+        console.log(this.subject);
+        console.log(item);
     }
           
 }
