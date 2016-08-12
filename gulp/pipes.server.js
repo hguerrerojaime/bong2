@@ -5,6 +5,7 @@ var server = require('gulp-server-livereload');
 var batch = require('gulp-batch');
 
 require('./pipes.scripts');
+require('./pipes.styles');
 require('./pipes.templates');
 
 const SCRIPTS_SRC = config.src.main.ts;
@@ -19,11 +20,11 @@ pipes.server = function () {
     });
     
     gulp.watch([LESS_SRC],function (event) {
-        gulp.start('build-skin', event);
+        pipes.buildSkin();
     });
 	
 	gulp.watch([TEMPLATES_SRC],function (event) {
-        pipes.buildTempaltes(event);
+        pipes.buildTemplates(event);
     });
     
     gulp.src('server')

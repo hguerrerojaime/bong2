@@ -1,13 +1,10 @@
-import { bootstrap }    from '@angular/platform-browser-dynamic';
-import { AppComponent } from '../app/app.component';
-import { AgentFeatureSupportChecker } from '@bong/services';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app.module';
 import {enableProdMode} from "@angular/core";
-import { disableDeprecatedForms, provideForms } from '@angular/forms';
 
 enableProdMode();
 
-bootstrap(AppComponent, [
-    AgentFeatureSupportChecker,
-    disableDeprecatedForms(),
-    provideForms()
-]);
+platformBrowserDynamic().bootstrapModule(AppModule);
+
+
+

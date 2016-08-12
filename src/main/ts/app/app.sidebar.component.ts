@@ -14,14 +14,11 @@ declare var jQuery:any;
         <div class="sidebar-nav navbar-collapse">
             <ul class="nav in" id="side-menu">
                <sidebar-search></sidebar-search>
-               <menu-item liClass="menu-item">
-                  Clients
+               <menu-item liClass="menu-item" routerLink="/">
+                  Index
                </menu-item>
-               <menu-item liClass="menu-item">
-                  Providers
-               </menu-item>
-               <menu-item liClass="menu-item">
-                  Items
+               <menu-item liClass="menu-item" routerLink="/forms">
+                  Forms
                </menu-item>
             </ul>
         </div>

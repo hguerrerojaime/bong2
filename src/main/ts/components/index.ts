@@ -82,5 +82,13 @@ components.push(LinkButtonComponent);
 import { InlineLoaderComponent } from './inline.loader.component';
 export { InlineLoaderComponent } from './inline.loader.component';
 components.push(InlineLoaderComponent);
+import { InputDetailGridComponent } from './input.detail.grid.component';
+export { InputDetailGridComponent } from './input.detail.grid.component';
+components.push(InputDetailGridComponent);
+import { ContainerComponent } from './container.component';
+export { ContainerComponent } from './container.component';
+components.push(ContainerComponent);
 
 export const BONG_COMPONENTS = components;
+
+console.log("yeah");

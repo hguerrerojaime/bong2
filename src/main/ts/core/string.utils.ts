@@ -5,13 +5,11 @@ export class StringUtils {
         return c == c.toUpperCase();
     }
     
-    public static getResourceNameFromClass(componentClass:any):string {
+    public static getResourceNameFromClass(clazz:any):string {
         
-        let className:string = componentClass.name;
+        let className:string =  typeof clazz === "string"  ? clazz : clazz.name;
         let result:string = "";
         let firstRun:boolean = true;
-        
-        console.log(className);
 
         for (let char of className) {
             
@@ -38,6 +36,17 @@ export class StringUtils {
     
     public static isNotEmpty(s: string):boolean {
         return !StringUtils.isEmpty(s);
+    }
+    
+    public static random(size:number = 10) {
+        let text = "";
+        let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for( let i=0; i < size; i++ ) {
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        }
+
+        return text;
     }
     
 }

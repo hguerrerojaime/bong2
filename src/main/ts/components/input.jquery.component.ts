@@ -9,25 +9,17 @@ export abstract class InputJqueryComponent extends InputComponent implements Jqu
     
     private jqElement;
     
-    constructor(
-        @Inject(ElementRef) public elementRef: ElementRef,
-        @Inject(AgentFeatureSupportChecker) public featureSupportChecker: AgentFeatureSupportChecker
-    ) { 
-        super();
-    }
-    
     ngAfterViewInit() {
         this.initComponent();    
     }
     
-    initJQueryElement(elementRef:ElementRef) {
-        let element = elementRef.nativeElement.children[0];
-        this.jqElement = jQuery(element);
+    initJQueryElement() {
+        this.jqElement = jQuery(this.nativeElement);
     }
      
     
     initComponent() {
-        this.initJQueryElement(this.elementRef);
+        this.initJQueryElement();
         
         if (this.shouldBuildJQueryPlugin()) {
             this.buildJQueryPlugin(this.jqElement);

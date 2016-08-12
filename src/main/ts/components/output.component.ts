@@ -4,13 +4,13 @@ import { DomUtils, ValueLoader } from '@bong/core';
 import { InlineLoaderComponent } from './inline.loader.component';
 
 @Component({
-    selector: 'async-output',
+    selector: 'output',
     template: `
         <inline-loader *ngIf="isLoading"></inline-loader>{{ actualValue }}
     `,
     directives: [ InlineLoaderComponent ]
 })
-export class AsyncOutputComponent implements OnInit, ValueLoader {
+export class OutputComponent implements OnInit, ValueLoader {
         
     actualValue:string;
     
@@ -24,17 +24,22 @@ export class AsyncOutputComponent implements OnInit, ValueLoader {
         DomUtils.unwrapElement(this.elementRef);    
     }
     
-
-    loadValue(value:Observable<any>) {
+    
+    public set value(_value:any) {
         
-        this.actualValue = "";
+        if (_value instanceof Observable) {
+            this.isLoading = true;
         
-        this.isLoading = true;
-        
-        value.subscribe((result) => {
+            _value.subscribe((result) => {
+                this.isLoading = false;
+                this.actualValue = result;
+            });
+        } else {
             this.isLoading = false;
-            this.actualValue = result;
-        });
+            this.actualValue = _value;
+        }
         
     }
+
+
 }

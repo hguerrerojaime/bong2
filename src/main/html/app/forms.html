@@ -1,5 +1,5 @@
 <panel title="App Components">
-    <form class="form-horizontal">
+    <form class="form-horizontal" #f="ngForm">
         <command-button label="Default"></command-button>
         <submit-button label="Primary" brand="primary"></submit-button>
         <command-button label="Success" brand="success"></command-button>
@@ -9,7 +9,7 @@
         <div-row>
             <div-col width="6">
                 <form-element label="Input Text">
-                    <input-text textCase="upper"></input-text>
+                    <input-text  textCase="upper"></input-text>
                 </form-element>
             </div-col>
             <div-col width="6">
@@ -56,20 +56,20 @@
         </div-row>
         <div-row>
             <div-col width="6">
-                <form-element label="Input Lookup">
-                    <input-lookup inputWidth="5"></input-lookup>
-                </form-element>
-            </div-col>
-        </div-row>
-        <div-row>
-            <div-col width="6">
                 <form-element label="Input Select Tags">
                     <input-select multiple="true" tags="true"></input-select>
                 </form-element>
             </div-col>
             <div-col width="6">
-                <form-element label="Input Textarea">
-                    <input-textarea textCase="upper"></input-textarea>
+                <form-element label="Input Lookup">
+                    <input-lookup inputWidth="5" [fnItemsLoader]="lookupService.lookup"></input-lookup>
+                </form-element>
+            </div-col>
+        </div-row>
+        <div-row>
+            <div-col width="6">
+                <form-element label="Input Detail Grid">
+                    <input-detail-grid></input-detail-grid>
                 </form-element>
             </div-col>
         </div-row>
@@ -86,8 +86,15 @@
             </div-col>
         </div-row>
         <div-row>
-            <div-col width="12">
-                <input-richtext></input-richtext>
+            <div-col width="6">
+                <form-element label="Input Textarea">
+                    <input-textarea textCase="upper"></input-textarea>
+                </form-element>
+            </div-col>
+            <div-col width="6">
+                <form-element label="Input Rich Text">
+                    <input-richtext></input-richtext>
+                </form-element>
             </div-col>
         </div-row>
     </form>

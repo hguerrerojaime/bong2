@@ -1,31 +1,24 @@
 import { ElementRef,Inject, AfterViewInit } from '@angular/core';
-import { AgentFeatureSupportChecker } from '@bong/services';
 import { JqueryComponent } from './jquery.component';
+import { BaseComponent } from './base.component';
 
 declare var jQuery:any;
 
-export abstract class DefaultJqueryComponent implements JqueryComponent, AfterViewInit {
+export abstract class DefaultJqueryComponent extends BaseComponent implements JqueryComponent, AfterViewInit {
     
     private jqElement;
     
-    constructor(
-        @Inject(ElementRef) public elementRef: ElementRef,
-        @Inject(AgentFeatureSupportChecker) public featureSupportChecker: AgentFeatureSupportChecker
-    ) { 
-    }
     
     ngAfterViewInit() {
         this.initComponent();    
     }
     
-    initJQueryElement(elementRef:ElementRef) {
-        let element = elementRef.nativeElement.children[0];
-        this.jqElement = jQuery(element);
+    initJQueryElement() {
+        this.jqElement = jQuery(this.nativeElement);
     }
      
-    
     initComponent() {
-        this.initJQueryElement(this.elementRef);
+        this.initJQueryElement();
         
         if (this.shouldBuildJQueryPlugin()) {
             this.buildJQueryPlugin(this.jqElement);

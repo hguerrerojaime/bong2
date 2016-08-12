@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { InputJqueryComponent } from '@bong/components';
+import { AgentFeatureSupportChecker } from '../core/agent.feature.support.checker';
 
 import '@plugins/node/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js';
 
@@ -18,7 +19,7 @@ import '@plugins/node/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datet
 export class InputTimeComponent extends InputJqueryComponent {
         
     shouldBuildJQueryPlugin() {
-        return !this.featureSupportChecker.supportsType('time');
+        return !AgentFeatureSupportChecker.supportsType('time');
     }
     
     buildJQueryPlugin(jqElement) {

@@ -1,5 +1,6 @@
 import { Component,ElementRef,OnInit,OnDestroy,ViewChild,Inject } from '@angular/core';
 import { InputJqueryComponent } from '@bong/components';
+import { AgentFeatureSupportChecker } from '../core/agent.feature.support.checker';
 
 declare var jQuery:any;
 
@@ -24,7 +25,7 @@ declare var jQuery:any;
 export class InputNumberComponent extends InputJqueryComponent {
         
     shouldBuildJQueryPlugin() {
-        return !this.featureSupportChecker.supportsType('number');
+        return !AgentFeatureSupportChecker.supportsType('number');
     }
       
     buildJQueryPlugin(jqElement) {

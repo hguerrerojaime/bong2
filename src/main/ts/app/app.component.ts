@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { AppBodyComponent } from './app.body.component.ts'
 import { AppMenuComponent } from './app.menu.component';
+
+declare var jQuery:any;
 
 @Component({
   selector: 'app',
@@ -15,7 +17,11 @@ import { AppMenuComponent } from './app.menu.component';
   `,
   directives: [ AppMenuComponent,AppBodyComponent ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+    ngOnInit() {
+     
+    }
 
 
 }

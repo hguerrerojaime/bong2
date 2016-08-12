@@ -1,6 +1,7 @@
 import { Input } from '@angular/core';
+import { BaseComponent } from './base.component';
 
-export class ButtonComponent {
+export class ButtonComponent extends BaseComponent {
     
     @Input()
     brand:string = "default";

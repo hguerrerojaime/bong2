@@ -1,12 +1,14 @@
-import { Component, ViewChild, Input, OnInit } from '@angular/core';
+import { Component, ViewChild, Input, Output, OnInit, Inject, EventEmitter } from '@angular/core';
 import { InputJqueryComponent } from './input.jquery.component';
 import { ModalComponent } from './modal.component';
 import { DivRowComponent } from './div.row.component';
 import { DivColComponent } from './div.col.component';
-import { AsyncOutputComponent } from './async.output.component';
+import { OutputComponent } from './output.component';
+import { InputTextComponent } from './input.text.component';
 import { LookupGridComponent } from './lookup.grid.component';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { KeyCombinationDirective } from '../directives/key.combination.directive';
 
 declare var jQuery:any;
 
@@ -16,20 +18,24 @@ declare var jQuery:any;
        <div-row>
             <div class="col-sm-{{inputWidth}} nopadding">
                <div class="input-group has-{{ brand }} has-feedback">
-                    <input type="text" class="form-control" [ngModel]="model" (blur)="lookupValue()" />
-                    
+                    <input-text #keyText
+                                [(ngModel)]="value"
+                                key-combination
+                                keyCode="40"
+                                (kcMatch)="lookupBtnClick($event)"
+                    ></input-text>
                     <span *ngIf="icons[brand]" class="glyphicon glyphicon-{{ icons[brand] }} form-control-feedback"></span>
                     <span class="input-group-btn data-up">
-                        <button type="button" class="btn btn-info" (click)="lookupBtnClick()" ><span class="fa fa-search"></span></button>
+                        <button type="button" class="btn btn-default" (click)="lookupBtnClick($event)" ><i class="fa fa-search"></i></button>
                     </span>
                </div>
             </div>
             <div class="col-sm-{{12 - inputWidth}} lookup-label-wrapper">
-                <span class="form-control lookup-label truncate" title="{{ valueTitle }}"><async-output #lookupOutput></async-output></span>
+                <span class="form-control lookup-label truncate" title="{{ valueTitle }}"><output #lookupOutput></output></span>
             </div>
        </div-row>
        <modal title="Lookup Managers" #lookupModal>
-           <lookup-grid #lookupGrid></lookup-grid>
+           <lookup-grid #lookupGrid (onSelectedItem)="setSelectedItem($event)"></lookup-grid>
        </modal>
     `,
     styles: [
@@ -37,23 +43,36 @@ declare var jQuery:any;
         '.lookup-label-wrapper { padding-left: 1 !important; margin-left: 0 !important; }',
         '.lookup-label { font-weight:bold; background-color: #eee; }'
     ],
-    directives: [ModalComponent,DivRowComponent,DivColComponent,AsyncOutputComponent,LookupGridComponent]
+    directives: [
+        ModalComponent,
+        DivRowComponent,
+        DivColComponent,
+        OutputComponent,
+        LookupGridComponent,
+        InputTextComponent,
+        KeyCombinationDirective
+    ]
 })
-export class InputLookupComponent extends InputJqueryComponent implements OnInit {
+export class InputLookupComponent extends InputJqueryComponent {
         
     @ViewChild("lookupModal")
     lookupModal: ModalComponent;
     
     @ViewChild("lookupOutput")
-    lookupOutput: AsyncOutputComponent;
+    lookupOutput: OutputComponent;
     
     @ViewChild("lookupGrid")
     lookupGrid: LookupGridComponent;
     
+    @ViewChild("keyText")
+    keyText: InputTextComponent;
+    
     @Input()
     inputWidth:number = 6;
+    
+    @Input()
+    fnItemsLoader:Function;
 
-    behaviourSubject:BehaviorSubject;
     valueTitle:string;
         
     icons:any = {
@@ -68,21 +87,15 @@ export class InputLookupComponent extends InputJqueryComponent implements OnInit
         jqElement.tooltip();
     }
     
-    lookupBtnClick() {
-       this.lookupGrid.loadValues(new Observable(observer => {
-           
-           let data = [
-             { key: 'ETN', value: 'ENLACES TERRESTRES NACIONALES' },
-             { key: 'FA', value: 'FLECHA AMARILLA' },
-             { key: 'PP', value: 'PRIMERA PLUS' },
-             { key: 'OM', value: 'OMNIBUS DE MEXICO' }
-           ];
+    lookupBtnClick($event) {
 
-           observer.next(data);
-       }),this.behaviorSubject);
-        
-       this.lookupModal.show();
+       if (this.fnItemsLoader == null) {
+           throw new EvalError("The item loader must not be null!");
+       }
        
+       this.lookupGrid.loadValues(this.fnItemsLoader());
+       this.lookupModal.show();
+       this.lookupGrid.txtSearch.requestFocus();
     }
     
     lookupValue() {
@@ -112,16 +125,17 @@ export class InputLookupComponent extends InputJqueryComponent implements OnInit
                 
         });
         
-        this.lookupOutput.loadValue(this.value);
+       
 
     }
     
-    ngOnInit() {
-        this.behaviourSubject = new BehaviorSubject(this.value);
-        
-        this.behaviourSubject.subscribe((result) => {
-            this.value = result;
-        });
+    setSelectedItem(item) {
+        this.lookupModal.hide();
+        this.brand = "success";
+        this.value = item.key;
+        this.valueTitle = item.value;
+        this.lookupOutput.value = item.value;
+        this.keyText.requestFocus(true);
     }
     
 

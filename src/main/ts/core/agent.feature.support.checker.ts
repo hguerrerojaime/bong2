@@ -1,9 +1,6 @@
-import { Injectable } from '@angular/core';
-
-@Injectable()
 export class AgentFeatureSupportChecker {
         
-    supportsType(inputType:string):boolean {
+    public static supportsType(inputType:string):boolean {
         let input = document.createElement('input');
         input.setAttribute('type',inputType);
 

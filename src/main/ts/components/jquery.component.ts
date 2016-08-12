@@ -4,7 +4,7 @@ import { AgentFeatureSupportChecker } from '@bong/services';
 
 export interface JqueryComponent {
 
-    initJQueryElement(elementRef:ElementRef):void;
+    initJQueryElement():void;
   
     shouldBuildJQueryPlugin():boolean;
     

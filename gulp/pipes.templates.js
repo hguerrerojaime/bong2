@@ -14,7 +14,7 @@ pipes.buildTemplates = function(evt) {
 		src = evt.path;
 	}
     
-	return gulp.src(src)
+	return gulp.src(TEMPLATES_SRC)
 			   .pipe(gulp.dest(TEMPLATES_TARGET))
 	;
 }
