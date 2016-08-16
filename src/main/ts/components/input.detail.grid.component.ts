@@ -1,4 +1,4 @@
-import { Component, ViewChild,ElementRef, Inject } from '@angular/core';
+import { Component, ViewChild,ElementRef, Inject, Type,Input } from '@angular/core';
 import { InputComponent } from './input.component';
 import { DivRowComponent } from './div.row.component';
 import { DivColComponent } from './div.col.component';
@@ -70,7 +70,8 @@ export class InputDetailGridComponent extends InputComponent {
          super(elementRef);
     }
     
-    private createComponent = MockCreateComponent;
+    @Input()
+    createComponent:Type;
     
     showNewItemModal($event) {
         this.itemModal.show();

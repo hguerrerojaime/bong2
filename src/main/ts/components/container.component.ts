@@ -1,4 +1,4 @@
-import { Component,ComponentResolver,OnInit,Input,ViewChild,ViewContainerRef, Inject } from '@angular/core';
+import { Component,ComponentResolver,OnInit,Input,ViewChild,ViewContainerRef,Inject,Type } from '@angular/core';
 import { InlineLoaderComponent } from './inline.loader.component';
 import { ClassLoader } from '../core/class.loader';
 
@@ -9,7 +9,7 @@ import { MockCreateComponent } from '../app/mock.create.component';
     template: `
         <div #wrapper>
             <div class="loader-wrapper">
-                <inline-loader></inline-loader>
+                <inline-loader *ngIf="loading"></inline-loader>
             </div>
         </div>
         `,
@@ -19,23 +19,28 @@ import { MockCreateComponent } from '../app/mock.create.component';
 export class ContainerComponent implements OnInit {
     
     @Input()
-    component:string;
+    component:Type;
     
     @ViewChild('wrapper', {read: ViewContainerRef})
     wrapper:ViewContainerRef;
+    
+    private loading:boolean = true;
     
     constructor(@Inject(ComponentResolver) private resolver:ComponentResolver){}
     
     
     ngOnInit() {
         
+        this.loading = true;
+        
         if (this.component == null) {
             throw new EvalError("A component must be specified!");
         }
         
 
-        this.resolver.resolveComponent(MockCreateComponent).then(factory => {
+        this.resolver.resolveComponent(this.component).then(factory => {
              this.wrapper.createComponent(factory);
+             this.loading = false;
         });
     }
     

@@ -16,7 +16,8 @@ import { BONG_COMPONENTS } from '@bong/components';
   declarations: [
     AppComponent,
     IndexComponent,
-    FormsComponent
+    FormsComponent,
+    BONG_COMPONENTS
   ],
   bootstrap: [ AppComponent ],
   providers: [ provide(PLATFORM_DIRECTIVES, {useValue: BONG_COMPONENTS, multi: true}) ]
