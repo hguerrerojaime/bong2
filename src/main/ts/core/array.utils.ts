@@ -3,6 +3,55 @@ import {StringUtils} from './string.utils';
 
 export class ArrayUtils {
     
+    public static withFilter(array:any[],filter:Function):any {
+        
+        return {
+            doWithIndex: function(action) {
+                var indexes = [];
+                for (let i in array) {
+                    let item = array[i];
+                    
+                    if (filter(item)) {
+                        indexes.push(i);
+                    }
+                }
+                
+                console.log(indexes);
+                
+                for (let index of indexes) {
+                    action(index);
+                }
+            },
+            doWithItem: function(action) {
+                
+                let foundItems = ArrayUtils.findAll(array,filter);
+                
+                for (let item of foundItems) {
+                    action(item);
+                }
+                
+            },
+            removeAll: function() {
+                this.doWithItem((item) => array.splice(array.indexOf(item),1));
+            }
+            
+        };
+        
+    }
+    
+    public static findAll(array:any[],filter:Function) {
+        
+        let result:any[] = [];
+        
+        for (let item of array) {
+            if (filter(item)) {
+                result.push(item);
+            }
+        }
+        
+        return result;
+    }
+    
     public static findAllLike(array:any,exp:string) : any {
         
         if (!ArrayUtils.isIterable(array)) {

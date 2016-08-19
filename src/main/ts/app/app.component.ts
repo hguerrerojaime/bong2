@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { AppBodyComponent } from './app.body.component.ts'
 import { AppMenuComponent } from './app.menu.component';
 

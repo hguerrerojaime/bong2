@@ -34,9 +34,9 @@ components.push(DivRowComponent);
 import { ModalComponent } from './modal.component';
 export { ModalComponent } from './modal.component';
 components.push(ModalComponent);
-import { AsyncOutputComponent } from './async.output.component';
-export { AsyncOutputComponent } from './async.output.component';
-components.push(AsyncOutputComponent);
+import { OutputComponent } from './output.component';
+export { OutputComponent } from './output.component';
+components.push(OutputComponent);
 import { InputTimeComponent } from './input.time.component';
 export { InputTimeComponent } from './input.time.component';
 components.push(InputTimeComponent);
@@ -88,6 +88,10 @@ components.push(InputDetailGridComponent);
 import { ContainerComponent } from './container.component';
 export { ContainerComponent } from './container.component';
 components.push(ContainerComponent);
+
+import { InputFilterBuilderComponent } from './input.filter.builder.component';
+export { InputFilterBuilderComponent } from './input.filter.builder.component';
+components.push(InputFilterBuilderComponent);
 
 export const BONG_COMPONENTS = components;
 

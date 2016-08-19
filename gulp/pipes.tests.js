@@ -1,10 +1,11 @@
 var gulp = require('gulp');
 var pipes = require('./pipes');
 var jasmine = require('gulp-jasmine');
-var ts = require('gulp-typescript');
+
 var config = require('./gconf.json');
 const reporters = require('jasmine-reporters');
 
+var ts = require('gulp-typescript');
 const TS_COMPILER_OPTS = require('../tsconfig.json')["compilerOptions"];
 const SCRIPTS_SRC = config.src.main.ts;
 const TESTS_SRC = config.src.test.ts;

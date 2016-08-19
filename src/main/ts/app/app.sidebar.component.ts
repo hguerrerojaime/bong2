@@ -20,6 +20,9 @@ declare var jQuery:any;
                <menu-item liClass="menu-item" routerLink="/forms">
                   Forms
                </menu-item>
+               <menu-item liClass="menu-item" routerLink="/tables">
+                  Tables
+               </menu-item>
             </ul>
         </div>
     </div>

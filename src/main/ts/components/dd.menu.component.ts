@@ -1,5 +1,5 @@
 import { Component, Input, Inject, OnInit, ElementRef } from '@angular/core';
-import { DomUtils } from '@bong/core';
+import { DomUtils } from '../core/dom.utils';
 
 @Component({
     selector: 'dd-menu',

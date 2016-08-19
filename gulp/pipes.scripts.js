@@ -3,13 +3,23 @@ var minify = require('gulp-minify');
 var config = require('./gconf.json');
 var concat = require('gulp-concat');
 var pipes = require('./pipes');
+var clean = require('gulp-clean');
+var ts = require('gulp-typescript');
 
+const TS_COMPILER_OPTS = require('../tsconfig.json')["compilerOptions"];
+const ENV_CONFIG = require('./env.config.js').config;
 const CORE_SRC = config.src.main.core;
 const CORE_TARGET = config.target.main.core;
 const SCRIPTS_SRC = config.src.main.ts;
 const SCRIPTS_TARGET = config.target.main.scripts;
 
+const TS_TRANSPILER_CORE_SRC = "node_modules/typescript/lib/typescript.js";
+
 pipes.buildCoreScripts = function(){
+	if (!ENV_CONFIG.ts.preCompile) {
+		CORE_SRC.push(TS_TRANSPILER_CORE_SRC);
+	}
+	
 	return gulp.src(CORE_SRC)
 		.pipe(concat('core.js'))
 		.pipe(minify())
@@ -25,9 +35,15 @@ pipes.buildAppScripts = function(evt) {
 		src = evt.path;
 	}
 
-	return gulp.src(SCRIPTS_SRC)
-			.pipe(gulp.dest(SCRIPTS_TARGET))
-	;
+	var gulpSrc = gulp.src(SCRIPTS_SRC);
+	
+	if (ENV_CONFIG.ts.preCompile) {
+		gulpSrc.pipe(ts(TS_COMPILER_OPTS));
+	}
+	
+			
+	return gulpSrc.pipe(gulp.dest(SCRIPTS_TARGET));
+	
 }
 
 pipes.cleanCore = function() {

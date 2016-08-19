@@ -1,3 +1,5 @@
+@padding-xs: 5px;
+
 .navbar-brand {
     position: relative;
     top: 0px;
@@ -49,21 +51,30 @@ body {
 	margin-right: 0;
 }
 
-.nopadding:first-child {
+.row.col-padding-none div:first-child {
    padding-right: 0 !important;
-   margin-right: 0 !important;
 }
 
-.nopadding:last-child {
+.row.col-padding-none div:last-child {
    padding-left: 0 !important;
-   margin-left: 0 !important;
 }
 
-.nopadding:not(:first-child):not(:last-child) {
-	padding-right: 0 !important;
-    margin-right: 0 !important;
-	padding-left: 0 !important;
-    margin-left: 0 !important;
+.row.col-padding-none div:not(:first-child):not(:last-child) {
+   padding-left: 0 !important;
+   padding-right: 0 !important;
+}
+
+.row.col-padding-xs div:first-child {
+   padding-right: @padding-xs !important;
+}
+
+.row.col-padding-xs div:last-child {
+   padding-left: @padding-xs !important;
+}
+
+.row.col-padding-xs div:not(:first-child):not(:last-child) {
+   padding-left: @padding-xs !important;
+   padding-right: @padding-xs !important;
 }
 
 .truncate {

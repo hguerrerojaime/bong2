@@ -1,11 +1,11 @@
-import { Component,Input } from '@angular/core';
+import { Component,Input, OnInit } from '@angular/core';
 import { DivColComponent } from './div.col.component';
  
 @Component({
     selector: 'form-element',
     template: `
         <div class="form-group">
-          <label class="col-md-{{labelWidth}} control-label">{{label}}</label>
+          <label *ngIf="label != null" class="col-md-{{labelWidth}} control-label">{{label}}</label>
           <div-col width="{{ 12 - labelWidth }}">
             <ng-content></ng-content>
           </div-col>
@@ -13,11 +13,19 @@ import { DivColComponent } from './div.col.component';
     `,
     directives: [ DivColComponent ]
 })
-export class FormElementComponent {
+export class FormElementComponent implements OnInit {
     
     @Input()
-    labelWidth:number = 3;
+    labelWidth:number;
     
     @Input()
-    label:string = "Label";
+    label:string;
+    
+    ngOnInit() {
+        
+        if ( this.labelWidth == null && this.label != null ) {
+            this.labelWidth = 3;
+        }
+        
+    }
 }

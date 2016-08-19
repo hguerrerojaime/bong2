@@ -4,6 +4,7 @@ import { FormsModule }    from '@angular/forms';
 import { AppComponent }   from '../app/app.component';
 import { IndexComponent }   from '../app/index.component';
 import { FormsComponent } from '../app/forms.component';
+import { TablesComponent } from '../app/tables.component';
 import { routing }        from './app.routing';
 import { BONG_COMPONENTS } from '@bong/components';
 
@@ -17,6 +18,7 @@ import { BONG_COMPONENTS } from '@bong/components';
     AppComponent,
     IndexComponent,
     FormsComponent,
+    TablesComponent,
     BONG_COMPONENTS
   ],
   bootstrap: [ AppComponent ],

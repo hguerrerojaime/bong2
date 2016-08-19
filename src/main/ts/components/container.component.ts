@@ -19,12 +19,14 @@ import { MockCreateComponent } from '../app/mock.create.component';
 export class ContainerComponent implements OnInit {
     
     @Input()
-    component:Type;
+    component:any;
     
     @ViewChild('wrapper', {read: ViewContainerRef})
     wrapper:ViewContainerRef;
     
     private loading:boolean = true;
+    
+    private __componentInstance;
     
     constructor(@Inject(ComponentResolver) private resolver:ComponentResolver){}
     
@@ -39,9 +41,13 @@ export class ContainerComponent implements OnInit {
         
 
         this.resolver.resolveComponent(this.component).then(factory => {
-             this.wrapper.createComponent(factory);
+             this.__componentInstance = this.wrapper.createComponent(factory);
              this.loading = false;
         });
+    }
+    
+    get componentInstance() {
+        return this.__componentInstance;
     }
     
 }

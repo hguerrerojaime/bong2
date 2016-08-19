@@ -15,8 +15,8 @@ declare var jQuery:any;
 @Component({
     selector: 'input-lookup',
     template: `
-       <div-row>
-            <div class="col-sm-{{inputWidth}} nopadding">
+       <div-row colPadding="xs">
+            <div class="col-sm-{{inputWidth}}">
                <div class="input-group has-{{ brand }} has-feedback">
                     <input-text #keyText
                                 [(ngModel)]="value"

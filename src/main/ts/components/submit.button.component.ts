@@ -4,7 +4,12 @@ import { ButtonComponent } from './button.component';
 @Component({
     selector:'submit-button',
     template:`
-        <button type="submit" class="btn btn-{{brand}} btn-{{size}}" [class.btn-block]="blockWidth">
+        <button type="submit" 
+                class="btn btn-{{brand}} btn-{{size}}"
+                [class.btn-block]="blockWidth"
+                [disabled]="disabled"
+                (click)="doClick($event)"
+        >
             <i class="{{ icon }}" *ngIf="icon"></i> {{ label }}
         </button>
     `    

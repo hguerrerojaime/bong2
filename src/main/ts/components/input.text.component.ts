@@ -3,7 +3,7 @@ import { NG_VALUE_ACCESSOR  } from '@angular/forms';
 import { InputComponent } from './input.component';
 import { TextOptionsDirective } from '@bong/directives';
 
-export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
+const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => InputTextComponent),
     multi: true
@@ -13,7 +13,7 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     selector: 'input-text',
     template: `
         <input type="text" 
-               class="form-control" 
+               class="form-control input-{{size}}"
                [textCase]="textCase"
                [(ngModel)]="value"
                (blur)="onBlur()"
@@ -27,5 +27,8 @@ export class InputTextComponent extends InputComponent {
         
     @Input()
     textCase:string;
+    
+    @Input()
+    size:string = "md";
 
 }

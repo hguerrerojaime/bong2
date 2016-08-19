@@ -26,7 +26,8 @@
     "main-bower-files": "^2.13.1",
     "merge-stream": "^1.0.0",
     "pump": "^1.0.1",
-    "run-sequence": "^1.2.2"
+    "run-sequence": "^1.2.2",
+    "yargs": "^5.0.0"
   },
   "dependencies": {
     "@angular/common": "2.0.0-rc.5",
@@ -39,7 +40,6 @@
     "@angular/router": "3.0.0-rc.1",
     "@angular/router-deprecated": "2.0.0-rc.2",
     "@angular/upgrade": "2.0.0-rc.5",
-    
     "angular2-in-memory-web-api": "0.0.15",
     "bootstrap": "^3.3.6",
     "bootstrap-datepicker": "^1.6.1",

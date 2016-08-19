@@ -6,7 +6,7 @@ import { MockCreateComponent } from './mock.create.component';
 @Component({
     selector: 'forms-ctrl',
     templateUrl: TemplateResolver.resolve(FormsComponent,'app'),
-    providers: [ LookupService ]
+    providers: [LookupService]
 })
 export class FormsComponent {
     dataModel: string = '';
@@ -16,6 +16,5 @@ export class FormsComponent {
     constructor(@Inject(LookupService) private lookupService) {
         
     }
-    
 
 }

@@ -10,12 +10,6 @@ export class InputComponent extends BaseComponent implements ControlValueAccesso
     private onTouchedCallback: () => void = noop;
     private onChangeCallback: (_: any) => void = noop;
     
-    constructor(
-        @Inject(ElementRef) public elementRef: ElementRef
-    ) { 
-        super(elementRef);
-    }
-    
     //get accessor
     public get value(): any {
         return this.innerValue;
