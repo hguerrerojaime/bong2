@@ -16,7 +16,7 @@ import { MockCreateComponent } from '../app/mock.create.component';
     directives: [InlineLoaderComponent],
     styles: [ '.loader-wrapper { text-align:center; }' ]
 })
-export class ContainerComponent implements OnInit {
+export class ContainerComponent {
     
     @Input()
     component:any;
@@ -26,13 +26,11 @@ export class ContainerComponent implements OnInit {
     
     private loading:boolean = true;
     
-    private __componentInstance;
+    private __component;
     
     constructor(@Inject(ComponentResolver) private resolver:ComponentResolver){}
     
-    
-    ngOnInit() {
-        
+    refresh() {
         this.loading = true;
         
         if (this.component == null) {
@@ -41,13 +39,15 @@ export class ContainerComponent implements OnInit {
         
 
         this.resolver.resolveComponent(this.component).then(factory => {
-             this.__componentInstance = this.wrapper.createComponent(factory);
+             this.wrapper.clear();
+             this.__component = this.wrapper.createComponent(factory);
              this.loading = false;
         });
+    
     }
     
     get componentInstance() {
-        return this.__componentInstance;
+        return this.__component.instance;
     }
     
 }

@@ -1,15 +1,18 @@
-<form class="form-horizontal" #detailForm="ngForm">
+<form class="form-horizontal" (ngSubmit)="doSubmit($event)">
     <div-row>
         <div-col>
             <form-element label="Ammount" labelWidth="3">
-                <input-currency></input-currency>
+                <input-currency [(ngModel)]="mockData.ammount" name="ammount" ></input-currency>
             </form-element>
         </div-col>
     </div-row>
     <div-row>
         <div-col>
-            <form-element label="Marca" labelWidth="3">
-                <input-lookup inputWidth="5" [fnItemsLoader]="lookupService.lookup"></input-lookup>
+            <form-element label="Brand" labelWidth="3">
+                <input-lookup [(ngModel)]="mockData.brand" name="brand"
+                            inputWidth="5"
+                            [fnItemsLoader]="lookupService.lookup"
+                ></input-lookup>
             </form-element>
         </div-col>
     </div-row>

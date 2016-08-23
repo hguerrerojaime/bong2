@@ -7,6 +7,7 @@ export { JqueryComponent } from './jquery.component';
 export { InputJqueryComponent } from './input.jquery.component';
 export { DefaultJqueryComponent } from './default.jquery.component';
 
+
 import { InputTextComponent } from './input.text.component';
 export { InputTextComponent } from './input.text.component';
 components.push(InputTextComponent);
@@ -85,14 +86,19 @@ components.push(InlineLoaderComponent);
 import { InputDetailGridComponent } from './input.detail.grid.component';
 export { InputDetailGridComponent } from './input.detail.grid.component';
 components.push(InputDetailGridComponent);
+import { InputDetailGridColumnComponent } from './input.detail.grid.column.component';
+export { InputDetailGridColumnComponent } from './input.detail.grid.column.component';
+components.push(InputDetailGridColumnComponent);
 import { ContainerComponent } from './container.component';
 export { ContainerComponent } from './container.component';
 components.push(ContainerComponent);
-
 import { InputFilterBuilderComponent } from './input.filter.builder.component';
 export { InputFilterBuilderComponent } from './input.filter.builder.component';
 components.push(InputFilterBuilderComponent);
+import { DataTableComponent } from './data.table.component';
+export { DataTableComponent } from './data.table.component';
+components.push(DataTableComponent);
+
+
 
 export const BONG_COMPONENTS = components;
-
-console.log("yeah");

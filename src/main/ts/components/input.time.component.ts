@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { InputJqueryComponent } from '@bong/components';
 import { AgentFeatureSupportChecker } from '../core/agent.feature.support.checker';
+import { ProviderUtils } from '../core/provider.utils';
 
 import '@plugins/node/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js';
 
@@ -13,7 +14,10 @@ import '@plugins/node/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datet
             <span class="fa fa-clock-o"></span>
         </span>
        </div>
-    `
+    `,
+    providers: [
+        ProviderUtils.createAccessorProvider(InputTimeComponent)
+    ]
     //styleUrls: ['static/vendors/node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css']
 })
 export class InputTimeComponent extends InputJqueryComponent {

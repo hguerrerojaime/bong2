@@ -7,7 +7,11 @@ export class DomUtils {
             parentElement: HTMLElement = nativeElement.parentElement;
         // move all children out of the element
         while (nativeElement.firstChild) {
-            parentElement.insertBefore(nativeElement.firstChild, nativeElement);
+            
+            if (parentElement != null) {
+                parentElement.insertBefore(nativeElement.firstChild, nativeElement);
+            }
+
         }
         // remove the empty element(the host)
         parentElement.removeChild(nativeElement);    

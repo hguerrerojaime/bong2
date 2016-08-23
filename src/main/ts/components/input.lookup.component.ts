@@ -9,6 +9,7 @@ import { LookupGridComponent } from './lookup.grid.component';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { KeyCombinationDirective } from '../directives/key.combination.directive';
+import { ProviderUtils } from '../core/provider.utils';
 
 declare var jQuery:any;
 
@@ -51,7 +52,8 @@ declare var jQuery:any;
         LookupGridComponent,
         InputTextComponent,
         KeyCombinationDirective
-    ]
+    ],
+    providers: [ ProviderUtils.createAccessorProvider(InputLookupComponent) ]
 })
 export class InputLookupComponent extends InputJqueryComponent {
         

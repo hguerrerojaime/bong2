@@ -1,13 +1,8 @@
 import { Component, Input, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR  } from '@angular/forms';
 import { InputComponent } from './input.component';
-import { TextOptionsDirective } from '@bong/directives';
-
-const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => InputTextComponent),
-    multi: true
-};
+import { TextOptionsDirective } from '../directives/text.options.directive';
+import { ProviderUtils } from '../core/provider.utils';
 
 @Component({
     selector: 'input-text',
@@ -21,7 +16,9 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
         />
     `,
     directives: [TextOptionsDirective],
-    providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
+    providers: [
+        ProviderUtils.createAccessorProvider(InputTextComponent)
+    ]
 })
 export class InputTextComponent extends InputComponent {
         

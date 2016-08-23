@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ElementRef, Inject } from '@angular/core';
+import { Component, Input, OnInit, ElementRef, Inject, ViewEncapsulation } from '@angular/core';
 
 import { DomUtils } from '../core/dom.utils';
 
@@ -6,7 +6,8 @@ import { DomUtils } from '../core/dom.utils';
     selector: 'menu-item',
     template: `
         <li class="{{liClass}}"><a [routerLink]="routerLink"><ng-content></ng-content></a></li>
-    `
+    `,
+    encapsulation: ViewEncapsulation.None
 })
 export class MenuItemComponent implements OnInit {
         

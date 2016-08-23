@@ -1,16 +1,7 @@
 import { Component,Input,forwardRef } from '@angular/core';
 import { InputJqueryComponent } from './input.jquery.component';
-
-import { NG_VALUE_ACCESSOR  } from '@angular/forms';
-
+import { ProviderUtils } from '../core/provider.utils';
 import '@plugins/node/select2/dist/js/select2.min.js';
-
-
-const INPUT_CONTROL_VALUE_ACCESSOR: any = {
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => InputSelectComponent),
-    multi: true
-};
 
 @Component({
     selector: 'input-select',
@@ -23,7 +14,7 @@ const INPUT_CONTROL_VALUE_ACCESSOR: any = {
            <option *ngFor="let option of options" value="{{option.key}}">{{option.value}}</option>
        </select>
     `,
-    providers: [ INPUT_CONTROL_VALUE_ACCESSOR ]
+    providers: [ ProviderUtils.createAccessorProvider(InputSelectComponent) ]
 })
 export class InputSelectComponent extends InputJqueryComponent {
         

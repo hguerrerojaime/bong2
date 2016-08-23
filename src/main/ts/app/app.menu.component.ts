@@ -1,10 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
-import { DdMenuComponent,MenuItemComponent } from '@bong/components';
 import { AppNavbarComponent } from './app.navbar.component';
 import { AppSidebarComponent } from './app.sidebar.component';
-
-import { DomUtils } from '@bong/core';
 
 declare var jQuery:any;
 

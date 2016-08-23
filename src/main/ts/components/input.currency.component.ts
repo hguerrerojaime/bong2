@@ -1,5 +1,6 @@
 import { Component,ElementRef,OnInit,OnDestroy,ViewChild,Inject } from '@angular/core';
 import { InputNumberComponent } from './input.number.component';
+import { ProviderUtils } from '../core/provider.utils';
 
 @Component({
     selector: 'input-currency',
@@ -11,7 +12,11 @@ import { InputNumberComponent } from './input.number.component';
             <span class="input-group-btn data-dwn">
                 <button class="btn btn-default" data-dir="dwn"><span class="fa fa-minus"></span></button>
             </span>
-            <input type="number" class="form-control" value="1" min="-10" max="40">
+            <input [(ngModel)]="value" 
+                (blur)="onBlur()"
+                type="number"
+                class="form-control" 
+                value="1" min="-10" max="40" step=".01">
             <span class="input-group-btn data-up">
                 <button class="btn btn-default" data-dir="up"><span class="fa fa-plus"></span></button>
             </span>
@@ -20,11 +25,15 @@ import { InputNumberComponent } from './input.number.component';
             <span class="input-group-addon">
                 <span class="fa fa-usd"></span>
             </span>
-            <input type="number" class="form-control" value="1" min="-10" max="40" step=".01">
+            <input [(ngModel)]="value" 
+                (blur)="onBlur()"
+                type="number" 
+                class="form-control" 
+                value="1" min="-10" max="40" step=".01">
       </div>
 
-    `
-    //styleUrls: ['static/vendors/node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css']
+    `,
+    providers: [ ProviderUtils.createAccessorProvider(InputCurrencyComponent) ]
 })
 export class InputCurrencyComponent extends InputNumberComponent {
 

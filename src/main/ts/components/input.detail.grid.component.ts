@@ -1,16 +1,26 @@
-import { Component, ViewChild,ElementRef, Inject, Type,Input,OnInit } from '@angular/core';
+import { 
+    Component, 
+    ViewChild,
+    ContentChild,
+    ContentChildren,
+    ElementRef,
+    Inject,
+    Type,
+    Input,
+    OnInit,
+    QueryList,
+    forwardRef
+} from '@angular/core';
 import { InputComponent } from './input.component';
 import { DivRowComponent } from './div.row.component';
 import { DivColComponent } from './div.col.component';
-import { InputCheckboxComponent } from './input.checkbox.component';
 import { CommandButtonComponent } from './command.button.component';
 import { SubmitButtonComponent } from './submit.button.component';
 import { ModalComponent } from './modal.component';
 import { FormElementComponent } from './form.element.component';
-import { InputCurrencyComponent } from './input.currency.component';
-import { InputLookupComponent } from './input.lookup.component';
 import { ContainerComponent } from './container.component';
 import { ArrayUtils } from '../core/array.utils';
+import { InputDetailGridColumnComponent } from './input.detail.grid.column.component';
 
 @Component({
     selector: 'input-detail-grid',
@@ -43,21 +53,24 @@ import { ArrayUtils } from '../core/array.utils';
                                 No Items Added
                          </div>
                             
-                         <table class="detail-grid table table-striped table-condensed" *ngIf="value.length > 0">
+                         <table class="detail-grid table table-striped table-condensed table-hover" *ngIf="value.length > 0">
                             <thead>
                                 <tr>
                                     <th class="chk-col">
                                         <input type="checkbox" 
                                                [(ngModel)]="selectAll" (ngModelChange)="toggleAll($event);"/></th>
-                                    <th>Ammount</th>
-                                    <th>Manager</th>
+                                    <th *ngFor="let col of detailColumns.toArray()">
+                                       {{ col.label }}
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
+                            
                                 <tr *ngFor="let item of value; let i = index">
-                                    <td class="chk-col"><input type="checkbox" [(ngModel)]="item.selected"/></td>
-                                    <td>{{ item.ammount }}</td>
-                                    <td>{{ item.manager }}</td>
+                                   <td class="chk-col"><input type="checkbox" [(ngModel)]="item.selected"/></td>
+                                   <td *ngFor="let col of detailColumns.toArray()">
+                                       {{ item[col.field] }}
+                                   </td>
                                 </tr>
                             </tbody>
                          </table>
@@ -66,7 +79,7 @@ import { ArrayUtils } from '../core/array.utils';
                     </div-col>
                 </div-row>
                 <modal icon="fa fa-plus-circle" title="Add New Item" #itemModal>
-                    <container [component]="createComponent"></container>
+                    <container [component]="createComponent" #container></container>
                     <modal-footer>
                         <submit-button 
                             brand="primary"
@@ -79,6 +92,19 @@ import { ArrayUtils } from '../core/array.utils';
             </div-col>
         </div-row>
     `,
+    styles: [
+        '.detail-grid { border: 1px solid #ccc; }',
+        '.detail-grid { margin-bottom: 0 !important; }',
+        `.detail-grid thead tr th {
+              background: rgb(238,238,238);
+background: -moz-linear-gradient(top,  rgba(238,238,238,1) 48%, rgba(226,226,226,1) 100%);
+background: -webkit-linear-gradient(top,  rgba(238,238,238,1) 48%,rgba(226,226,226,1) 100%);
+background: linear-gradient(to bottom,  rgba(238,238,238,1) 48%,rgba(226,226,226,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#e2e2e2',GradientType=0 );
+            border: 1px solid #ccc;
+        }`,
+        '.detail-grid .chk-col { width: 35px; text-align:center; border-right: 1px solid #ccc;  }'
+    ],
     directives: [
         DivRowComponent,
         DivColComponent,
@@ -86,28 +112,19 @@ import { ArrayUtils } from '../core/array.utils';
         SubmitButtonComponent,
         ModalComponent,
         FormElementComponent,
-        ContainerComponent,
-        InputCheckboxComponent
-    ],
-    styles: [
-        '.detail-grid { border: 1px solid #aaa; }',
-        '.detail-grid { margin-bottom: 0 !important; }',
-        `.detail-grid thead tr th {
-               background: #ffffff;
-background: -moz-linear-gradient(top,  #ffffff 0%, #f1f1f1 50%, #e1e1e1 51%, #f6f6f6 100%);
-background: -webkit-linear-gradient(top,  #ffffff 0%,#f1f1f1 50%,#e1e1e1 51%,#f6f6f6 100%);
-background: linear-gradient(to bottom,  #ffffff 0%,#f1f1f1 50%,#e1e1e1 51%,#f6f6f6 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0 );
-
-               border-bottom: 1px solid #aaa;
-        }`,
-        '.detail-grid .chk-col { width: 35px; text-align:center; border-right: 1px solid #aaa;  }'
+        InputDetailGridColumnComponent
     ]
 })
 export class InputDetailGridComponent extends InputComponent implements OnInit {
     
     @ViewChild("itemModal")
     itemModal:ModalComponent;
+    
+    @ViewChild("container")
+    container:ContainerComponent;
+    
+    @ContentChildren(forwardRef(() =>InputDetailGridColumnComponent))
+    detailColumns: QueryList<InputDetailGridColumnComponent>;
     
     @Input()
     createComponent:any;
@@ -122,9 +139,12 @@ export class InputDetailGridComponent extends InputComponent implements OnInit {
         if (this.value == null) {
             this.value = [];
         }
+        
+        
     }
     
     showNewItemModal($event) {
+        this.container.refresh();
         this.itemModal.show();
     }
     
@@ -139,7 +159,8 @@ export class InputDetailGridComponent extends InputComponent implements OnInit {
     }
     
     addDetailItem($event) {
-        this.value.push({ammount:"$ 100.00",manager:"Humberto Guerrero"});
+
+        this.value.push(this.createComponentInstance.formData);
         this.itemModal.hide();
     }
     
@@ -153,6 +174,10 @@ export class InputDetailGridComponent extends InputComponent implements OnInit {
     
     getSelectedItemCount():number {
         return ArrayUtils.findAll(this.value,(item) => item.selected === true).length;
+    }
+    
+    get createComponentInstance() {
+        return this.container.componentInstance;
     }
     
 }
