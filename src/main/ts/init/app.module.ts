@@ -1,4 +1,29 @@
-import { NgModule, provide, PLATFORM_DIRECTIVES } from '@angular/core';
+// import { NgModule, Component } from '@angular/core';
+// import { BrowserModule }  from '@angular/platform-browser';
+// import { BONG_COMPONENTS } from '@bong/components';
+
+// @Component({
+//   selector:'app',
+//   template:'<strong>hola mundo</strong>'
+// })
+// class App {
+  
+// }
+
+// @NgModule({
+//   imports: [
+//     BrowserModule
+//   ],
+//   declarations: [
+//     App
+//   ],
+//   bootstrap: [ App ],
+//   providers: [ /* provide(PLATFORM_DIRECTIVES, {useValue: BONG_COMPONENTS, multi: true}) */ ]
+// })
+// export class AppModule {}
+
+
+import { NgModule, Component } from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms';
 import { AppComponent }   from '../app/app.component';
@@ -21,8 +46,7 @@ import { BONG_COMPONENTS } from '@bong/components';
     TablesComponent,
     BONG_COMPONENTS
   ],
-  bootstrap: [ AppComponent ],
-  providers: [ provide(PLATFORM_DIRECTIVES, {useValue: BONG_COMPONENTS, multi: true}) ]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule {}
 

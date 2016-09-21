@@ -5,3 +5,4 @@ export { TemplateResolver } from './template.resolver';
 export { ValueLoader } from './value.loader';
 export { ArrayUtils } from './array.utils';
 export { ClassLoader } from './class.loader';
+export { fadeIn,Transitionable } from './animation.utils';

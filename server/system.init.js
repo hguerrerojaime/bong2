@@ -14,7 +14,8 @@
     'moment':                     'vendors/node_modules/moment',
     '@plugins/node':              'vendors/node_modules',
     'jquery':					            'vendors/node_modules/jquery/dist',
-    'bootstrap':			            'vendors/node_modules/bootstrap/dist/js'
+    'bootstrap':			            'vendors/node_modules/bootstrap/dist/js',
+    'ng2-slim-loading-bar': 'vendors/node_modules/ng2-slim-loading-bar'
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
@@ -25,7 +26,8 @@
     'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
     'moment':					            { main: 'moment.js', defaultExtension: 'js' },
     'jquery':				              { main: 'jquery.min.js', defaultExtension: 'js' },
-    'bootstrap':			            { main: 'bootstrap.min.js', defaultExtension: 'js' }
+    'bootstrap':			            { main: 'bootstrap.min.js', defaultExtension: 'js' },
+    'ng2-slim-loading-bar':       { main: 'index.js',  defaultExtension: 'js' }
   };
   var ngPackageNames = [
     'common',

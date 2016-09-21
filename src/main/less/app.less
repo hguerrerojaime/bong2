@@ -82,3 +82,11 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.transitionable {
+    animation: transitionable 1s forwards;
+}
+@keyframes transitionable {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(0); }
+}

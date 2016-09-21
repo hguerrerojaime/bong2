@@ -1,7 +1,18 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import { fadeIn } from '@bong/core';
 
 @Component({
     selector: 'index',
-    template: '<h4>Welcome</h4>'
+    template: `
+        <div [@openClose]="transitionStatus">
+            Welcome
+        </div>
+    `,
+  animations: [
+    fadeIn()
+  ]
+    
 })
-export class IndexComponent {}
+export class IndexComponent {
+ 
+}

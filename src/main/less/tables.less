@@ -1,7 +1,7 @@
 @table-padding: 5px;
 @table-header-bg: #eee;
 @actions-column-width: 150px;
-@table-wrapper-bg: lighten(@brand-primary, 50%);
+@table-wrapper-bg: #ededed;
 
 table {
     font-size: @font-size-base;
@@ -19,6 +19,19 @@ table a {
     background-color: @table-wrapper-bg;
     border: 1px solid darken(@table-wrapper-bg,20%);
 }
+
+.dt thead tr td {
+    background-color: #ccc;
+} 
+
+.dt thead tr td input,.dt thead tr td select {
+    border: 1px solid #aaa;
+} 
+
+.dt thead tr th.actions {
+    width: @actions-column-width;
+} 
+
 
 
 
@@ -56,9 +69,6 @@ table.dt thead tr th {
     
 }
 
-table.dt thead tr th.actions-column {
-    width: @actions-column-width;
-}
 
 table.dt tbody tr td {
     vertical-align: middle;
