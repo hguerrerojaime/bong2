@@ -133,15 +133,7 @@ export class InputFilterBuilderComponent extends InputComponent implements OnIni
         { key: "cash", value: "Cash" },
     ];
     
-    
-    
-    constructor(
-        @Inject(ElementRef) elementRef:ElementRef,
-        @Inject(ComponentResolver) private resolver:ComponentResolver
-    ){
-        super(elementRef);
-        
-    }
+   
     
     ngOnInit() {
         this.value = { group: "and", filters: []};

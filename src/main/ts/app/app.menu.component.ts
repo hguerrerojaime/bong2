@@ -1,15 +1,13 @@
 
 import { Component, OnInit } from '@angular/core';
-import { AppNavbarComponent } from './app.navbar.component';
-import { AppSidebarComponent } from './app.sidebar.component';
 
 declare var jQuery:any;
 
 @Component({
     selector: 'app-menu',
-    directives: [AppNavbarComponent, AppSidebarComponent],
     template: `
         <nav class="navbar navbar-inverse navbar-fixed-top">
+           <ng2-slim-loading-bar></ng2-slim-loading-bar>
            <app-navbar>
                <navbar-brand>
                    CRM-NG2

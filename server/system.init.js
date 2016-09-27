@@ -15,7 +15,7 @@
     '@plugins/node':              'vendors/node_modules',
     'jquery':					            'vendors/node_modules/jquery/dist',
     'bootstrap':			            'vendors/node_modules/bootstrap/dist/js',
-    'ng2-slim-loading-bar': 'vendors/node_modules/ng2-slim-loading-bar'
+    'ng2-slim-loading-bar':       'vendors/node_modules/ng2-slim-loading-bar'
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {

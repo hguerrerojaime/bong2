@@ -27,8 +27,7 @@ import { DdMenuComponent, MenuItemComponent } from '@bong/components';
               <menu-item>Logout</menu-item>
         </dd-menu>
       </ul>
-    `,
-    directives: [ DdMenuComponent,MenuItemComponent ]
+    `
 })
 export class AppNavbarComponent {
         

@@ -2,7 +2,7 @@ import { Component,Inject } from '@angular/core';
 import { Router,Event,NavigationStart, NavigationEnd } from '@angular/router';
 import { AppBodyComponent } from './app.body.component.ts'
 import { AppMenuComponent } from './app.menu.component';
-import {SlimLoadingBarService, SlimLoadingBarComponent} from 'ng2-slim-loading-bar';
+import {SlimLoadingBarService} from 'ng2-slim-loading-bar';
 
 declare var jQuery:any;
 
@@ -11,14 +11,14 @@ declare var jQuery:any;
   template: `
         
         <div id="wrapper">
+          
           <app-menu></app-menu>
           <div id="page-wrapper" style="min-height: 261px;">
             <app-body></app-body>
           </div>
         </div>
-        <ng2-slim-loading-bar></ng2-slim-loading-bar>
-  `,
-  providers: [SlimLoadingBarService]
+        
+  `
 })
 export class AppComponent {
   
@@ -30,8 +30,17 @@ export class AppComponent {
       console.log(this.slimLoadingBarService);
 
       router.events.subscribe((event) => {
-        
-         this.slimLoadingBarService.start();
+    
+         if (event instanceof NavigationStart) {
+            console.log(this.slimLoadingBarService.start);
+
+           
+            this.slimLoadingBarService.start(() => {
+                console.log('Loading complete');
+            });
+         } else if (event instanceof NavigationEnd) {
+             this.slimLoadingBarService.complete();
+         }
  
         // NavigationEnd
         // NavigationCancel

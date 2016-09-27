@@ -27,9 +27,7 @@ export class ContainerComponent {
     private loading:boolean = true;
     
     private __component;
-    
-    constructor(@Inject(ComponentResolver) private resolver:ComponentResolver){}
-    
+
     refresh() {
         this.loading = true;
         
