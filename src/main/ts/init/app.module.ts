@@ -1,44 +1,26 @@
-// import { NgModule, Component } from '@angular/core';
-// import { BrowserModule }  from '@angular/platform-browser';
-// import { BONG_COMPONENTS } from '@bong/components';
-
-// @Component({
-//   selector:'app',
-//   template:'<strong>hola mundo</strong>'
-// })
-// class App {
-  
-// }
-
-// @NgModule({
-//   imports: [
-//     BrowserModule
-//   ],
-//   declarations: [
-//     App
-//   ],
-//   bootstrap: [ App ],
-//   providers: [ /* provide(PLATFORM_DIRECTIVES, {useValue: BONG_COMPONENTS, multi: true}) */ ]
-// })
-// export class AppModule {}
-
-
 import { NgModule, Component,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms';
-import { AppComponent }   from '../app/app.component';
-import { AppMenuComponent }   from '../app/app.menu.component';
-import { AppBodyComponent }   from '../app/app.body.component';
-import { AppNavbarComponent }   from '../app/app.navbar.component';
-import { AppSidebarComponent }   from '../app/app.sidebar.component';
-import { SidebarSearchComponent }   from '../app/sidebar.search.component';
+import { MockCreateComponent }   from '../app/mock.create.component';
 import { IndexComponent }   from '../app/index.component';
 import { FormsComponent } from '../app/forms.component';
 import { TablesComponent } from '../app/tables.component';
 import { routing }        from './app.routing';
-import { BONG_COMPONENTS } from '@bong/components';
+import {
+  AppComponent,
+  AppMenuComponent,
+  AppBodyComponent,
+  AppNavbarComponent,
+  AppSidebarComponent,
+  SidebarSearchComponent,
+  BONG_COMPONENTS 
+} from '@bong/components';
+
+import { AlertManager } from '@bong/core';
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import { TextOptionsDirective } from '../directives/text.options.directive';
+import { KeyCombinationDirective } from '../directives/key.combination.directive';
+import { Angular2DataTableModule } from 'angular2-data-table';
 
 @NgModule({
   schemas: [
@@ -48,23 +30,23 @@ import { TextOptionsDirective } from '../directives/text.options.directive';
     BrowserModule,
     FormsModule,
     routing,
-    SlimLoadingBarModule.forRoot()
-    
+    SlimLoadingBarModule.forRoot(),
+    Angular2DataTableModule
   ],
   declarations: [
+    KeyCombinationDirective,
     TextOptionsDirective,
-    AppComponent,
-    AppNavbarComponent,
-    AppMenuComponent,
-    AppBodyComponent,
-    AppSidebarComponent,
     IndexComponent,
     FormsComponent,
     TablesComponent,
-    SidebarSearchComponent,
+    MockCreateComponent,
     BONG_COMPONENTS
   ],
-  bootstrap: [ AppComponent ]
+  entryComponents: [MockCreateComponent],
+  bootstrap: [ AppComponent ],
+  providers: [
+    AlertManager
+  ]
 })
 export class AppModule {}
 

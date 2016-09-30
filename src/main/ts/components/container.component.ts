@@ -1,8 +1,19 @@
-import { Component,ComponentResolver,OnInit,Input,ViewChild,ViewContainerRef,Inject,Type } from '@angular/core';
+import { 
+    Component,
+    ComponentRef,
+    Compiler,
+    OnInit,
+    Input,
+    ViewChild,
+    ViewContainerRef,
+    Inject,
+    Type,
+    ReflectiveInjector,
+    ComponentFactoryResolver,
+    CUSTOM_ELEMENTS_SCHEMA
+} from '@angular/core';
 import { InlineLoaderComponent } from './inline.loader.component';
 import { ClassLoader } from '../core/class.loader';
-
-import { MockCreateComponent } from '../app/mock.create.component';
 
 @Component({
     selector: 'container',
@@ -13,7 +24,6 @@ import { MockCreateComponent } from '../app/mock.create.component';
             </div>
         </div>
         `,
-    directives: [InlineLoaderComponent],
     styles: [ '.loader-wrapper { text-align:center; }' ]
 })
 export class ContainerComponent {
@@ -24,28 +34,34 @@ export class ContainerComponent {
     @ViewChild('wrapper', {read: ViewContainerRef})
     wrapper:ViewContainerRef;
     
+    cmpRef:ComponentRef;
+    
     private loading:boolean = true;
     
     private __component;
+    
+    constructor(@Inject(ComponentFactoryResolver) private resolver:ComponentFactoryResolver) {}
 
     refresh() {
+
         this.loading = true;
+        
+        if(this.cmpRef) {
+            this.cmpRef.destroy();
+        }
         
         if (this.component == null) {
             throw new EvalError("A component must be specified!");
         }
         
-
-        this.resolver.resolveComponent(this.component).then(factory => {
-             this.wrapper.clear();
-             this.__component = this.wrapper.createComponent(factory);
-             this.loading = false;
-        });
-    
+        let factory = this.resolver.resolveComponentFactory(this.component);
+        this.cmpRef = this.wrapper.createComponent(factory)
+        this.loading = false;
     }
     
     get componentInstance() {
-        return this.__component.instance;
+        return this.cmpRef.instance;
     }
+   
     
 }

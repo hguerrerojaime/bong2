@@ -95,10 +95,34 @@ components.push(ContainerComponent);
 import { InputFilterBuilderComponent } from './input.filter.builder.component';
 export { InputFilterBuilderComponent } from './input.filter.builder.component';
 components.push(InputFilterBuilderComponent);
-import { DataTableComponent } from './data.table.component';
-export { DataTableComponent } from './data.table.component';
-components.push(DataTableComponent);
+import { AlertComponent } from './alert.component';
+export { AlertComponent } from './alert.component';
+components.push(AlertComponent);
 
 
+
+import { AppMenuComponent } from './app.menu.component';
+export { AppMenuComponent } from './app.menu.component';
+components.push(AppMenuComponent);
+
+import { AppNavbarComponent } from './app.navbar.component';
+export { AppNavbarComponent } from './app.navbar.component';
+components.push(AppNavbarComponent);
+
+import { AppSidebarComponent } from './app.sidebar.component';
+export { AppSidebarComponent } from './app.sidebar.component';
+components.push(AppSidebarComponent);
+
+import { SidebarSearchComponent } from './sidebar.search.component';
+export { SidebarSearchComponent } from './sidebar.search.component';
+components.push(SidebarSearchComponent);
+
+import { AppBodyComponent } from './app.body.component';
+export { AppBodyComponent } from './app.body.component';
+components.push(AppBodyComponent);
+
+import { AppComponent } from './app.component';
+export { AppComponent } from './app.component';
+components.push(AppComponent);
 
 export const BONG_COMPONENTS = components;

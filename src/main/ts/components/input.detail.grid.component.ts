@@ -33,14 +33,12 @@ import { InputDetailGridColumnComponent } from './input.detail.grid.column.compo
                             icon="fa fa-plus-circle"
                             label="Add Item"
                             size="sm"
-                            brand="success"
                             (click)="showNewItemModal($event)"
                         ></command-button>
                         <command-button
                             icon="fa fa-minus-circle"
                             label="Remove Items"
                             size="sm"
-                            brand="danger"
                             [disabled]="getSelectedItemCount() == 0"
                             (click)="removeSelectedItems($event);"
                         ></command-button>
@@ -78,7 +76,7 @@ import { InputDetailGridColumnComponent } from './input.detail.grid.column.compo
                          
                     </div-col>
                 </div-row>
-                <modal icon="fa fa-plus-circle" title="Add New Item" #itemModal>
+                <modal icon="fam fam-add" title="Add New Item" #itemModal>
                     <container [component]="createComponent" #container></container>
                     <modal-footer>
                         <submit-button 

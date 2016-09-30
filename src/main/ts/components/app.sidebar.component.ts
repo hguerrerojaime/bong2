@@ -70,8 +70,6 @@ export class AppSidebarComponent extends DefaultJqueryComponent {
             this.menu = ArrayUtils.findAllLike(this.fullMenu,$event);
         }
         
-        console.log(this.menu);
-        
         this.lastSearch = $event;
     }
     

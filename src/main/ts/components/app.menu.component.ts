@@ -6,11 +6,11 @@ declare var jQuery:any;
 @Component({
     selector: 'app-menu',
     template: `
-        <nav class="navbar navbar-inverse navbar-fixed-top">
+        <nav class="navbar navbar-inverse navbar-fixed-top shadow">
            <ng2-slim-loading-bar></ng2-slim-loading-bar>
            <app-navbar>
                <navbar-brand>
-                   CRM-NG2
+                   BONg2 v0.1-beta1
                </navbar-brand>
            </app-navbar>
            <app-sidebar></app-sidebar>

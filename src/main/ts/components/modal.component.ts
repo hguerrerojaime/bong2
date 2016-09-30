@@ -14,7 +14,7 @@ declare var jQuery:any;
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="modalLabel"><i class="{{ icon }}" *ngIf="icon"></i> {{ title }}</h4>
+                <h5 class="modal-title" id="modalLabel"><i class="{{ icon }} modal-icon" *ngIf="icon"></i> <strong>{{ title }}</strong></h5>
               </div>
               <div class="modal-body">
                  <ng-content></ng-content>
@@ -25,7 +25,10 @@ declare var jQuery:any;
             </div>
           </div>
         </div>
-    `    
+    `,
+    styles:[
+        'i.modal-icon { margin-right: 5px; }'
+    ]
 })
 export class ModalComponent extends DefaultJqueryComponent {
     
@@ -91,6 +94,7 @@ export class ModalComponent extends DefaultJqueryComponent {
     ngAfterViewInit() {
         super.ngAfterViewInit();
         this.hasFooter = this.hasModalFooter();
+        
     }
     
     hasModalFooter():boolean {

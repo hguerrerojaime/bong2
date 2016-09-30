@@ -1,9 +1,10 @@
 <panel title="Tables">
-    <form class="form-horizontal" #f="ngForm">
-        <div-row>
-            <div-col width="12">
-                <data-table></data-table>
-            </div-col>
-        </div-row>
-    </form>
+    <div>
+      <h3>client-paging</h3>
+      <datatable
+        class="material"
+        [rows]="rows"
+        [options]="options">
+      </datatable>
+    </div>
 </panel>

@@ -1,87 +1,180 @@
-@table-padding: 5px;
-@table-header-bg: #eee;
-@actions-column-width: 150px;
-@table-wrapper-bg: #ededed;
+.datatable.material {
+  background: #FFF;
+  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+  -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+  /**
+	 * Shared Styles
+	 */
+  /**
+	 * Global Row Styles
+	 */
+  /**
+	 * Header Styles
+	 */
+  /**
+	 * Body Styles
+	 */
+  /**
+	 * Footer Styles
+	 */ }
+  .datatable.material.striped .datatable-row-odd {
+    background: #eee; }
+  .datatable.material .empty-row {
+    height: 50px;
+    text-align: left;
+    padding: .5rem 1.2rem;
+    vertical-align: top;
+    border-top: 0; }
+  .datatable.material .loading-row {
+    text-align: left;
+    padding: .5rem 1.2rem;
+    vertical-align: top;
+    border-top: 0; }
+  .datatable.material .datatable-header .datatable-row-left,
+  .datatable.material .datatable-body .datatable-row-left {
+    background-color: #FFF;
+    background-position: 100% 0;
+    background-repeat: repeat-y;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAABCAYAAAD5PA/NAAAAFklEQVQIHWPSkNeSBmJhTQVtbiDNCgASagIIuJX8OgAAAABJRU5ErkJggg==); }
+  .datatable.material .datatable-header .datatable-row-right,
+  .datatable.material .datatable-body .datatable-row-right {
+    background-position: 0 0;
+    background-color: #fff;
+    background-repeat: repeat-y;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAABCAYAAAD5PA/NAAAAFklEQVQI12PQkNdi1VTQ5gbSwkAsDQARLAIGtOSFUAAAAABJRU5ErkJggg==); }
+  .datatable.material .datatable-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
+    .datatable.material .datatable-header .datatable-header-cell {
+      text-align: left;
+      padding: .5rem 1.2rem;
+      font-weight: 400;
+      color: #757575;
+      vertical-align: bottom; }
+      .datatable.material .datatable-header .datatable-header-cell.longpress {
+        color: #00E676; }
+      .datatable.material .datatable-header .datatable-header-cell.dragging .resize-handle {
+        border-right: none; }
+    .datatable.material .datatable-header .resize-handle {
+      border-right: solid 1px #eee; }
+  .datatable.material .datatable-body .datatable-body-row .datatable-body-cell {
+    text-align: left;
+    padding: .5rem 1.2rem;
+    vertical-align: top;
+    border-top: 0;
+    -webkit-transition: width 0.3s ease;
+    -o-transition: width 0.3s ease;
+    transition: width 0.3s ease; }
+  .datatable.material .datatable-body .datatable-body-row:hover,
+  .datatable.material .datatable-body .datatable-body-row:hover .datatable-row-group {
+    background-color: #eee;
+    transition-property: background;
+    transition-duration: .3s;
+    transition-timing-function: linear; }
+  .datatable.material .datatable-body .datatable-body-row:focus,
+  .datatable.material .datatable-body .datatable-body-row:focus .datatable-row-group {
+    background-color: #ddd; }
+  .datatable.material .datatable-body .datatable-body-row.active, .datatable.material .datatable-body .datatable-body-row.active:focus, .datatable.material .datatable-body .datatable-body-row.active:hover {
+    background-color: #304FFE;
+    color: #FFF; }
+  .datatable.material .datatable-body .progress-linear {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 5px;
+    padding: 0;
+    margin: 0;
+    position: absolute; }
+    .datatable.material .datatable-body .progress-linear .container {
+      display: block;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 5px;
+      -webkit-transform: translate(0, 0) scale(1, 1);
+      transform: translate(0, 0) scale(1, 1);
+      background-color: #aad1f9; }
+      .datatable.material .datatable-body .progress-linear .container .bar {
+        transition: all .2s linear;
+        -webkit-animation: query 0.8s infinite cubic-bezier(0.39, 0.575, 0.565, 1);
+        animation: query 0.8s infinite cubic-bezier(0.39, 0.575, 0.565, 1);
+        transition: -webkit-transform .2s linear;
+        transition: transform .2s linear;
+        background-color: #106cc8;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        height: 5px; }
+  .datatable.material .datatable-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    font-size: 16px; }
+    .datatable.material .datatable-footer .page-count {
+      line-height: 50px;
+      height: 50px;
+      padding: 0 1.2rem; }
+    .datatable.material .datatable-footer .datatable-pager {
+      margin: 0 10px; }
+      .datatable.material .datatable-footer .datatable-pager li {
+        vertical-align: middle; }
+        .datatable.material .datatable-footer .datatable-pager li.disabled a {
+          color: rgba(0, 0, 0, 0.26) !important;
+          background-color: transparent !important; }
+        .datatable.material .datatable-footer .datatable-pager li.active a {
+          background-color: rgba(158, 158, 158, 0.2);
+          font-weight: bold; }
+      .datatable.material .datatable-footer .datatable-pager a {
+        height: 22px;
+        min-width: 24px;
+        line-height: 22px;
+        padding: 0 6px;
+        border-radius: 3px;
+        margin: 6px 3px;
+        text-align: center;
+        vertical-align: top;
+        color: rgba(0, 0, 0, 0.54);
+        text-decoration: none;
+        vertical-align: bottom; }
+        .datatable.material .datatable-footer .datatable-pager a:hover {
+          color: rgba(0, 0, 0, 0.75);
+          background-color: rgba(158, 158, 158, 0.2); }
+      .datatable.material .datatable-footer .datatable-pager .icon-left,
+      .datatable.material .datatable-footer .datatable-pager .icon-skip,
+      .datatable.material .datatable-footer .datatable-pager .icon-right,
+      .datatable.material .datatable-footer .datatable-pager .icon-prev {
+        font-size: 20px;
+        line-height: 20px;
+        padding: 0 3px; }
 
-table {
-    font-size: @font-size-base;
+/**
+ * Progress bar animations
+ */
+@-webkit-keyframes query {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(35%) scale(0.3, 1);
+    transform: translateX(35%) scale(0.3, 1); }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(-50%) scale(0, 1);
+    transform: translateX(-50%) scale(0, 1); } }
+
+@keyframes query {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(35%) scale(0.3, 1);
+    transform: translateX(35%) scale(0.3, 1); }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(-50%) scale(0, 1);
+    transform: translateX(-50%) scale(0, 1); } }
+
+.datatable {
+	text-align: left;
+	width:75%;
+	margin:0 auto;
 }
-
-table a {
-    color: @text-color;
-}
-
-.table-wrapper {
-    border-radius: @border-radius-base @border-radius-base @border-radius-base @border-radius-base;
-    -moz-border-radius: @border-radius-base @border-radius-base @border-radius-base @border-radius-base;
-    -webkit-border-radius: @border-radius-base @border-radius-base @border-radius-base @border-radius-base;
-    padding: @table-padding;
-    background-color: @table-wrapper-bg;
-    border: 1px solid darken(@table-wrapper-bg,20%);
-}
-
-.dt thead tr td {
-    background-color: #ccc;
-} 
-
-.dt thead tr td input,.dt thead tr td select {
-    border: 1px solid #aaa;
-} 
-
-.dt thead tr th.actions {
-    width: @actions-column-width;
-} 
-
-
-
-
-table.dt thead, table.dt tfoot {
-    border: 1px solid darken(@table-header-bg,20%);
-}
-
-table.dt thead tr th:first-child {
-    border-radius: @border-radius-base 0 0 @border-radius-base !important;
-    -moz-border-radius: @border-radius-base 0 0 @border-radius-base !important;
-    -webkit-border-radius: @border-radius-base 0 0 @border-radius-base !important;
-}
-
-
-table.dt thead tr th {
-    
-    line-height: 15px;
-    
-    background-color: @table-header-bg;
-
-    border-bottom: 1px solid darken(@table-header-bg,20%);
-    
-    #gradient > .horizontal(@start-color: darken(@table-header-bg, 6%); @end-color: darken(@table-header-bg, 3%) );
-    
-    .reset-filter(); // Disable gradients for IE9 because filter bleeds through rounded corners; see https://github.com/twbs/bootstrap/issues/10620
-    background-repeat: repeat-x;
-    border-color: darken(@table-header-bg, 14%);
-    
-    &:hover,
-    &:focus  {
-     
-    }
-    
-    
-    
-}
-
-
-table.dt tbody tr td {
-    vertical-align: middle;
-}
-
-
-table.dt tfoot tr td.paginator,
-table.dt thead tr td.paginator {
-    background-color: @table-header-bg;
-    border-top: @gray-lighter;
-}
-
-nav.pagination { 
-    margin-top: 5px;
-    margin-bottom: 5px;
+.datatable.vertical-scroll {
+  height:70vh;
 }

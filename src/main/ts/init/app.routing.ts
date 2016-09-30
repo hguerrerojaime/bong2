@@ -7,7 +7,7 @@ import { TablesComponent } from '../app/tables.component';
 const appRoutes: Routes = [
   { path: '', component: IndexComponent },
   { path: 'forms', component: FormsComponent }
-  { path: 'tables', component: TablesComponent },
+  { path: 'tables', component: TablesComponent }
   //{ path: '**', component: PageNotFoundComponent }
 ];
 

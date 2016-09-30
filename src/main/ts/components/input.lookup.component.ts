@@ -35,7 +35,7 @@ declare var jQuery:any;
                 <span class="form-control lookup-label truncate" title="{{ valueTitle }}"><output #lookupOutput></output></span>
             </div>
        </div-row>
-       <modal title="Lookup Managers" #lookupModal>
+       <modal title="Lookup Managers" icon="fam fam-magnifier" #lookupModal>
            <lookup-grid #lookupGrid (onSelectedItem)="setSelectedItem($event)"></lookup-grid>
        </modal>
     `,

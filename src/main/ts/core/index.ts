@@ -6,3 +6,6 @@ export { ValueLoader } from './value.loader';
 export { ArrayUtils } from './array.utils';
 export { ClassLoader } from './class.loader';
 export { fadeIn,Transitionable } from './animation.utils';
+export { AlertManager } from './alert.manager';
+export { BongModule } from './bong.module';
+export { ConfirmEvent } from './confirm.event';

@@ -15,7 +15,8 @@
     '@plugins/node':              'vendors/node_modules',
     'jquery':					            'vendors/node_modules/jquery/dist',
     'bootstrap':			            'vendors/node_modules/bootstrap/dist/js',
-    'ng2-slim-loading-bar':       'vendors/node_modules/ng2-slim-loading-bar'
+    'ng2-slim-loading-bar':       'vendors/node_modules/ng2-slim-loading-bar',
+    'angular2-data-table':         'vendors/node_modules/angular2-data-table/release'
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
@@ -27,7 +28,8 @@
     'moment':					            { main: 'moment.js', defaultExtension: 'js' },
     'jquery':				              { main: 'jquery.min.js', defaultExtension: 'js' },
     'bootstrap':			            { main: 'bootstrap.min.js', defaultExtension: 'js' },
-    'ng2-slim-loading-bar':       { main: 'index.js',  defaultExtension: 'js' }
+    'ng2-slim-loading-bar':       { main: 'index.js',  defaultExtension: 'js' },
+    'angular2-data-table':        { main: 'angular2-data-table', defaultExtension: 'js' }
   };
   var ngPackageNames = [
     'common',
@@ -39,7 +41,7 @@
     'platform-browser-dynamic',
     'router',
     'router-deprecated',
-    'upgrade',
+    'upgrade'
   ];
   
   var bongPackageNames = [
