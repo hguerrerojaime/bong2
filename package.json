@@ -43,6 +43,8 @@
     "bootstrap": "^3.3.6",
     "bootstrap-datepicker": "^1.6.1",
     "core-js": "^2.4.1",
+    "datatables.net": "^1.10.12",
+    "datatables.net-bs": "^1.10.12",
     "eonasdan-bootstrap-datetimepicker": "^4.15.35",
     "font-awesome": "^4.6.3",
     "gulp-server-livereload": "^1.8.2",

@@ -20,7 +20,6 @@ import { AlertManager } from '@bong/core';
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import { TextOptionsDirective } from '../directives/text.options.directive';
 import { KeyCombinationDirective } from '../directives/key.combination.directive';
-import { Angular2DataTableModule } from 'angular2-data-table';
 
 @NgModule({
   schemas: [
@@ -30,8 +29,7 @@ import { Angular2DataTableModule } from 'angular2-data-table';
     BrowserModule,
     FormsModule,
     routing,
-    SlimLoadingBarModule.forRoot(),
-    Angular2DataTableModule
+    SlimLoadingBarModule.forRoot()
   ],
   declarations: [
     KeyCombinationDirective,

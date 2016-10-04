@@ -99,7 +99,13 @@ import { AlertComponent } from './alert.component';
 export { AlertComponent } from './alert.component';
 components.push(AlertComponent);
 
+import { DatatableComponent } from './datatable.component';
+export { DatatableComponent } from './datatable.component';
+components.push(DatatableComponent);
 
+// import { DatatableColumnComponent } from './datatable.component';
+// export { DatatableColumnComponent } from './datatable.component';
+// components.push(DatatableColumnComponent);
 
 import { AppMenuComponent } from './app.menu.component';
 export { AppMenuComponent } from './app.menu.component';

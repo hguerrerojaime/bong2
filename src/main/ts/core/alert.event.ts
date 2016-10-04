@@ -1,8 +1,6 @@
 export class AlertEvent {
     
-    private _actions:any;
-    
-    constructor() {
+    constructor(private _actions:any) {
         this._actions = {};
     }
     

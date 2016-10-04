@@ -16,7 +16,7 @@
     'jquery':					            'vendors/node_modules/jquery/dist',
     'bootstrap':			            'vendors/node_modules/bootstrap/dist/js',
     'ng2-slim-loading-bar':       'vendors/node_modules/ng2-slim-loading-bar',
-    'angular2-data-table':         'vendors/node_modules/angular2-data-table/release'
+    'datatables.net':             'vendors/node_modules/datatables.net/js'
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
@@ -29,7 +29,7 @@
     'jquery':				              { main: 'jquery.min.js', defaultExtension: 'js' },
     'bootstrap':			            { main: 'bootstrap.min.js', defaultExtension: 'js' },
     'ng2-slim-loading-bar':       { main: 'index.js',  defaultExtension: 'js' },
-    'angular2-data-table':        { main: 'angular2-data-table', defaultExtension: 'js' }
+    'datatables.net':             { main: 'jquery.dataTables.js', defaultExtension: 'js' }
   };
   var ngPackageNames = [
     'common',
@@ -87,7 +87,7 @@
 			  importModules(modules);
 		  })
 		  .catch( function (err) { 
-			  console.error(err); 
+			   console.error(err); 
 		  });
 	  }
   }
