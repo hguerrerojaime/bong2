@@ -9,5 +9,9 @@ export class TemplateResolver {
 
         return sourcePath+"/"+resourceName+"html";
     }
+    
+    public static compile(template:string,scope:any) {
+        
+    }
 
 }

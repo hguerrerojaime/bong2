@@ -1,4 +1,7 @@
 <panel title="Tables" brand="info">
-      <datatable>
+      <datatable [data]="data">
+         <dt-column label="Name" field="name"></dt-column>
+         <dt-column label="Company" field="company"></dt-column>
+         <dt-column label="Email" field="email"></dt-column>
       </datatable>
 </panel>

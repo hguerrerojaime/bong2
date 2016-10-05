@@ -1,7 +1,7 @@
 import { ElementRef,Inject, AfterViewInit } from '@angular/core';
 import { InputComponent } from './input.component';
 import { JqueryComponent } from './jquery.component';
-import { AgentFeatureSupportChecker } from '@bong/services';
+import { AgentFeatureSupportChecker } from '../services/index';
 
 declare var jQuery:any;
 

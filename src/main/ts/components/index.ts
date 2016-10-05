@@ -103,9 +103,13 @@ import { DatatableComponent } from './datatable.component';
 export { DatatableComponent } from './datatable.component';
 components.push(DatatableComponent);
 
-// import { DatatableColumnComponent } from './datatable.component';
-// export { DatatableColumnComponent } from './datatable.component';
-// components.push(DatatableColumnComponent);
+import { DatatableColumnComponent } from './datatable.column.component';
+export { DatatableColumnComponent } from './datatable.column.component';
+components.push(DatatableColumnComponent);
+
+import { InputQueryBuilderComponent } from './input.query.builder.component';
+export { InputQueryBuilderComponent } from './input.query.builder.component';
+components.push(InputQueryBuilderComponent);
 
 import { AppMenuComponent } from './app.menu.component';
 export { AppMenuComponent } from './app.menu.component';

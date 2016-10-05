@@ -1,5 +1,5 @@
 import { Component,ElementRef,OnInit,OnDestroy,ViewChild,Inject } from '@angular/core';
-import { InputJqueryComponent } from '@bong/components';
+import { InputJqueryComponent } from '../components/index';
 import { AgentFeatureSupportChecker } from '../core/agent.feature.support.checker';
 
 declare var jQuery:any;

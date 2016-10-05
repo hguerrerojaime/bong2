@@ -5,6 +5,7 @@ import { MockCreateComponent }   from '../app/mock.create.component';
 import { IndexComponent }   from '../app/index.component';
 import { FormsComponent } from '../app/forms.component';
 import { TablesComponent } from '../app/tables.component';
+import { QBComponent } from '../app/qb.component';
 import { routing }        from './app.routing';
 import {
   AppComponent,
@@ -38,6 +39,7 @@ import { KeyCombinationDirective } from '../directives/key.combination.directive
     FormsComponent,
     TablesComponent,
     MockCreateComponent,
+    QBComponent
     BONG_COMPONENTS
   ],
   entryComponents: [MockCreateComponent],

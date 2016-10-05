@@ -42,7 +42,8 @@ export class AppSidebarComponent extends DefaultJqueryComponent {
     private fullMenu:any[] = [
         { label: "Index", routerLink:"/", icon: "fam fam-application-home" },
         { label: "Forms", routerLink:"/forms", icon: "fam fam-application-form" },
-        { label: "Tables", routerLink:"/tables", icon: "fam fam-table" }
+        { label: "Tables", routerLink:"/tables", icon: "fam fam-table" },
+        { label: "Query Builder", routerLink:"/query-builder", icon: "fam fam-magnifier" }
     ];
     
     private menu:any[];

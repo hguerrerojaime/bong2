@@ -13,10 +13,13 @@
     '@bong':					            'scripts',
     'moment':                     'vendors/node_modules/moment',
     '@plugins/node':              'vendors/node_modules',
+    '@plugins/other':             'vendors/other',
     'jquery':					            'vendors/node_modules/jquery/dist',
     'bootstrap':			            'vendors/node_modules/bootstrap/dist/js',
     'ng2-slim-loading-bar':       'vendors/node_modules/ng2-slim-loading-bar',
-    'datatables.net':             'vendors/node_modules/datatables.net/js'
+    'datatables.net':             'vendors/node_modules/datatables.net/js',
+    'doT':                        'vendors/other/query-builder/doT.min.js',
+    'jQuery.extendext':           'vendors/other/query-builder/jQuery.extendext.min.js'
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {

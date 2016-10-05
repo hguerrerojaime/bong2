@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>jQuery QueryBuilder Example</title>
+
+  <link rel="stylesheet" type="text/css" media="all" href="styles/skin.min.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="vendors/other/query-builder/query-builder.min.css"/>
+</head>
+
+<body>
+
+<div id="builder"></div>
+
+
+<script src="/vendors/node_modules/jquery/dist/jquery.js"></script>
+<script src="/vendors/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script src="/vendors/other/query-builder/query-builder.min.js"></script>
+
+<script>
+    
+    console.log($.fn.queryBuilder);
+   
+  $('#builder').queryBuilder({
+    filters: [
+  /*
+   * basic
+   */
+  {
+    id: 'name',
+    label: {
+      en: 'Name',
+      fr: 'Nom'
+    },
+    type: 'string',
+    optgroup: 'core',
+    default_value: 'Mistic',
+    size: 30,
+    unique: true
+  },
+  /*
+   * textarea
+   */
+  {
+    id: 'bson',
+    label: 'BSON',
+    type: 'string',
+    input: 'textarea',
+    operators: ['equal'],
+    size: 30,
+    rows: 3
+  },
+  /*
+   * checkbox
+   */
+  {
+    id: 'category',
+    label: 'Category',
+    type: 'integer',
+    input: 'checkbox',
+    optgroup: 'core',
+    values: {
+      1: 'Books',
+      2: 'Movies',
+      3: 'Music',
+      4: 'Tools',
+      5: 'Goodies',
+      6: 'Clothes'
+    },
+    colors: {
+      1: 'foo',
+      2: 'warning',
+      5: 'success'
+    },
+    operators: ['in', 'not_in', 'equal', 'not_equal', 'is_null', 'is_not_null']
+  }]
+  });
+
+    
+</script>
+
+</body>
+</html>

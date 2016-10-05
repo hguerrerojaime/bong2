@@ -102,15 +102,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
             border: 1px solid #ccc;
         }`,
         '.detail-grid .chk-col { width: 35px; text-align:center; border-right: 1px solid #ccc;  }'
-    ],
-    directives: [
-        DivRowComponent,
-        DivColComponent,
-        CommandButtonComponent,
-        SubmitButtonComponent,
-        ModalComponent,
-        FormElementComponent,
-        InputDetailGridColumnComponent
     ]
 })
 export class InputDetailGridComponent extends InputComponent implements OnInit {
