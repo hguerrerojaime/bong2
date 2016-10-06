@@ -3,7 +3,8 @@ import {
     Input,
     forwardRef,
     QueryList,
-    ContentChildren
+    ContentChildren,
+    OnChanges
 } from '@angular/core';
 import { DefaultJqueryComponent } from './default.jquery.component';
 import { DatatableColumnComponent } from './datatable.column.component';
@@ -39,16 +40,35 @@ declare var System;
         '.table thead tr th { background-color: #e7e7e7; }'
     ]
 })
-export class DatatableComponent extends DefaultJqueryComponent {
+export class DatatableComponent extends DefaultJqueryComponent implements OnChanges {
         
     @ContentChildren(forwardRef(() =>DatatableColumnComponent))
     columns: QueryList<DatatableColumnComponent>;
+        
+    private dataTable;
     
     @Input()
     data:any[];
     
+    private initialized:boolean = false;
+    
+    private jqElement:any;
+    
     buildJQueryPlugin(jqElement) {
-        jqElement.DataTable();
+        this.jqElement = jqElement;
+        this.dataTable = jqElement.DataTable();
+        this.initialized = true;
+        
+    }
+    
+
+    ngOnChanges(changes:any):void {
+        
+        if (changes.data && this.initialized) {
+            this.dataTable.destroy();
+            this.dataTable = this.jqElement.DataTable();
+        }
+        
     }
 
 }

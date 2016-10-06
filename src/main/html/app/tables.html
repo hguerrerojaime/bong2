@@ -1,7 +1,25 @@
 <panel title="Tables" brand="info">
+
+      <div class="well">
+          <div-row>
+              <div-col width="6">
+                 <div-row>
+                   <div-col width="4">
+                        <input-select [options]="[{key:'all',value:'View All'},{ key:'active',value:'View Active'}]"></input-select>  
+                   </div-col>
+                   <div-col width="8">
+                        <command-button label="Change View" icon="fa fa-search" (click)="clearData()"></command-button>
+                        <command-button label="Create View" icon="fa fa-plus" brand="primary"></command-button> 
+                   </div-col>
+                 </div-row>
+              </div-col>
+          </div-row>
+          
+      </div>
       <datatable [data]="data">
          <dt-column label="Name" field="name"></dt-column>
          <dt-column label="Company" field="company"></dt-column>
          <dt-column label="Email" field="email"></dt-column>
       </datatable>
+
 </panel>

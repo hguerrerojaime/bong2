@@ -6,6 +6,10 @@ import { TemplateResolver } from '@bong/core';
     templateUrl: TemplateResolver.resolve(TablesComponent,'app')
 })
 export class TablesComponent {
+	
+	clearData() {
+		this.data = [];
+	}
     
     private data = [
     {

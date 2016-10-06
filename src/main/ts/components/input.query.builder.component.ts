@@ -91,6 +91,11 @@ export class InputQueryBuilderComponent extends InputJqueryComponent {
     
     private compile() {
         this.compiled = this.isValid();
+        
+        this.value = this.jqElement.queryBuilder('getRules');
+        
+        console.log(this.value);
+        
     }
     
     private isValid():boolean {
