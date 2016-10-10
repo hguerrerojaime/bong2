@@ -22,7 +22,8 @@
     "target": {
         "dir":"target",
         "main": {
-            "dependencies":"server/vendors",
+            "dependencies":"server/vendors/node_modules",
+            "vendors":"server/vendors",
             "core":"server/core",
             "scripts":"server/scripts",
             "styles":"server/styles",

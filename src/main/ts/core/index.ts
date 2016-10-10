@@ -7,5 +7,6 @@ export { ArrayUtils } from './array.utils';
 export { ClassLoader } from './class.loader';
 export { fadeIn,Transitionable } from './animation.utils';
 export { AlertManager } from './alert.manager';
+export { Notifier } from './notifier';
 export { BongModule } from './bong.module';
 export { ConfirmEvent } from './confirm.event';

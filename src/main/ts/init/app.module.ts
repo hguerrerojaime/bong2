@@ -17,7 +17,7 @@ import {
   BONG_COMPONENTS 
 } from '@bong/components';
 
-import { AlertManager } from '@bong/core';
+import { AlertManager, Notifier } from '@bong/core';
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import { TextOptionsDirective } from '../directives/text.options.directive';
 import { KeyCombinationDirective } from '../directives/key.combination.directive';
@@ -38,7 +38,7 @@ import { KeyCombinationDirective } from '../directives/key.combination.directive
     IndexComponent,
     FormsComponent,
     TablesComponent,
-    MockCreateComponent,
+    MockCreateComponent, 
     QBComponent
     BONG_COMPONENTS
   ],

@@ -1,3 +1,7 @@
+const CURR_DIR = __dirname;
+
+module.exports = CURR_DIR;
+
 var gulp = require('gulp');
 var pipes = require('./gulp/pipes.all');
 
@@ -34,4 +38,7 @@ gulp.task('server',['compile'],pipes.server);
 gulp.task('compile-tests',pipes.compileTests);
 
 gulp.task('run-tests',['compile-tests'],pipes.runTests);
+
+
+
 

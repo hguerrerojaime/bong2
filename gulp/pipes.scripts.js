@@ -6,6 +6,8 @@ var pipes = require('./pipes');
 var clean = require('gulp-clean');
 var ts = require('gulp-typescript');
 
+const CURRENT_DIR = require('../gulpfile');
+
 const TS_COMPILER_OPTS = require('../tsconfig.json')["compilerOptions"];
 const ENV_CONFIG = require('./env.config.js').config;
 const CORE_SRC = config.src.main.core;
@@ -30,19 +32,25 @@ pipes.buildCoreScripts = function(){
 pipes.buildAppScripts = function(evt) {
     
     var src = SCRIPTS_SRC;
+    var target = SCRIPTS_TARGET;
 	
 	if (typeof evt.path === "string") {
 		src = evt.path;
+
+		target = getTargetFolderFromPath(replaceAll(SCRIPTS_TARGET+getScriptPath(src),"\\","/"));
+		console.log(target);
 	}
 
-	var gulpSrc = gulp.src(SCRIPTS_SRC);
+	var gulpSrc = gulp.src(src);
+
+	
 	
 	if (ENV_CONFIG.ts.preCompile) {
 		gulpSrc.pipe(ts(TS_COMPILER_OPTS));
 	}
 	
 			
-	return gulpSrc.pipe(gulp.dest(SCRIPTS_TARGET));
+	return gulpSrc.pipe(gulp.dest(target));
 	
 }
 
@@ -56,4 +64,21 @@ pipes.cleanScripts = function() {
 	return gulp.src(SCRIPTS_TARGET,{read:false})
 			   .pipe(clean())
 	;
+}
+
+function getScriptPath(script) {
+
+	return script.replace(CURRENT_DIR,"");
+
+}
+
+function replaceAll(str,search, replacement) {
+    var target = str;
+    return target.split(search).join(replacement);
+};
+
+function getTargetFolderFromPath(path) {
+
+	return path.replace(new RegExp("(?!.*[\\\/]).*$"), '').replace('src/main/ts/','');
+
 }

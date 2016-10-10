@@ -5,6 +5,7 @@ var clean = require('gulp-clean');
 var config = require('./gconf.json');
 
 const DEPENDENCIES_DIR = config.target.main.dependencies;
+const VENDORS_DIR = config.target.main.vendors;
 
 pipes.cleanDependencies = function() {
 	return gulp.src(DEPENDENCIES_DIR,{read:false})
@@ -13,6 +14,6 @@ pipes.cleanDependencies = function() {
 
 pipes.loadDependencies = function() {
 	
-	return gulp.src(gnf(),{base:'./'}).pipe(gulp.dest(DEPENDENCIES_DIR));
+	return gulp.src(gnf(),{base:'./'}).pipe(gulp.dest(VENDORS_DIR));
 	
 }

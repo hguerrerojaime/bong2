@@ -1,6 +1,6 @@
 import {Component, OnInit, Inject } from '@angular/core';
 
-import { AlertManager } from '@bong/core';
+import { AlertManager,Notifier } from '@bong/core';
 
 @Component({
     selector: 'index',
@@ -13,13 +13,16 @@ import { AlertManager } from '@bong/core';
 export class IndexComponent implements OnInit {
     
     
-    constructor(@Inject(AlertManager) private alertManager:AlertManager) {}
+    constructor(
+        @Inject(AlertManager) private alertManager:AlertManager,
+        @Inject(Notifier) private notifier:Notifier
+    ) {}
     
     ngOnInit() {
                 
         this.alertManager.confirmWarning("Are you sure?")
             .confirm(() => {
-                this.alertManager.messageWarning("You clicked yes, no turning back!");
+                   
             })
             .reject(() => {
                 this.alertManager.messageInfo("You clicked no");
