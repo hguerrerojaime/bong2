@@ -2,36 +2,38 @@ import { Injectable } from '@angular/core';
 
 
 import '@plugins/node/noty/js/noty/packaged/jquery.noty.packaged.min.js';
-import '@plugins/node/noty/js/noty/themes/bootstrap.js';
+//import '@plugins/node/noty/js/noty/themes/bootstrap.js';
+
+declare var noty;
 
 @Injectable()
 export class Notifier {
 
-    message(message:string):void {
-    	this.popupNoty(message,'alert')
+    alert(message:string):void {
+    	this.popupNoty(message,'alert','fa fa-bell');
     }
 
     info(message:string):void {
-    	this.popupNoty(message,'information')
+    	this.popupNoty(message,'information','fa fa-info');
     }
 
     success(message:string):void {
-    	this.popupNoty(message,'success')
+    	this.popupNoty(message,'success','fa fa-check');
     }
 
     warn(message:string):void {
-    	this.popupNoty(message,'warning')
+    	this.popupNoty(message,'warning','fa fa-exclamation-triangle');
     }
 
     error(message:string):void {
-    	this.popupNoty(message,'error')
+    	this.popupNoty(message,'error','fa fa-times-circle-o')
     }
 
-    private popupNoty(message:string,brand:string) {
+    private popupNoty(message:string,brand:string,icon:string) {
     	noty({
     		layout:'topRight',
     		type:brand,
-    		text: message,
+    		text: '<i class="'+icon+'"></i> '+message,
     		timeout:2000
     	});
     }

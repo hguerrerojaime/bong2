@@ -6,7 +6,13 @@ import { AlertManager,Notifier } from '@bong/core';
     selector: 'index',
     template: `
         <div>
-            Welcome
+           <command-button label="Alert" (click)="alert()"></command-button>
+           
+           <command-button label="Info" (click)="info()"></command-button>
+           
+           <command-button label="Warning!" (click)="warning()"></command-button>
+           
+           <command-button label="Error" (click)="error()"></command-button>
         </div>
     `
 })
@@ -22,13 +28,29 @@ export class IndexComponent implements OnInit {
                 
         this.alertManager.confirmWarning("Are you sure?")
             .confirm(() => {
-                   
+                this.notifier.success("success");
             })
             .reject(() => {
                 this.alertManager.messageInfo("You clicked no");
                 
             })
         ;
+    }
+    
+    alert() {
+        this.notifier.alert("Alert!");
+    }
+    
+    info() {
+        this.notifier.info("Info message");
+    }
+    
+    warning() {
+        this.notifier.warn("This is a warning");
+    }
+    
+    error() {
+        this.notifier.error("Something went wrong");
     }
  
 }

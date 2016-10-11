@@ -39,13 +39,14 @@ import { KeyCombinationDirective } from '../directives/key.combination.directive
     FormsComponent,
     TablesComponent,
     MockCreateComponent, 
-    QBComponent
+    QBComponent,
     BONG_COMPONENTS
   ],
   entryComponents: [MockCreateComponent],
   bootstrap: [ AppComponent ],
   providers: [
-    AlertManager
+    AlertManager,
+    Notifier 
   ]
 })
 export class AppModule {}
