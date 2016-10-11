@@ -34,6 +34,7 @@ export class Notifier {
     		layout:'topRight',
     		type:brand,
     		text: '<i class="'+icon+'"></i> '+message,
+            //theme: 'bootstrapTheme',
     		timeout:2000
     	});
     }

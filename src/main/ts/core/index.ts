@@ -5,8 +5,10 @@ export { TemplateResolver } from './template.resolver';
 export { ValueLoader } from './value.loader';
 export { ArrayUtils } from './array.utils';
 export { ClassLoader } from './class.loader';
-export { fadeIn,Transitionable } from './animation.utils';
+export { fadeIn } from './animation.utils';
 export { AlertManager } from './alert.manager';
 export { Notifier } from './notifier';
-export { BongModule } from './bong.module';
+export { SpinnerService } from './spinner.service';
 export { ConfirmEvent } from './confirm.event';
+export { BongModule } from './bong.module';
+

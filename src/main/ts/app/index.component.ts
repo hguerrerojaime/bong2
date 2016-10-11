@@ -1,19 +1,17 @@
-import {Component, OnInit, Inject } from '@angular/core';
+import {Component, OnInit, Inject,ApplicationRef } from '@angular/core';
 
-import { AlertManager,Notifier } from '@bong/core';
+import { AlertManager,Notifier,SpinnerService } from '../core/index';
 
 @Component({
     selector: 'index',
     template: `
-        <div>
+        <panel brand="primary">
            <command-button label="Alert" (click)="alert()"></command-button>
            
            <command-button label="Info" (click)="info()"></command-button>
-           
            <command-button label="Warning!" (click)="warning()"></command-button>
-           
            <command-button label="Error" (click)="error()"></command-button>
-        </div>
+        </panel>
     `
 })
 export class IndexComponent implements OnInit {
@@ -21,24 +19,35 @@ export class IndexComponent implements OnInit {
     
     constructor(
         @Inject(AlertManager) private alertManager:AlertManager,
-        @Inject(Notifier) private notifier:Notifier
-    ) {}
+        @Inject(Notifier) private notifier:Notifier,
+        @Inject(SpinnerService) private spinner:SpinnerService
+    ) {
+        
+    }
     
     ngOnInit() {
                 
         this.alertManager.confirmWarning("Are you sure?")
             .confirm(() => {
-                this.notifier.success("success");
-            })
-            .reject(() => {
-                this.alertManager.messageInfo("You clicked no");
-                
+                this.notifier.alert("Confirmed");
             })
         ;
     }
     
     alert() {
-        this.notifier.alert("Alert!");
+        
+        this.spinner.start();
+        
+        setTimeout(()=>{
+            this.spinner.stop();
+            this.notifier.success("Record Saved Successfully");
+            
+        },1000);
+        
+        
+        
+        
+        
     }
     
     info() {

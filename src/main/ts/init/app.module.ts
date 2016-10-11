@@ -7,17 +7,8 @@ import { FormsComponent } from '../app/forms.component';
 import { TablesComponent } from '../app/tables.component';
 import { QBComponent } from '../app/qb.component';
 import { routing }        from './app.routing';
-import {
-  AppComponent,
-  AppMenuComponent,
-  AppBodyComponent,
-  AppNavbarComponent,
-  AppSidebarComponent,
-  SidebarSearchComponent,
-  BONG_COMPONENTS 
-} from '@bong/components';
-
-import { AlertManager, Notifier } from '@bong/core';
+import { AppComponent, SpinnerComponent, BONG_COMPONENTS } from '../components/index';
+import { AlertManager, Notifier,SpinnerService } from '../core/index';
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import { TextOptionsDirective } from '../directives/text.options.directive';
 import { KeyCombinationDirective } from '../directives/key.combination.directive';
@@ -42,11 +33,12 @@ import { KeyCombinationDirective } from '../directives/key.combination.directive
     QBComponent,
     BONG_COMPONENTS
   ],
-  entryComponents: [MockCreateComponent],
+  entryComponents: [MockCreateComponent,SpinnerComponent],
   bootstrap: [ AppComponent ],
   providers: [
     AlertManager,
-    Notifier 
+    Notifier,
+    SpinnerService
   ]
 })
 export class AppModule {}

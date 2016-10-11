@@ -107,6 +107,10 @@ import { DatatableColumnComponent } from './datatable.column.component';
 export { DatatableColumnComponent } from './datatable.column.component';
 components.push(DatatableColumnComponent);
 
+import { SpinnerComponent } from './spinner.component';
+export { SpinnerComponent } from './spinner.component';
+components.push(SpinnerComponent);
+
 import { InputQueryBuilderComponent } from './input.query.builder.component';
 export { InputQueryBuilderComponent } from './input.query.builder.component';
 components.push(InputQueryBuilderComponent);

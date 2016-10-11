@@ -10,6 +10,8 @@ import { ValueLoader, ArrayUtils,StringUtils } from '@bong/core';
     selector: 'lookup-grid',
     template: `
         <form #lookupForm="ngForm" (ngSubmit)="emitSelectedItem()" >
+            {{ ready }}
+        
             <input-text
                 name="search"
                 [(ngModel)]="search" 
@@ -54,6 +56,8 @@ export class LookupGridComponent implements ValueLoader {
      
      @ViewChild("txtSearch")
      public txtSearch:InputTextComponent;
+     
+     private ready = false;
         
      search:string;
      private lastSearch:string;

@@ -34,7 +34,7 @@ export class ContainerComponent {
     @ViewChild('wrapper', {read: ViewContainerRef})
     wrapper:ViewContainerRef;
     
-    cmpRef:ComponentRef;
+    cmpRef:ComponentRef<any>;
     
     private loading:boolean = true;
     
