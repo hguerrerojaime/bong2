@@ -4,12 +4,12 @@
           <div-row>
               <div-col width="12">
                  <div-row>
-                   <div-col width="4">
+                   <div-col width="2" size="lg">
                         <input-select [options]="[{key:'all',value:'View All'},{ key:'active',value:'View Active'}]"></input-select>  
                    </div-col>
-                   <div-col width="8">
-                        <command-button label="Change View" icon="fa fa-search" (click)="clearData()"></command-button>
-                        <command-button label="Create View" icon="fa fa-plus" brand="primary"></command-button> 
+                   <div-col width="10" size="lg">
+                        <command-button label="Change View" icon="fa fa-search" brand="info" (click)="clearData()"></command-button>
+                        <command-button label="My Views" icon="fa fa-list"></command-button> 
                    </div-col>
                  </div-row>
               </div-col>
