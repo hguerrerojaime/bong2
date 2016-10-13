@@ -17,17 +17,12 @@ export class SpinnerService {
     private spinnerComp: ComponentRef<SpinnerComponent>;
     
     constructor(
-        @Inject(ApplicationRef) private appRef: ApplicationRef,
         @Inject(ComponentFactoryResolver) private resolver:ComponentFactoryResolver,
         @Inject(Injector) private injector:Injector
-    ) {
-        console.log(this.appRef);
-    }
+    ) {}
     
     public start() {
-        let elementRef: ElementRef = this.appRef['_rootComponents'][0].location;
-        
-    
+
         
         let factory = this.resolver.resolveComponentFactory(SpinnerComponent);
         

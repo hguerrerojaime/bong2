@@ -6,8 +6,7 @@ import '@plugins/node/select2/dist/js/select2.min.js';
 @Component({
     selector: 'input-select',
     template: `
-       <select [(ngModel)]="value" 
-               (blur)="onBlur()"
+       <select 
                class="form-control input-{{size}}"
                [attr.multiple]="multiple ? 'multiple' : null"
        >
@@ -17,7 +16,7 @@ import '@plugins/node/select2/dist/js/select2.min.js';
     providers: [ ProviderUtils.createAccessorProvider(InputSelectComponent) ]
 })
 export class InputSelectComponent extends InputJqueryComponent {
-        
+    
     @Input()
     multiple:boolean = false;
     
@@ -35,11 +34,29 @@ export class InputSelectComponent extends InputJqueryComponent {
         
     buildJQueryPlugin(jqElement) {
         
+        
+        
         if (this.select2 || this.tags) {
-            jqElement.select2({
+            let select2 = jqElement.select2({
                 tags: this.tags 
             });
+            
+            jqElement.select2('val',"A"); 
+            
+            console.log(jqElement.val());
+ 
+            setTimeout(()=>{
+                
+                
+                
+                jqElement.on('change',(event)=>{
+                    this.value = jqElement.val();
+                });
+            },0);
         }
+        
+        
     }
+    
     
 }

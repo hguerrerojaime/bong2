@@ -139,4 +139,12 @@ import { AppComponent } from './app.component';
 export { AppComponent } from './app.component';
 components.push(AppComponent);
 
+import { TextOptionsDirective } from './text.options.directive';
+export { TextOptionsDirective } from './text.options.directive';
+components.push(TextOptionsDirective);
+
+import { KeyCombinationDirective } from './key.combination.directive';
+export { KeyCombinationDirective } from './key.combination.directive';
+components.push(KeyCombinationDirective);
+
 export const BONG_COMPONENTS = components;

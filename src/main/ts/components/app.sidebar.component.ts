@@ -30,7 +30,6 @@ declare var jQuery:any;
     </div>
     
     `,
-   directives: [ SidebarSearchComponent ],
    styles: [
        ' li.menu-item a span { margin-left: 10px; } '
    ]
@@ -43,7 +42,8 @@ export class AppSidebarComponent extends DefaultJqueryComponent {
         { label: "Index", routerLink:"/", icon: "fam fam-application-home" },
         { label: "Forms", routerLink:"/forms", icon: "fam fam-application-form" },
         { label: "Tables", routerLink:"/tables", icon: "fam fam-table" },
-        { label: "Query Builder", routerLink:"/query-builder", icon: "fam fam-magnifier" }
+        { label: "Query Builder", routerLink:"/query-builder", icon: "fam fam-magnifier" },
+        { label: "Example Form", routerLink:"/example-form", icon: "fam fam-user" }
     ];
     
     private menu:any[];

@@ -4,12 +4,14 @@ import { IndexComponent } from '../app/index.component';
 import { FormsComponent } from '../app/forms.component';
 import { TablesComponent } from '../app/tables.component';
 import { QBComponent } from '../app/qb.component';
+import { ExampleFormComponent } from '../app/example.form.component';
 
 const appRoutes: Routes = [
   { path: '', component: IndexComponent },
   { path: 'forms', component: FormsComponent },
   { path: 'tables', component: TablesComponent },
-  { path: 'query-builder', component: QBComponent }
+  { path: 'query-builder', component: QBComponent },
+  { path: 'example-form', component: ExampleFormComponent }
   //{ path: '**', component: PageNotFoundComponent }
 ];
 
