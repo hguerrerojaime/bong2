@@ -1,5 +1,5 @@
 import { Component,Input,ViewChild,ElementRef,AfterViewInit } from '@angular/core';
-import { DefaultJqueryComponent } from '@bong/components';
+import { DefaultJqueryComponent } from './default.jquery.component';
 import { StringUtils } from '../core/string.utils';
 
 declare var jQuery:any;
@@ -44,9 +44,11 @@ export class ModalComponent extends DefaultJqueryComponent {
     
     public modalId = "modal_"+StringUtils.random();
     
-    jqElement:any;
-    
     hasFooter:boolean = true;
+
+    constructor(elementRef:ElementRef) {
+        super(elementRef);
+    }
     
     buildJQueryPlugin(jqElement) {
         jqElement.on('hide.bs.modal', function(){

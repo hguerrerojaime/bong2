@@ -1,20 +1,19 @@
 import { Input, Component, OnInit, Inject, ElementRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { DomUtils, ValueLoader } from '@bong/core';
+import { DomUtils, ValueLoader } from '../core/index';
 import { InlineLoaderComponent } from './inline.loader.component';
 
 @Component({
     selector: 'output',
     template: `
-        <inline-loader *ngIf="isLoading"></inline-loader>{{ actualValue }}
-    `,
-    directives: [ InlineLoaderComponent ]
+        <inline-loader *ngIf="loading"></inline-loader>{{ !loading ? actualValue : '' }}
+    `
 })
-export class OutputComponent implements OnInit, ValueLoader {
+export class OutputComponent implements OnInit {
         
     actualValue:string;
     
-    private isLoading:boolean = false;
+    loading:boolean = false;
     
      constructor(@Inject(ElementRef) private elementRef: ElementRef) {
         this.elementRef = elementRef;
@@ -26,19 +25,7 @@ export class OutputComponent implements OnInit, ValueLoader {
     
     
     public set value(_value:any) {
-        
-        if (_value instanceof Observable) {
-            this.isLoading = true;
-        
-            _value.subscribe((result) => {
-                this.isLoading = false;
-                this.actualValue = result;
-            });
-        } else {
-            this.isLoading = false;
-            this.actualValue = _value;
-        }
-        
+        this.actualValue = _value;
     }
 
 

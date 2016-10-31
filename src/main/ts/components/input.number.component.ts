@@ -1,6 +1,6 @@
 import { Component,ElementRef,OnInit,OnDestroy,ViewChild,Inject } from '@angular/core';
 import { InputJqueryComponent } from '../components/index';
-import { AgentFeatureSupportChecker } from '../core/agent.feature.support.checker';
+import { AgentFeatureSupportChecker } from '../core/index';
 
 declare var jQuery:any;
 
@@ -22,7 +22,11 @@ declare var jQuery:any;
     `
     //styleUrls: ['static/vendors/node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css']
 })
-export class InputNumberComponent extends InputJqueryComponent {
+export class InputNumberComponent extends InputJqueryComponent<number> {
+
+    constructor(elementRef:ElementRef) {
+        super(elementRef);
+    }
         
     shouldBuildJQueryPlugin() {
         return !AgentFeatureSupportChecker.supportsType('number');

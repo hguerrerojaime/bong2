@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { InputJqueryComponent } from './input.jquery.component';
 import { AgentFeatureSupportChecker } from '../core/agent.feature.support.checker';
 
@@ -16,7 +16,11 @@ import '@plugins/node/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datet
     `
     //styleUrls: ['static/vendors/node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css']
 })
-export class InputDatetimeComponent extends InputJqueryComponent {
+export class InputDatetimeComponent extends InputJqueryComponent<any> {
+
+    constructor(elementRef:ElementRef) {
+        super(elementRef);
+    }
         
     shouldBuildJQueryPlugin() {
         return !AgentFeatureSupportChecker.supportsType('datetime-local');

@@ -30,7 +30,7 @@ export class ConfirmEvent extends AlertEvent {
         return this;
     }
     
-    public reject(handler:any,label = ConfirmEvent.REJECT_LABEL):any {
+    public cancel(handler:any,label = ConfirmEvent.REJECT_LABEL):any {
         
         this.actions.reject.name = label;
         this.actions.reject.handler = handler;

@@ -1,4 +1,4 @@
-import { Component,Input,forwardRef } from '@angular/core';
+import { Component,Input,forwardRef,ElementRef } from '@angular/core';
 import { InputJqueryComponent } from './input.jquery.component';
 import { ProviderUtils, ArrayUtils } from '../core/index';
 import '@plugins/node/select2/dist/js/select2.min.js';
@@ -16,10 +16,17 @@ declare var jQuery;
        >
            <option *ngFor="let option of allOptions" [value]="option">{{option}}</option>
        </select>
+       <select *ngIf="!multiple"
+               [(ngModel)]="value"
+               (blur)="onBlur()"
+               class="form-control input-{{size}}"
+       >
+           <option *ngFor="let option of allOptions" [value]="option">{{option}}</option>
+       </select>
     `,
     providers: [ ProviderUtils.createAccessorProvider(InputSelectComponent) ]
 })
-export class InputSelectComponent extends InputJqueryComponent {
+export class InputSelectComponent extends InputJqueryComponent<string[]> {
     
     @Input()
     multiple:boolean = false;
@@ -37,6 +44,10 @@ export class InputSelectComponent extends InputJqueryComponent {
     options:any[] = [];
     
     private allOptions:any[] = [];
+
+    constructor(elementRef:ElementRef) {
+        super(elementRef);
+    }
     
         
     buildJQueryPlugin(jqElement) {
@@ -51,6 +62,7 @@ export class InputSelectComponent extends InputJqueryComponent {
                 this.initAllOptions();
 
                 jQuery.fn.select2.amd.require(['select2/selection/search'], (Search) => {
+                    
                     var oldRemoveChoice = Search.prototype.searchRemoveChoice;
 
                     Search.prototype.searchRemoveChoice = function () {

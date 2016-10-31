@@ -1,5 +1,4 @@
 import { Component, OnInit,Inject,ElementRef } from '@angular/core';
-import { DdMenuComponent, MenuItemComponent } from '@bong/components';
 
 @Component({
   selector: 'app-navbar',

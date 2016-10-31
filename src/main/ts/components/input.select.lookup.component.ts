@@ -1,4 +1,4 @@
-import { Component,Input,forwardRef } from '@angular/core';
+import { Component,Input,forwardRef,ElementRef } from '@angular/core';
 import { InputJqueryComponent } from './input.jquery.component';
 import { ProviderUtils, ArrayUtils } from '../core/index';
 import '@plugins/node/select2/dist/js/select2.min.js';
@@ -16,7 +16,7 @@ import '@plugins/node/select2/dist/js/select2.min.js';
     `,
     providers: [ ProviderUtils.createAccessorProvider(InputSelectLookupComponent) ]
 })
-export class InputSelectLookupComponent extends InputJqueryComponent {
+export class InputSelectLookupComponent extends InputJqueryComponent<any> {
     
     @Input()
     multiple:boolean = false;
@@ -32,8 +32,11 @@ export class InputSelectLookupComponent extends InputJqueryComponent {
     
     @Input()
     options:any[] = [];
+
+    constructor(elementRef:ElementRef) {
+        super(elementRef);
+    }
        
-        
     buildJQueryPlugin(jqElement) {
         
         if (this.select2) {

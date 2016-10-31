@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { InputComponent } from './input.component';
-import { TextOptionsDirective } from '@bong/directives';
 import { ProviderUtils } from '../core/provider.utils';
 
 @Component({
@@ -8,12 +7,11 @@ import { ProviderUtils } from '../core/provider.utils';
     template: `
         <textarea class="form-control" rows="{{ rows }}"></textarea>
     `,
-    directives: [TextOptionsDirective],
     providers: [
         ProviderUtils.createAccessorProvider(InputTextareaComponent)
     ]
 })
-export class InputTextareaComponent extends InputComponent implements OnInit {
+export class InputTextareaComponent extends InputComponent<string> implements OnInit {
     
     @Input()
     textCase:string;

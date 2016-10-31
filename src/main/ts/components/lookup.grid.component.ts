@@ -4,14 +4,13 @@ import { InlineLoaderComponent } from './inline.loader.component';
 import { InputTextComponent } from './input.text.component';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { ValueLoader, ArrayUtils,StringUtils } from '@bong/core';
+import { ValueLoader, ArrayUtils,StringUtils } from '../core/index';
 
 @Component({
     selector: 'lookup-grid',
     template: `
         <form #lookupForm="ngForm" (ngSubmit)="emitSelectedItem()" >
-            {{ ready }}
-        
+         
             <input-text
                 name="search"
                 [(ngModel)]="search" 
@@ -46,8 +45,7 @@ import { ValueLoader, ArrayUtils,StringUtils } from '@bong/core';
     styles: [
         '.key-column { width: 25%; }',
         '.center { text-align: center; }'
-    ],
-    directives: [InputTextComponent,CommandButtonComponent,InlineLoaderComponent] 
+    ]
 })
 export class LookupGridComponent implements ValueLoader {
      
@@ -67,7 +65,7 @@ export class LookupGridComponent implements ValueLoader {
      
      
      
-     loadValues(itemsLoader:Observable<any[]>) {
+     loadValue(itemsLoader:Observable<any[]>) {
         this.search = null;
         this.data = [];
         this.fullData = [];

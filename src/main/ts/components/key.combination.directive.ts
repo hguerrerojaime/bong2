@@ -1,10 +1,14 @@
 import { Directive,HostListener, Input, Output, EventEmitter } from '@angular/core';
 
-enum KeyModifier {
-    CTRL = "ctrlKey",
-    SHIFT = "shiftKey",
-    ALT = "altKey"
+export class KeyModifier {
+    static CTRL="ctrlKey";
+    static SHIFT="shiftKey";
+    static ALT="altKey";
 }
+
+const KEY_MODIFIERS = {};
+
+KEY_MODIFIERS
 
 @Directive({
     selector: "[key-combination]"
@@ -12,13 +16,13 @@ enum KeyModifier {
 export class KeyCombinationDirective {
 
     @Input()
-    keyModifier:KeyModifier = KeyModifier.CTRL;
+    keyModifier:string = KeyModifier.CTRL;
     
     @Input()
     keyCode:number;
     
     @Output()
-    kcMatch:EventEmitter = new EventEmitter();
+    kcMatch:EventEmitter<any> = new EventEmitter();
     
 
     @HostListener('keydown', ['$event'])

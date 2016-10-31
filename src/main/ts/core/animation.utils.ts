@@ -1,6 +1,6 @@
 import {trigger, state, animate, transition, style, AfterViewInit} from '@angular/core';
 
-export function fadeIn() {
+export function fadeIn():any {
     
     return trigger('openClose', [
       state('closed, void',

@@ -1,4 +1,4 @@
-{    
+{   
     "src": {
         "main": {
             "core": [
@@ -21,6 +21,10 @@
     
     "target": {
         "dir":"target",
+        "server":{
+            "dir":"server",
+            "port":3000
+        },
         "main": {
             "dependencies":"server/vendors/node_modules",
             "vendors":"server/vendors",

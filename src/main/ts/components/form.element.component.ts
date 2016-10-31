@@ -1,5 +1,4 @@
 import { Component,Input, OnInit } from '@angular/core';
-import { DivColComponent } from './div.col.component';
  
 @Component({
     selector: 'form-element',
@@ -10,8 +9,7 @@ import { DivColComponent } from './div.col.component';
             <ng-content></ng-content>
           </div-col>
         </div>
-    `,
-    directives: [ DivColComponent ]
+    `
 })
 export class FormElementComponent implements OnInit {
     

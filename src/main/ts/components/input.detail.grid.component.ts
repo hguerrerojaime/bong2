@@ -104,7 +104,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
         '.detail-grid .chk-col { width: 35px; text-align:center; border-right: 1px solid #ccc;  }'
     ]
 })
-export class InputDetailGridComponent extends InputComponent implements OnInit {
+export class InputDetailGridComponent extends InputComponent<any> implements OnInit {
     
     @ViewChild("itemModal")
     itemModal:ModalComponent;
@@ -120,7 +120,7 @@ export class InputDetailGridComponent extends InputComponent implements OnInit {
     
     private selectAll:boolean = false;
     
-    constructor(@Inject(ElementRef) elementRef) {
+    constructor(elementRef:ElementRef) {
          super(elementRef);
     }
 

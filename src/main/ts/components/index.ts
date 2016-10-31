@@ -95,9 +95,7 @@ components.push(InputDetailGridColumnComponent);
 import { ContainerComponent } from './container.component';
 export { ContainerComponent } from './container.component';
 components.push(ContainerComponent);
-import { InputFilterBuilderComponent } from './input.filter.builder.component';
-export { InputFilterBuilderComponent } from './input.filter.builder.component';
-components.push(InputFilterBuilderComponent);
+
 import { AlertComponent } from './alert.component';
 export { AlertComponent } from './alert.component';
 components.push(AlertComponent);
@@ -141,10 +139,6 @@ components.push(AppBodyComponent);
 import { AppComponent } from './app.component';
 export { AppComponent } from './app.component';
 components.push(AppComponent);
-
-import { TextOptionsDirective } from './text.options.directive';
-export { TextOptionsDirective } from './text.options.directive';
-components.push(TextOptionsDirective);
 
 import { KeyCombinationDirective } from './key.combination.directive';
 export { KeyCombinationDirective } from './key.combination.directive';

@@ -1,11 +1,10 @@
 import { ElementRef,Inject, AfterViewInit } from '@angular/core';
 import { ModelAwareComponent } from './model.aware.component';
 import { JqueryComponent } from './jquery.component';
-import { AgentFeatureSupportChecker } from '../services/index';
 
 declare var jQuery:any;
 
-export abstract class ModelAwareJqueryComponent extends ModelAwareComponent implements JqueryComponent, AfterViewInit {
+export abstract class ModelAwareJqueryComponent<T> extends ModelAwareComponent<T> implements JqueryComponent, AfterViewInit {
     
     private jqElement;
     
@@ -27,5 +26,7 @@ export abstract class ModelAwareJqueryComponent extends ModelAwareComponent impl
     }
     
     shouldBuildJQueryPlugin():boolean { return true; }
+
+    abstract buildJQueryPlugin(jqElement):void;
     
 }

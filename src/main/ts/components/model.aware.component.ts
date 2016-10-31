@@ -4,20 +4,24 @@ import { BaseComponent } from './base.component';
 
 const noop = () => {};
 
-export class ModelAwareComponent extends BaseComponent implements ControlValueAccessor {
+export class ModelAwareComponent<T> extends BaseComponent implements ControlValueAccessor {
     
     private innerValue:any;
     
     private onChangeCallback: (_: any) => void = noop;
     protected onTouchedCallback: () => void = noop;
+
+    constructor(elementRef:ElementRef) {
+        super(elementRef);
+    }
     
     //get accessor
-    public get value(): any {
+    public get value(): T {
         return this.innerValue;
     };
     
     //set accessor including call the onchange callback
-    public set value(v: any) {
+    public set value(v: T) {
         if (v !== this.innerValue) {
             this.innerValue = v;
             this.onChangeCallback(v);

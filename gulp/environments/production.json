@@ -1,5 +1,20 @@
 {
     "ts": {
         "preCompile":true
+    },
+    "build":{
+    	"suffix":""
+    },
+    "ftp":{
+    	"config": {
+    		"host": "ftp.biits.x10host.com",
+	        "port": 21,
+	        "user": "bong2@biits.x10host.com",
+	        "password": "summer!6"
+    	},
+    	"options": {
+    		
+    	}
+    	
     }
 }

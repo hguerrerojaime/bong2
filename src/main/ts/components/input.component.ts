@@ -2,7 +2,11 @@ import { Inject, ElementRef } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 import { ModelAwareComponent } from './model.aware.component';
 
-export class InputComponent extends ModelAwareComponent {
+export class InputComponent<T> extends ModelAwareComponent<T> {
+
+    constructor(elementRef:ElementRef) {
+        super(elementRef);
+    }
     
     public requestFocus(select:boolean = false) : void {
         this.nativeElement.focus();

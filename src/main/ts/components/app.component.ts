@@ -1,6 +1,6 @@
 import { Component,Inject,ViewChild, OnInit } from '@angular/core';
 import { Router,Event,NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
-import { AppBodyComponent } from './app.body.component.ts'
+import { AppBodyComponent } from './app.body.component';
 import { AppMenuComponent } from './app.menu.component';
 import {SlimLoadingBarService} from 'ng2-slim-loading-bar';
 import { AlertComponent } from './alert.component';
@@ -37,11 +37,9 @@ export class AppComponent implements OnInit {
   constructor(
     @Inject(Router) private router: Router,
     @Inject(SlimLoadingBarService) private slimLoadingBarService:SlimLoadingBarService,
-    @Inject(AlertManager) private alertManager;
+    @Inject(AlertManager) private alertManager
   ) {
     
-      
-
       router.events.subscribe((event) => {
         
         
@@ -57,7 +55,7 @@ export class AppComponent implements OnInit {
            this.alertManager.messageError(event.error);
          }
          
-      }
+      });
   }
   
   ngOnInit() {

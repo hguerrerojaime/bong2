@@ -1,9 +1,9 @@
-import { Inject, ElementRef } from '@angular/core';
+import { Inject, ElementRef,Component } from '@angular/core';
 
 export class BaseComponent {
     
-    constructor(@Inject(ElementRef) public elementRef: ElementRef) {
-        
+    constructor(public elementRef: ElementRef) {
+
     }
     
     get nativeElement() {

@@ -1,3 +1,5 @@
+import { DataType } from './data.type';
+
 export enum CurrencyCode {
     AED, AFN, ALL, AMD, ANG, AOA, ARS, AUD, AWG, AZN, BAM, BBD,
     BDT, BGN, BHD, BIF, BMD, BND, BOB, BOV, BRL, BSD, BTN, BWP,
@@ -16,7 +18,24 @@ export enum CurrencyCode {
     XPD, XPF, XPT, XSU, XTS, XUA, XXX, YER, ZAR, ZMW
 }
 
-export class Currency { 
+export class TCurrency extends DataType<any,any> { 
     ammount: number;
     code: CurrencyCode;
+
+    constructor(ammount:number = 0,code:string = "MXN") {
+        super();
+        this.ammount = ammount;
+        this.code = CurrencyCode[code];
+
+        this.nativeValue = this;
+    }
+
+    public json():any {
+        return {
+            ammount:this.nativeValue.ammount,
+            code: CurrencyCode[this.nativeValue.code]
+        };
+    }
+
+
 }

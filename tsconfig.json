@@ -8,7 +8,8 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false,
-    "listFiles": true
+    "listFiles": true,
+    "declaration": true
   },
   "exclude": [
     "node_modules",

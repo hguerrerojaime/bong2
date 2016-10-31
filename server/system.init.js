@@ -23,9 +23,9 @@
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
-    'app':                        { main: 'init/boot',  defaultExtension: 'ts' },
-    'core':                       { defaultExtension: 'ts' },
-    'commons':                    { defaultExtension: 'ts' },
+    'app':                        { main: 'init/boot',  defaultExtension: 'js' },
+    'core':                       { defaultExtension: 'js' },
+    'commons':                    { defaultExtension: 'js' },
     'rxjs':                       { defaultExtension: 'js' },
     'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
     'moment':					            { main: 'moment.js', defaultExtension: 'js' },
@@ -67,11 +67,11 @@
   ngPackageNames.forEach(setPackageConfig);
   
   bongPackageNames.forEach(function(pkgName){
-      packages['@bong/'+pkgName] = { main: 'index.ts', defaultExtension: 'ts' };
+      packages['@bong/'+pkgName] = { main: 'index', defaultExtension: 'js' };
   });
   
   var config = {
-    transpiler: 'typescript',
+    //transpiler: 'typescript',
     map: map,
     packages: packages
   };

@@ -1,5 +1,5 @@
 import { Component,Inject, OnInit } from '@angular/core';
-import { TemplateResolver } from '@bong/core';
+import { TemplateResolver } from '../core/index';
 
 @Component({
     selector: 'tables-ctrl',

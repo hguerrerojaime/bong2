@@ -11,6 +11,8 @@ require('./pipes.templates');
 const SCRIPTS_SRC = config.src.main.ts;
 const TEMPLATES_SRC = config.src.main.html;
 const LESS_SRC = config.src.main.less;
+const SERVER_DIR = config.target.server.dir;
+const SERVER_PORT = config.target.server.port;
 
 
 pipes.server = function () {
@@ -27,9 +29,9 @@ pipes.server = function () {
         pipes.buildTemplates(event);
     });
     
-    gulp.src('server')
+    gulp.src(SERVER_DIR)
         .pipe(server({
-            port:3000,
+            port:SERVER_PORT,
             livereload: {
                 enable: true
             },

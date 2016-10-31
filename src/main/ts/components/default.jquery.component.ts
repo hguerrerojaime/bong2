@@ -6,8 +6,11 @@ declare var jQuery:any;
 
 export abstract class DefaultJqueryComponent extends BaseComponent implements JqueryComponent, AfterViewInit {
     
-    private jqElement;
-    
+    public jqElement:any;
+
+    constructor(elementRef:ElementRef){
+        super(elementRef);
+    }
     
     ngAfterViewInit() {
         this.initComponent();    
@@ -26,5 +29,7 @@ export abstract class DefaultJqueryComponent extends BaseComponent implements Jq
     }
     
     shouldBuildJQueryPlugin():boolean { return true; }
+
+    abstract buildJQueryPlugin(jqElement:any):void;
     
 }

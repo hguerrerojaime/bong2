@@ -1,41 +1,58 @@
-<panel title="App Components" brand="primary">
+<panel title="App Components" brand="info">
     <form class="form-horizontal" #f="ngForm" (ngSubmit)="send()">
-        <div-row>
-            <div-col width="6">
-                <form-element label="Name">
-                    <input-text  [(ngModel)]="user.name" name="user.name" textCase="upper"></input-text>
-                </form-element>
-            </div-col>
-        </div-row>
-        <div-row>
-            <div-col width="6">
-                <form-element label="Hire Date">
-                    <input-date [(ngModel)]="user.hireDate" name="user.hireDate"></input-date>
-                </form-element>
-            </div-col>
-        </div-row>
-        <div-row>
-            <div-col width="6">
-                <form-element label="Wage">
-                    <input-currency [(ngModel)]="user.wage" name="user.wage"></input-currency>
-                </form-element>
-            </div-col>
-        </div-row>
-        <div-row>
-            <div-col width="6">
-                <form-element label="Skills">
-                    <input-select [(ngModel)]="user.skills" 
-                                    name="user.skills" 
-                                    multiple="true" 
-                                    tags="true"></input-select>
-                </form-element>
-            </div-col>
-        </div-row>
-        <div-row>
-            <div-col width="12">
-                <submit-button label="Save" brand="primary"></submit-button>
-            </div-col>
-        </div-row>
-        
+
+        <div class="well well-sm">
+            <submit-button label="Save" icon="fa fa-save"  brand="primary"></submit-button>
+            <command-button label="Cancel" icon="fa fa-close"></command-button>
+        </div>
+        <fieldset>
+            <legend>Example Data</legend>
+            <div-row>
+                <div-col width="6">
+                    <form-element label="Name">
+                        <input-text  [(ngModel)]="user.name" name="user.name" textCase="upper"></input-text>
+                    </form-element>
+                </div-col>
+            </div-row>
+            <div-row>
+                <div-col width="6">
+                    <form-element label="Hire Date">
+                        <input-date [(ngModel)]="user.hireDate" name="user.hireDate"></input-date>
+                    </form-element>
+                </div-col>
+            </div-row>
+            <div-row>
+                <div-col width="6">
+                    <form-element label="Wage">
+                        <input-currency [(ngModel)]="user.wage" name="user.wage"></input-currency>
+                    </form-element>
+                </div-col>
+            </div-row>
+            <div-row>
+                <div-col width="6">
+                    <form-element label="Manager">
+                        <input-lookup [(ngModel)]="user.manager" 
+                            name="user.manager"
+                            [lookupService]="lookupService"
+                        ></input-lookup>
+                    </form-element>
+                </div-col>
+            </div-row>
+            <div-row>
+                <div-col width="6">
+                    <form-element label="Skills">
+                        <input-select [(ngModel)]="user.skills" 
+                                        name="user.skills" 
+                                        multiple="true" 
+                                        tags="true"></input-select>
+                    </form-element>
+                </div-col>
+            </div-row>
+        </fieldset>
+        <div class="well well-sm">
+            <submit-button label="Save" icon="fa fa-save" brand="primary"></submit-button>
+            <command-button label="Cancel" icon="fa fa-close"></command-button>
+        </div>
     </form>
+
 </panel>

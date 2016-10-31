@@ -1,4 +1,4 @@
-import {Component, OnInit, Inject,ApplicationRef } from '@angular/core';
+import {Component, Inject,ApplicationRef } from '@angular/core';
 
 import { AlertManager,Notifier,SpinnerService } from '../core/index';
 
@@ -14,7 +14,7 @@ import { AlertManager,Notifier,SpinnerService } from '../core/index';
         </panel>
     `
 })
-export class IndexComponent implements OnInit {
+export class IndexComponent {
     
     
     constructor(
@@ -23,15 +23,6 @@ export class IndexComponent implements OnInit {
         @Inject(SpinnerService) private spinner:SpinnerService
     ) {
         
-    }
-    
-    ngOnInit() {
-                
-        this.alertManager.confirmWarning("Are you sure?")
-            .confirm(() => {
-                this.notifier.alert("Confirmed");
-            })
-        ;
     }
     
     alert() {

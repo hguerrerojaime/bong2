@@ -1,4 +1,4 @@
-import { Component,Input } from '@angular/core';
+import { Component,Input,ElementRef } from '@angular/core';
 import { InputJqueryComponent } from './input.jquery.component';
 import '@plugins/other/query-builder/query-builder.min.js';
 
@@ -17,11 +17,13 @@ import '@plugins/other/query-builder/query-builder.min.js';
         <span class="label label-warning" *ngIf="!compiled">Needs to be compiled first!</span>
     `
 })
-export class InputQueryBuilderComponent extends InputJqueryComponent {
+export class InputQueryBuilderComponent extends InputJqueryComponent<any> {
     
     private compiled:boolean = false;
-    
-    private jqElement;
+
+    constructor(elementRef:ElementRef) {
+        super(elementRef);
+    }
             
     buildJQueryPlugin(jqElement) {
         

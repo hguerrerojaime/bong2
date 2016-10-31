@@ -44,10 +44,11 @@ pipes.buildAppScripts = function(evt) {
 	var gulpSrc = gulp.src(src);
 
 	
-	
 	if (ENV_CONFIG.ts.preCompile) {
-		gulpSrc.pipe(ts(TS_COMPILER_OPTS));
+		gulpSrc = gulpSrc.pipe(ts(TS_COMPILER_OPTS));
 	}
+
+
 	
 			
 	return gulpSrc.pipe(gulp.dest(target));

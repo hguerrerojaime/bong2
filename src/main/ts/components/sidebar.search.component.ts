@@ -1,5 +1,5 @@
 import { Component, OnInit,Inject,ElementRef,Output,EventEmitter } from '@angular/core';
-import { DomUtils } from '@bong/core';
+import { DomUtils } from '../core/index';
 
 @Component({
     selector: 'sidebar-search',

@@ -26,8 +26,11 @@ gulp.task('build-templates',pipes.buildTemplates);
 /** CLEAN ALL **/
 gulp.task('clean',['clean-dependencies','clean-scripts','clean-styles','clean-templates']);
 
-/** REFRESH DEPENDENCIES AND COMPILE **/
-gulp.task('build',['refresh-dependencies','compile']);
+/** CREATE A DIST ZIP FILE **/
+gulp.task('build',['refresh-dependencies','compile'],pipes.build);
+
+/** DEPLOY A DIST ZIP FILE INTO A FTP SERVER **/
+gulp.task('deploy',['build'],pipes.deploy);
 
 /** COMPILE ONLY **/
 gulp.task('compile',['build-skin','build-scripts','build-templates']);

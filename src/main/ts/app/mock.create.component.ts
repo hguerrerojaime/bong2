@@ -1,5 +1,5 @@
 import { Component,Inject } from '@angular/core';
-import { TemplateResolver } from '@bong/core';
+import { TemplateResolver } from '../core/index';
 import { LookupService } from '../services/lookup.service';
 import { SubmitFormComponent } from '../components/submit.form.component';
 
@@ -16,7 +16,7 @@ export class MockCreateComponent extends SubmitFormComponent {
         super();
     }
     
-    get formData():any {
+    getFormData():any {
         return this.mockData;
     }
     

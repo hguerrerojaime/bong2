@@ -51,6 +51,19 @@ export class ArrayUtils {
         
         return result;
     }
+
+    public static find(array:any[],filter:Function) {
+        
+        let result:any[] = [];
+        
+        for (let item of array) {
+            if (filter(item)) {
+                return item;
+            }
+        }
+        
+        return null;
+    }
     
     public static findAllLike(array:any,exp:string) : any {
         

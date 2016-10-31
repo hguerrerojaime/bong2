@@ -1,7 +1,8 @@
-import { Component,Input } from '@angular/core';
+import { Component,Input,ElementRef } from '@angular/core';
 import { InputJqueryComponent } from './input.jquery.component';
 import { AgentFeatureSupportChecker } from '../core/agent.feature.support.checker';
 import { ProviderUtils } from '../core/provider.utils';
+import { TDate } from '../types/index';
 import { utc } from 'moment/moment';
 
 declare var jQuery:any;
@@ -26,12 +27,16 @@ import '@plugins/node/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datet
     providers: [ ProviderUtils.createAccessorProvider(InputDateComponent) ]
     //styleUrls: ['static/vendors/node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css']
 })
-export class InputDateComponent extends InputJqueryComponent {
+export class InputDateComponent extends InputJqueryComponent<TDate> {
     
     @Input()
     format:string = "YYYY-MM-DD";
     
     formattedValue:string = "";
+
+    constructor(elementRef:ElementRef) {
+        super(elementRef);
+    }
         
     shouldBuildJQueryPlugin() {
         return true; //!AgentFeatureSupportChecker.supportsType('date');
@@ -44,7 +49,7 @@ export class InputDateComponent extends InputJqueryComponent {
         
         jqElement.on('dp.change',(event)=> { 
 
-            this.value = utc(event.date);
+            this.changeValue(event.date);
         });
         
         setTimeout(() => { this.formatDate() },0);
@@ -71,9 +76,13 @@ export class InputDateComponent extends InputJqueryComponent {
     private formatDate() {
 
         if(this.value) {
-            this.formattedValue = this.value.format(this.format);
+            this.formattedValue = this.value.nativeValue.format(this.format);
         }
 
+    }
+
+    private changeValue(newValue) {
+        this.value.nativeValue = utc(newValue);
     }
 
     

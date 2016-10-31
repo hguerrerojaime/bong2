@@ -1,4 +1,4 @@
-import { Component, ViewChild, Input, Output, OnInit, Inject, EventEmitter } from '@angular/core';
+import { Component, ViewChild, Input, Output, OnInit, Inject, EventEmitter, ElementRef } from '@angular/core';
 import { InputJqueryComponent } from './input.jquery.component';
 import { ModalComponent } from './modal.component';
 import { DivRowComponent } from './div.row.component';
@@ -8,8 +8,7 @@ import { InputTextComponent } from './input.text.component';
 import { LookupGridComponent } from './lookup.grid.component';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { KeyCombinationDirective } from '../directives/key.combination.directive';
-import { ProviderUtils } from '../core/provider.utils';
+import { ProviderUtils, ArrayUtils } from '../core/index';
 
 declare var jQuery:any;
 
@@ -20,10 +19,12 @@ declare var jQuery:any;
             <div class="col-sm-{{inputWidth}}">
                <div class="input-group has-{{ brand }} has-feedback">
                     <input-text #keyText
-                                [(ngModel)]="value"
+                                [(ngModel)]="valueKey"
                                 key-combination
                                 keyCode="40"
                                 (kcMatch)="lookupBtnClick($event)"
+                                (blur)="lookupByKey()"
+
                     ></input-text>
                     <span *ngIf="icons[brand]" class="glyphicon glyphicon-{{ icons[brand] }} form-control-feedback"></span>
                     <span class="input-group-btn data-up">
@@ -44,18 +45,9 @@ declare var jQuery:any;
         '.lookup-label-wrapper { padding-left: 1 !important; margin-left: 0 !important; }',
         '.lookup-label { font-weight:bold; background-color: #eee; }'
     ],
-    directives: [
-        ModalComponent,
-        DivRowComponent,
-        DivColComponent,
-        OutputComponent,
-        LookupGridComponent,
-        InputTextComponent,
-        KeyCombinationDirective
-    ],
     providers: [ ProviderUtils.createAccessorProvider(InputLookupComponent) ]
 })
-export class InputLookupComponent extends InputJqueryComponent {
+export class InputLookupComponent extends InputJqueryComponent<any> {
         
     @ViewChild("lookupModal")
     lookupModal: ModalComponent;
@@ -73,9 +65,12 @@ export class InputLookupComponent extends InputJqueryComponent {
     inputWidth:number = 6;
     
     @Input()
-    fnItemsLoader:Function;
+    lookupService:any;
 
     valueTitle:string;
+    valueKey:string;
+
+    tmpValueKey:string;
         
     icons:any = {
         success: "ok",
@@ -84,6 +79,10 @@ export class InputLookupComponent extends InputJqueryComponent {
     };
     
     brand:string = "default";
+
+    constructor(elementRef:ElementRef) {
+        super(elementRef);
+    }
     
     buildJQueryPlugin(jqElement) {
         jqElement.tooltip();
@@ -91,53 +90,64 @@ export class InputLookupComponent extends InputJqueryComponent {
     
     lookupBtnClick($event) {
 
-       if (this.fnItemsLoader == null) {
-           throw new EvalError("The item loader must not be null!");
+       if (this.lookupService == null) {
+           throw new EvalError("The lookup service must not be null!");
        }
        
-       this.lookupGrid.loadValues(this.fnItemsLoader());
+       this.lookupGrid.loadValue(this.lookupService["lookupAll"]());
        this.lookupModal.show();
        this.lookupGrid.txtSearch.requestFocus();
     }
     
-    lookupValue() {
-        
-        let service = new Observable(observer => {
-            
-            this.brand = "default";
-            this.valueTitle = null;
-            
-            if (this.value == null || this.value === "") {
-                 observer.next(null);
-            } else {
-            
-                setTimeout(() => {
-                    if (this.value == "ETN") {
+    lookupByKey() {
+
+        if (this.keyHasChanged()) {
+
+            this.lookupOutput.loading = true;
+
+            this.lookupService.lookupByKey(this.valueKey).subscribe((result)=>{
+
+                if (this.valueKey) {
+                    let foundItem = ArrayUtils.find(result,(item) => {
+                        return item.key == this.valueKey;
+                    });
+
+                    if (foundItem) {
                         this.brand = "success";
-                        this.valueTitle = "ENLACES TERRESTRES NACIONALES";
-                        observer.next(this.valueTitle);  
+                        this.value = foundItem.id;
+                        this.valueKey = foundItem.key;
+                        this.valueTitle = foundItem.value;
+                        this.lookupOutput.value = foundItem.value;
                     } else {
                         this.brand = "error";
-                        observer.next("invalid key"); 
+                        this.value = null;
+                        this.valueTitle = "Invalid Key";
+                        this.lookupOutput.value = "Invalid Key";
                     }
-                    observer.complete();
-                }, 1000);
-                
-            }
-                
-        });
+                }
+
+                this.tmpValueKey = this.valueKey;
+                this.lookupOutput.loading = false;
+
+            });
         
-       
+        }
 
     }
     
     setSelectedItem(item) {
         this.lookupModal.hide();
         this.brand = "success";
-        this.value = item.key;
+        this.value = item.id;
+        this.valueKey = item.key;
+        this.tmpValueKey = item.key;
         this.valueTitle = item.value;
         this.lookupOutput.value = item.value;
         this.keyText.requestFocus(true);
+    }
+
+    keyHasChanged():boolean {
+        return this.valueKey != this.tmpValueKey;
     }
     
 

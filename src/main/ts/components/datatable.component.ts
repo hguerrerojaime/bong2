@@ -52,10 +52,7 @@ export class DatatableComponent extends DefaultJqueryComponent implements OnChan
     
     private initialized:boolean = false;
     
-    private jqElement:any;
-    
     buildJQueryPlugin(jqElement) {
-        this.jqElement = jqElement;
         this.dataTable = jqElement.DataTable();
         this.initialized = true;
         
@@ -66,7 +63,7 @@ export class DatatableComponent extends DefaultJqueryComponent implements OnChan
         
         if (changes.data && this.initialized) {
             this.dataTable.destroy();
-            this.dataTable = this.jqElement.DataTable();
+            //this.dataTable = this.jqElement.DataTable();
         }
         
     }

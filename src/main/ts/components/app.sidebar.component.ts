@@ -1,7 +1,7 @@
 import { Component, OnInit,Inject,ElementRef } from '@angular/core';
 import { SidebarSearchComponent } from './sidebar.search.component';
-import { DefaultJqueryComponent } from '@bong/components';
-import { ArrayUtils } from '@bong/core';
+import { DefaultJqueryComponent } from './default.jquery.component';
+import { ArrayUtils } from '../core/index';
 
 import '@plugins/node/metismenu/dist/metisMenu.js';
 
@@ -49,6 +49,10 @@ export class AppSidebarComponent extends DefaultJqueryComponent {
     private menu:any[];
     
     private lastSearch:string = "";
+
+    constructor(elementRef:ElementRef) {
+        super(elementRef);
+    }
     
     
     buildJQueryPlugin(jqElement) {

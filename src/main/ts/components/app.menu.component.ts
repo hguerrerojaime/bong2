@@ -18,6 +18,7 @@ declare var jQuery:any;
    `
 })
 export class AppMenuComponent implements OnInit {
+
         
     ngOnInit() {
         var width, height, topOffset;

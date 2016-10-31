@@ -1,17 +1,27 @@
-//import { Currency } from '../types/index';
-import { utc,Moment } from 'moment/moment';
+import { TDate, TCurrency } from '../types/index';
 
-export class User {
+import { TModel } from '../types/index';
+
+export class User extends TModel {
     
     constructor(
        public name:string = "user",
-       public wage:number = 0,
-       public hireDate:Moment = utc(),
-       public skills:string[] = ["Java","PHP"]
+       public wage:TCurrency = new TCurrency(),
+       public hireDate:TDate = TDate.TODAY,
+       public skills:string[] = ["Java","PHP"],
+       public manager:any = null
     ) {
-        
+    	super();
     }
     
-    
+    public json():Object {
+    	return {
+    		name: this.name,
+    		wage: this.wage.json(),
+    		hireDate: this.hireDate.json(),
+        manager:this.manager,
+    		skills: this.skills
+    	};
+    }
     
 }

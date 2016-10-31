@@ -1,13 +1,17 @@
 import { ElementRef,Inject, AfterViewInit } from '@angular/core';
 import { InputComponent } from './input.component';
 import { JqueryComponent } from './jquery.component';
-import { AgentFeatureSupportChecker } from '../services/index';
 
 declare var jQuery:any;
 
-export abstract class InputJqueryComponent extends InputComponent implements JqueryComponent, AfterViewInit {
+export abstract class InputJqueryComponent<T> extends InputComponent<T>
+                               implements JqueryComponent, AfterViewInit {
     
-    private jqElement;
+    public jqElement;
+
+    constructor(elementRef:ElementRef) {
+        super(elementRef);
+    }
     
     ngAfterViewInit() {
         this.initComponent();    
@@ -27,5 +31,7 @@ export abstract class InputJqueryComponent extends InputComponent implements Jqu
     }
     
     shouldBuildJQueryPlugin():boolean { return true; }
+
+    abstract buildJQueryPlugin(jqElement:any):void;
     
 }

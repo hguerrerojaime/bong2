@@ -3,12 +3,12 @@ import { EventEmitter,Output } from '@angular/core';
 export abstract class SubmitFormComponent {
     
     @Output()
-    submit:EventEmitter = new EventEmitter();
+    submit:EventEmitter<any> = new EventEmitter();
     
-    get formData():any;
+    abstract getFormData():any;
 
     doSubmit($event) {
-        submit.emmit($event);
+        this.submit.emit($event);
     }
     
 }

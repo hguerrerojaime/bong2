@@ -1,4 +1,4 @@
-import { Component, Input, forwardRef, OnInit } from '@angular/core';
+import { Component, Input, forwardRef, OnInit,ElementRef,Output,EventEmitter } from '@angular/core';
 import { NG_VALUE_ACCESSOR  } from '@angular/forms';
 import { InputComponent } from './input.component';
 
@@ -18,13 +18,20 @@ import { ProviderUtils } from '../core/provider.utils';
         ProviderUtils.createAccessorProvider(InputTextComponent)
     ]
 })
-export class InputTextComponent extends InputComponent implements OnInit {
+export class InputTextComponent extends InputComponent<string> implements OnInit {
         
     @Input()
     textCase:string;
     
     @Input()
     size:string = "md";
+
+    @Output()
+    blur:EventEmitter<any> = new EventEmitter();
+
+    constructor(elementRef:ElementRef) {
+         super(elementRef);
+    }
     
     ngOnInit() {
         this.initCaseCSS(this.nativeElement);
@@ -56,6 +63,11 @@ export class InputTextComponent extends InputComponent implements OnInit {
             inputText.style['text-transform'] = "uppercase";
         }
         
+    }
+
+    onBlur() {
+        super.onBlur();
+        this.blur.emit(null);
     }
 
 }
