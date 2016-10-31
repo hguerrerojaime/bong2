@@ -71,7 +71,7 @@
   });
   
   var config = {
-    //transpiler: 'typescript',
+    transpiler: 'typescript',
     map: map,
     packages: packages
   };

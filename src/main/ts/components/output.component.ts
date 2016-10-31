@@ -27,6 +27,9 @@ export class OutputComponent implements OnInit {
     public set value(_value:any) {
         this.actualValue = _value;
     }
-
+    
+    public get value(): any {
+        return this.actualValue;
+    }
 
 }

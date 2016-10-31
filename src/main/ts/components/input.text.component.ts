@@ -1,5 +1,4 @@
-import { Component, Input, forwardRef, OnInit,ElementRef,Output,EventEmitter } from '@angular/core';
-import { NG_VALUE_ACCESSOR  } from '@angular/forms';
+import { Component, Input, OnInit,ElementRef,Output,EventEmitter } from '@angular/core';
 import { InputComponent } from './input.component';
 
 import { ProviderUtils } from '../core/provider.utils';

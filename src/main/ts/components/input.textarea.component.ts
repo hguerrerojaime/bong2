@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ElementRef } from '@angular/core';
 import { InputComponent } from './input.component';
 import { ProviderUtils } from '../core/provider.utils';
 
@@ -18,6 +18,10 @@ export class InputTextareaComponent extends InputComponent<string> implements On
     
     @Input()
     rows:number = 5;
+    
+    constructor(elementRef:ElementRef) {
+        super(elementRef);
+    }
     
     
     ngOnInit() {
