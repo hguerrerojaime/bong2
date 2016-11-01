@@ -8,7 +8,7 @@ import { DomUtils } from '../core/dom.utils';
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         {{ label }} <span class="caret">
               </span></a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu dropdown-tasks">
                   <ng-content></ng-content>
               </ul>
           </li>

@@ -11,5 +11,5 @@ export abstract class DataType<N,J> {
 	}
 
 	abstract json():J;
-
+	
 }

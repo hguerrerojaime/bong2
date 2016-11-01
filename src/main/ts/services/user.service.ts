@@ -13,6 +13,9 @@ export class UserService  {
 	constructor(private http: Http,private notifier:Notifier) {}
 
 	save(user:User):Observable<Object> {
+		
+		console.log(JSON.stringify(user.json()));
+		
 		return this.http.post(URL,user.json())
 				    .map((response) => response.json())
 				    .catch((response) => { 

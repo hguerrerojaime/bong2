@@ -9,6 +9,7 @@ import { LookupGridComponent } from './lookup.grid.component';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { ProviderUtils, ArrayUtils } from '../core/index';
+import { TLookup } from '../types/index';
 
 declare var jQuery:any;
 
@@ -33,7 +34,9 @@ declare var jQuery:any;
                </div>
             </div>
             <div class="col-sm-{{12 - inputWidth}} lookup-label-wrapper">
-                <span class="form-control lookup-label truncate" title="{{ valueTitle }}"><output #lookupOutput></output></span>
+                <span class="form-control lookup-label truncate" title="{{ valueTitle }}">
+                    <output [value]="valueTitle" #lookupOutput></output>
+                </span>
             </div>
        </div-row>
        <modal title="Lookup Managers" icon="fam fam-magnifier" #lookupModal>
@@ -47,7 +50,7 @@ declare var jQuery:any;
     ],
     providers: [ ProviderUtils.createAccessorProvider(InputLookupComponent) ]
 })
-export class InputLookupComponent extends InputJqueryComponent<any> {
+export class InputLookupComponent extends InputJqueryComponent<TLookup<any>> {
         
     @ViewChild("lookupModal")
     lookupModal: ModalComponent;
@@ -67,8 +70,6 @@ export class InputLookupComponent extends InputJqueryComponent<any> {
     @Input()
     lookupService:any;
 
-    valueTitle:string;
-    valueKey:string;
 
     tmpValueKey:string;
         
@@ -86,6 +87,7 @@ export class InputLookupComponent extends InputJqueryComponent<any> {
     
     buildJQueryPlugin(jqElement) {
         jqElement.tooltip();
+
     }
     
     lookupBtnClick($event) {
@@ -114,15 +116,15 @@ export class InputLookupComponent extends InputJqueryComponent<any> {
 
                     if (foundItem) {
                         this.brand = "success";
-                        this.value = foundItem.id;
-                        this.valueKey = foundItem.key;
-                        this.valueTitle = foundItem.value;
+                        this.value.id = foundItem.id;
+                        this.value.key = foundItem.key;
+                        this.value.value = foundItem.value;
                         this.lookupOutput.value = foundItem.value;
                     } else {
                         this.brand = "error";
                         this.value = null;
-                        this.valueTitle = "Invalid Key";
-                        this.lookupOutput.value = "Invalid Key";
+                        this.value.value = "Invalid Key";
+                        this.lookupOutput.value = this.value.value;
                     }
                 }
 
@@ -138,16 +140,33 @@ export class InputLookupComponent extends InputJqueryComponent<any> {
     setSelectedItem(item) {
         this.lookupModal.hide();
         this.brand = "success";
-        this.value = item.id;
-        this.valueKey = item.key;
-        this.tmpValueKey = item.key;
-        this.valueTitle = item.value;
+        this.value.id = item.id;
+        this.value.key = item.key;
+        this.value.value = item.value;
         this.lookupOutput.value = item.value;
         this.keyText.requestFocus(true);
     }
 
     keyHasChanged():boolean {
         return this.valueKey != this.tmpValueKey;
+    }
+
+    get valueKey():string {
+
+        if (this.value) {
+            return this.value.key;
+        } else {
+            return null;
+        }
+
+    }
+
+    get valueTitle():string {
+        if (this.value) {
+            return this.value.value;
+        } else {
+            return null;
+        }
     }
     
 

@@ -23,7 +23,7 @@ export class OutputComponent implements OnInit {
         DomUtils.unwrapElement(this.elementRef);    
     }
     
-    
+    @Input()
     public set value(_value:any) {
         this.actualValue = _value;
     }

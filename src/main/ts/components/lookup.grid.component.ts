@@ -14,9 +14,26 @@ import { ValueLoader, ArrayUtils,StringUtils } from '../core/index';
             <input-text
                 name="search"
                 [(ngModel)]="search" 
-                (ngModelChange)="doSearch()"
+                (ngModelChange)="doSearch(true)"
                 #txtSearch></input-text>
             <hr/>
+
+            <div *ngIf="pageCount > 1">
+                <ul class="pager" >
+                  <li><a  href="javascript:void(0);" 
+                          (click)="isFirstPage() ? null : goToPage(currentPage - 1)" 
+                          [class.disabled]="isFirstPage()"
+
+                       >Previous</a></li>
+                  <li><a href="javascript:void(0);" 
+                         (click)="isLastPage() ? null : goToPage(currentPage + 1)" 
+                         [class.disabled]="isLastPage()"
+                       >Next</a></li>
+                </ul>
+                <hr/>
+            </div>
+
+
             <table class="table table-condensed table-striped" *ngIf="data.length > 0">
                 <thead>
                 <tr>
@@ -25,7 +42,7 @@ import { ValueLoader, ArrayUtils,StringUtils } from '../core/index';
                 </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of data">
+                    <tr *ngFor="let item of pagedData">
                         <td><command-button 
                                     size="sm" 
                                     [label]="item.key" 
@@ -48,6 +65,8 @@ import { ValueLoader, ArrayUtils,StringUtils } from '../core/index';
     ]
 })
 export class LookupGridComponent implements ValueLoader {
+
+    private static PAGE_SIZE:number = 10;
      
      @Output()
      onSelectedItem:EventEmitter<any> = new EventEmitter();
@@ -55,16 +74,15 @@ export class LookupGridComponent implements ValueLoader {
      @ViewChild("txtSearch")
      public txtSearch:InputTextComponent;
      
-     private ready = false;
-        
+     private ready = false;   
      search:string;
      private lastSearch:string;
      private isLoading:boolean = false;
+     private pagedData:Array<any> = [];
      private data:Array<any> = [];
      private fullData:Array<any> = [];
-     
-     
-     
+     private offset:number = 0;
+          
      loadValue(itemsLoader:Observable<any[]>) {
         this.search = null;
         this.data = [];
@@ -76,10 +94,14 @@ export class LookupGridComponent implements ValueLoader {
             this.fullData = result;
             this.doSearch();
         });
- 
+
     }
-    
-    doSearch() {
+
+    doSearch(resetOffset:boolean = false) {
+
+        if (resetOffset) {
+            this.offset = 0;
+        }
 
         let isNarrowedSearch:boolean = this.search != null && this.search.indexOf(this.lastSearch) >= 0;
         let hasSearchData = this.data.length > 0;
@@ -90,9 +112,14 @@ export class LookupGridComponent implements ValueLoader {
         } else {
             this.data = ArrayUtils.findAllLike(this.fullData,this.search);
         }
+
+        this.pagedData = this.data.length > LookupGridComponent.PAGE_SIZE ?
+             this.data.slice(this.offset,this.offset+LookupGridComponent.PAGE_SIZE) :
+             this.data
+        ;
         
         this.lastSearch = this.search;
-        
+
     }
     
     emitSelectedItem(item = null) {
@@ -107,6 +134,8 @@ export class LookupGridComponent implements ValueLoader {
         
         return false;
     }
+
+   
     
      get currentItem() {
          
@@ -118,6 +147,29 @@ export class LookupGridComponent implements ValueLoader {
 
          return result;
          
+     }
+
+     private goToPage(pageNumber:number) {
+         this.offset = (pageNumber - 1) * LookupGridComponent.PAGE_SIZE;
+         this.doSearch();
+     }
+
+     private get pageCount(): number {
+         return Math.ceil(this.data.length/LookupGridComponent.PAGE_SIZE);
+     }
+
+     private get currentPage(): number {
+         return (this.offset / LookupGridComponent.PAGE_SIZE) + 1;
+     }
+
+     private isLastPage():boolean {
+  
+         return this.currentPage >= this.pageCount;
+     }
+
+     private isFirstPage(): boolean {
+    
+         return this.currentPage <= 1;
      }
           
 }
