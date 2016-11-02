@@ -10,7 +10,8 @@ import { ProviderUtils } from '../core/provider.utils';
                class="form-control input-{{size}}"
                [(ngModel)]="value"
                (ngModelChange)="changeTextCase()"
-               (blur)="onBlur()"    
+               (blur)="onBlur()"
+               (focus)="onFocus()"
         />
     `,
     providers: [
@@ -27,6 +28,9 @@ export class InputTextComponent extends InputComponent<string> implements OnInit
 
     @Output()
     blur:EventEmitter<any> = new EventEmitter();
+
+    @Output()
+    focus:EventEmitter<any> = new EventEmitter();
 
     constructor(elementRef:ElementRef) {
          super(elementRef);
@@ -67,6 +71,10 @@ export class InputTextComponent extends InputComponent<string> implements OnInit
     onBlur() {
         super.onBlur();
         this.blur.emit(null);
+    }
+
+    onFocus() {
+        this.focus.emit(null);
     }
 
 }

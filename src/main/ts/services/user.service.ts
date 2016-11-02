@@ -5,7 +5,7 @@ import { Notifier } from '../core/index';
 import { User } from '../models/user';
 import 'rxjs/Rx';
 
-const URL:string = "http://demo3252269.mockable.io/user";
+const URL:string = "http://localhost:3001/user";
 
 @Injectable()
 export class UserService  {
@@ -13,8 +13,6 @@ export class UserService  {
 	constructor(private http: Http,private notifier:Notifier) {}
 
 	save(user:User):Observable<Object> {
-		
-		console.log(JSON.stringify(user.json()));
 		
 		return this.http.post(URL,user.json())
 				    .map((response) => response.json())

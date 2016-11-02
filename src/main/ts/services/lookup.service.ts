@@ -4,7 +4,7 @@ import { Http, Response } from '@angular/http';
 import { Notifier } from '../core/index';
 import 'rxjs/Rx';
 
-const URL:string = "http://demo3252269.mockable.io/managers/lookup";
+const URL:string = "http://localhost:3001/user/lookup";
 
 @Injectable()
 export class LookupService  {
@@ -19,8 +19,8 @@ export class LookupService  {
         
     }
 
-    public lookupByKey(key:string = null) : Observable<Object[]> {
-        return this.http.get(URL)
+    public lookupByKey(key:string) : Observable<Object> {
+        return this.http.get(URL+"/"+key)
                     .map(this.extractData)
                     .catch(this.handleError);
         
@@ -30,7 +30,7 @@ export class LookupService  {
     private extractData(res: Response) {
       let body = res.json();
 
-      return body || { };
+      return body;
     }
     private handleError (error: Response | any) {
       // In a real world app, we might use a remote logging infrastructure

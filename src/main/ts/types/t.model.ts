@@ -2,7 +2,7 @@ import { DataType } from './data.type';
 
 export abstract class TModel extends DataType<Object,Object> {
 
-	constructor(object:Object = null) {
+	constructor(object:Object = {}) {
 		super();
 
 		if (object != null) {

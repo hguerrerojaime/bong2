@@ -6,7 +6,14 @@
             <command-button label="Cancel" icon="fa fa-close"></command-button>
         </div>
         <fieldset>
-            <legend>Example Data</legend>
+            <legend>User Data</legend>
+            <div-row>
+                <div-col width="6">
+                    <form-element label="Key">
+                        <input-text  [(ngModel)]="user.key" name="user.key" textCase="upper"></input-text>
+                    </form-element>
+                </div-col>
+            </div-row>
             <div-row>
                 <div-col width="6">
                     <form-element label="Name">

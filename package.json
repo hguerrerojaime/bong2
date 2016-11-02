@@ -9,6 +9,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "body-parser": "^1.15.2",
+    "cors": "^2.8.1",
+    "express": "^4.14.0",
     "ftp-client": "^0.2.2",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
@@ -27,6 +30,8 @@
     "jasmine-reporters": "^2.2.0",
     "main-bower-files": "^2.13.1",
     "merge-stream": "^1.0.0",
+    "method-override": "^2.3.6",
+    "mongodb": "^2.2.11",
     "pump": "^1.0.1",
     "run-sequence": "^1.2.2",
     "yargs": "^5.0.0"

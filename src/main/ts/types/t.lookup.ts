@@ -2,11 +2,11 @@ import { TModel } from './t.model';
 
 export class TLookup<K> extends TModel { 
 
-    public id:K,
-    public key:string,
-    public value:string
+    public id:K;
+    public key:string;
+    public value:string;
     
-    constructor(object:Object = null) {
+    constructor(object:Object = {}) {
         super(object);
     }
 

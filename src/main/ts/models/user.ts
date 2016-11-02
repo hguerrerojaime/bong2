@@ -3,26 +3,24 @@ import { TModel } from '../types/index';
 
 export class User extends TModel {
 
+    public key:string = "U33595";
     public name:string = "user";
     public wage:TCurrency = new TCurrency();
     public hireDate:TDate = TDate.TODAY;
     public skills:string[] = ["Java","PHP"];
-    public manager:TLookup<string> = new TLookup<string>({
-         id:"214FD4C6-90F1-18FC-48A1-DFA2A183FC8B",
-         key:"U47675",
-         value:"Singleton, Rebecca O"
-    });
+    public manager:TLookup<string> = null;
     
-    constructor(object:Object = null) {
+    constructor(object:Object = {}) {
     	super(object);
     }
     
     public json():Object {
     	return {
+            key: this.key,
     		name: this.name,
     		wage: this.wage.json(),
     		hireDate: this.hireDate.json(),
-        manager:this.manager.json(),
+            manager: this.manager == null ? null : this.manager.json(),
     		skills: this.skills
     	};
     }

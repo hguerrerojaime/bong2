@@ -96,43 +96,38 @@ export class InputLookupComponent extends InputJqueryComponent<TLookup<any>> {
            throw new EvalError("The lookup service must not be null!");
        }
        
-       this.lookupGrid.loadValue(this.lookupService["lookupAll"]());
+       this.lookupGrid.loadValue(this.lookupService.lookupAll());
        this.lookupModal.show();
        this.lookupGrid.txtSearch.requestFocus();
     }
-    
+
     lookupByKey() {
 
         if (this.keyHasChanged()) {
 
+            
             this.lookupOutput.loading = true;
 
             this.lookupService.lookupByKey(this.valueKey).subscribe((result)=>{
 
-                if (this.valueKey) {
-                    let foundItem = ArrayUtils.find(result,(item) => {
-                        return item.key == this.valueKey;
-                    });
 
-                    if (foundItem) {
-                        this.brand = "success";
-                        this.value.id = foundItem.id;
-                        this.value.key = foundItem.key;
-                        this.value.value = foundItem.value;
-                        this.lookupOutput.value = foundItem.value;
-                    } else {
-                        this.brand = "error";
-                        this.value = null;
-                        this.value.value = "Invalid Key";
-                        this.lookupOutput.value = this.value.value;
-                    }
+
+                if (result != null) {
+                    this.brand = "success";
+                    this.value = new TLookup(result);
+                    this.lookupOutput.value = this.value.value;
+                } else {
+                    this.brand = "error";
+                    this.value = null;
                 }
 
                 this.tmpValueKey = this.valueKey;
                 this.lookupOutput.loading = false;
 
             });
-        
+
+            
+
         }
 
     }
@@ -140,9 +135,7 @@ export class InputLookupComponent extends InputJqueryComponent<TLookup<any>> {
     setSelectedItem(item) {
         this.lookupModal.hide();
         this.brand = "success";
-        this.value.id = item.id;
-        this.value.key = item.key;
-        this.value.value = item.value;
+        this.value = new TLookup(item);
         this.lookupOutput.value = item.value;
         this.keyText.requestFocus(true);
     }
@@ -161,9 +154,28 @@ export class InputLookupComponent extends InputJqueryComponent<TLookup<any>> {
 
     }
 
+    set valueKey(valueKey:string) {
+
+        if (valueKey == null) {
+            this.brand = "default";
+            this.value = null;
+        } else {
+
+            if (this.value == null) {
+                this.value = new TLookup<any>();
+            }
+
+            this.value.key = valueKey;
+
+        }
+
+    }
+
     get valueTitle():string {
         if (this.value) {
             return this.value.value;
+        } else if (this.brand == "error") {
+            return "Invalid Key";
         } else {
             return null;
         }

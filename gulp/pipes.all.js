@@ -1,5 +1,6 @@
 var pipes = require('./pipes');
 
+require('../mock-api/server');
 require('./pipes.dependencies');
 require('./pipes.scripts');
 require('./pipes.server');
