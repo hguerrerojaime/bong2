@@ -100,14 +100,6 @@ import { AlertComponent } from './alert.component';
 export { AlertComponent } from './alert.component';
 components.push(AlertComponent);
 
-import { DatatableComponent } from './datatable.component';
-export { DatatableComponent } from './datatable.component';
-components.push(DatatableComponent);
-
-import { DatatableColumnComponent } from './datatable.column.component';
-export { DatatableColumnComponent } from './datatable.column.component';
-components.push(DatatableColumnComponent);
-
 import { SpinnerComponent } from './spinner.component';
 export { SpinnerComponent } from './spinner.component';
 components.push(SpinnerComponent);

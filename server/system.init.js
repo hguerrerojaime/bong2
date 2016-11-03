@@ -17,9 +17,10 @@
     'jquery':					            'vendors/node_modules/jquery/dist',
     'bootstrap':			            'vendors/node_modules/bootstrap/dist/js',
     'ng2-slim-loading-bar':       'vendors/node_modules/ng2-slim-loading-bar',
-    'datatables.net':             'vendors/node_modules/datatables.net/js',
     'doT':                        'vendors/other/query-builder/doT.min.js',
-    'jQuery.extendext':           'vendors/other/query-builder/jQuery.extendext.min.js'
+    'jQuery.extendext':           'vendors/other/query-builder/jQuery.extendext.min.js',
+    'angular2-datatable':         'vendors/node_modules/angular2-datatable',
+    'lodash'
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
@@ -32,7 +33,7 @@
     'jquery':				              { main: 'jquery.min.js', defaultExtension: 'js' },
     'bootstrap':			            { main: 'bootstrap.min.js', defaultExtension: 'js' },
     'ng2-slim-loading-bar':       { main: 'index.js',  defaultExtension: 'js' },
-    'datatables.net':             { main: 'jquery.dataTables.js', defaultExtension: 'js' }
+    'angular2-datatable':         { main: 'index.js', defaultExtension: 'js' }
   };
   var ngPackageNames = [
     'common',

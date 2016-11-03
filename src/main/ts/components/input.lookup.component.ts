@@ -118,6 +118,7 @@ export class InputLookupComponent extends InputJqueryComponent<TLookup<any>> {
                     this.lookupOutput.value = this.value.value;
                 } else {
                     this.brand = "error";
+                    this.tmpValueKey = this.value.key;
                     this.value = null;
                 }
 
@@ -148,6 +149,8 @@ export class InputLookupComponent extends InputJqueryComponent<TLookup<any>> {
 
         if (this.value) {
             return this.value.key;
+        } else if(this.tmpValueKey) {
+            return this.tmpValueKey;
         } else {
             return null;
         }
