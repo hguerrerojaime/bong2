@@ -38,6 +38,8 @@ gulp.task('compile',['build-skin','build-scripts','build-templates']);
 /** COMPILE AND RUN SERVER **/
 gulp.task('server',['compile'],pipes.server);
 
+gulp.task('server-full',['compile','run-mock-api'],pipes.server);
+
 gulp.task('run-mock-api',pipes.runMockApi);
 
 gulp.task('compile-tests',pipes.compileTests);

@@ -10,8 +10,9 @@ import { ButtonComponent } from './button.component';
                 [class.btn-block]="blockWidth"
                 [disabled]="disabled"
                 (click)="doClick($event)"
+                [title]="label"
         >
-            <i class="{{ icon }}" *ngIf="icon"></i> {{ label }}
+            <i class="{{ icon }}" *ngIf="icon"></i> {{ !hideLabel ? label : null }}
         </button>
     `    
 })

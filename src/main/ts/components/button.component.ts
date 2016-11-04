@@ -9,6 +9,9 @@ export class ButtonComponent extends BaseComponent {
     
     @Input()
     icon:string;
+
+    @Input()
+    hideLabel:boolean = false;
     
     @Input()
     label:string = "Button";

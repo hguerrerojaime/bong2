@@ -20,7 +20,9 @@
     'doT':                        'vendors/other/query-builder/doT.min.js',
     'jQuery.extendext':           'vendors/other/query-builder/jQuery.extendext.min.js',
     'angular2-datatable':         'vendors/node_modules/angular2-datatable',
-    'lodash'
+    'ng2-dragula':                'vendors/node_modules/ng2-dragula',
+    'lodash':                     'vendors/node_modules/lodash',
+    'dragula':                    'vendors/node_modules/dragula/dist'
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
@@ -33,7 +35,10 @@
     'jquery':				              { main: 'jquery.min.js', defaultExtension: 'js' },
     'bootstrap':			            { main: 'bootstrap.min.js', defaultExtension: 'js' },
     'ng2-slim-loading-bar':       { main: 'index.js',  defaultExtension: 'js' },
-    'angular2-datatable':         { main: 'index.js', defaultExtension: 'js' }
+    'angular2-datatable':         { main: 'index.js', defaultExtension: 'js' },
+    'lodash':                     { main: 'index.js', defaultExtension: 'js' },
+    'ng2-dragula':                { main: 'ng2-dragula.js', defaultExtension: 'js' },
+    'dragula':                    { main: 'dragula.js', defaultExtension: 'js' } 
   };
   var ngPackageNames = [
     'common',

@@ -15,6 +15,9 @@ import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import { LookupService } from '../services/lookup.service';
 import { UserService } from '../services/user.service';
 import { HttpModule } from '@angular/http';
+import { DataTableModule } from "angular2-datatable";
+import { DragulaModule } from 'ng2-dragula/ng2-dragula';
+import { LayoutEditorComponent } from '../app/layout.editor.component';
 
 
 @NgModule({
@@ -26,7 +29,9 @@ import { HttpModule } from '@angular/http';
     FormsModule,
     routing,
     HttpModule,
-    SlimLoadingBarModule.forRoot()
+    SlimLoadingBarModule.forRoot(),
+    DataTableModule,
+    DragulaModule
   ],
   declarations: [
     IndexComponent,
@@ -35,6 +40,7 @@ import { HttpModule } from '@angular/http';
     MockCreateComponent, 
     QBComponent,
     ExampleFormComponent,
+    LayoutEditorComponent,
     BONG_COMPONENTS
   ],
   entryComponents: [MockCreateComponent],

@@ -5,13 +5,12 @@ import { SpinnerComponent } from '../components/index';
 import { AlertManager, Notifier,SpinnerService } from '../core/index';
 import { BrowserModule }  from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms';
-import {DataTableModule} from "angular2-datatable";
+
 
 @NgModule({
- 
+
   imports: [
-    BrowserModule,
-    DataTableModule
+    BrowserModule
   ],
   entryComponents: [SpinnerComponent],
   providers: [
