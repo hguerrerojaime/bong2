@@ -1,60 +1,22 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-
+import { TemplateResolver } from '../core/index';
 import { DragulaService } from 'ng2-dragula/ng2-dragula';
 
 @Component({
 	selector:'layout-editor',
-	template: `
-
-		 
-		    <panel title="Layout Editor">
-		   	   <div-row>
-		    		<div-col>
-		    			<command-button label="Save" (click)="save()"></command-button>
-		    		</div-col>
-		    	</div-row>
-		    	
-		    	<div-row>
-		    		<div-col width="6">
-		    			<div class="row draggable wrapper">
-		    				<div class="col-md-4 container" [dragula]='"fields-bag"'>
-						        <div class="drag-handle">UID</div>
-						        <div class="drag-handle">Name</div>
-						        <div class="drag-handle">Manager</div>
-				    		</div>
-		    				<div class="col-md-4 container" [dragula]='"static-bag"'>
-						        <div class="drag-handle">Space</div>
-						        <div class="drag-handle">Label</div>
-				    		</div>
-				    		<div class="col-md-4 container" >
-							    <div [dragula]="'section-bag'" [dragulaModel]="[sectionElement]">
-							    	<div class="drag-handle">Section</div>
-							    </div>
-							    <div [dragula]='"section-col-bag"' [dragulaModel]="[columnElement]">
-							    	<div class="drag-handle">Section Column</div>
-							    </div>
-				    		</div>
-				    	</div>
-		    		</div-col>
-		    	</div-row>
-		    	<div-row>
-		    		<div #layoutSectionBag class="col-md-12" [dragula]="'section-bag'" [dragulaModel]="layout">
-		    			<div *ngFor='let section of layout'>
-		    				<div class="drag-handle" > {{ section.name }}  </div>
-		    				<div class="row" [dragula]="'section-col-bag'" [dragulaModel]="section.columns"> 
-		    					<div *ngFor="let col of section.columns; let i = index" class="drag-handle col-md-{{ 12 / section.columns.length }}">
-		    						Column
-		    					</div>
-		    				</div>
-		    			</div>
-		    		</div>
-		    	</div-row>
-
-		    </panel>
-		  
-
-	`,
-	viewProviders: [ DragulaService ]
+	templateUrl: TemplateResolver.resolve(LayoutEditorComponent,'app'),
+	viewProviders: [ DragulaService ],
+	styles: [
+		'.section-bag h4 { text-align: center; }',
+		'.container h5 { padding-left: 5px; }',
+		'.drag-target { min-height: 10px; padding: 5px !important; }',
+		'.drag-section-bag div { border-left: 5px solid #AEDE81; }',
+		'.drag-section-col-bag div { border-left: 5px solid #FFD078; }',
+		'.drag-component-bag div { border-left: 5px solid #ABB9E0; }',
+		'.drag-section-bag-c { background-color: #AEDE81; }',
+		'.drag-section-col-bag-c { background-color: #FFD078; }',
+		'.drag-component-bag-c { background-color: #ABB9E0; }'
+	]
 })
 export class LayoutEditorComponent {
 
@@ -63,34 +25,45 @@ export class LayoutEditorComponent {
 
 	private sectionElement = { name:"New Section",columns:[ { components:[] } ] };
 	private columnElement = { components:[] };
-
-
-	private layout:Object[] = [
-		{ name:"Existing Section",
-		  columns:[ 
-			{ components:[] },
-			{ components:[] }
-		  ] 
-		}
+	private availableFields = [
+		{ label:"UUID" },
+		{ label:"Name" },
+		{ label:"Manager" },
 	];
+
+	private spaceElement = {};
+
+
+	private layout:Object[] = [];
 
 
 
 	constructor(private dragulaService: DragulaService) {
 
 
-		dragulaService.setOptions('fields-bag', {
+		dragulaService.setOptions('component-bag', {
+			moves:(e, container, handle) => {
+	    		let canMove = this.hasClasses(handle,["drag-handle"]);
+	    		return canMove;
+	    	},
+			copy: (e, container, handle) => {
+	
+				return this.hasClasses(e,["drag-static"]);
+			},
 	    	accepts: (e, target, source) => {
-	    		return source !== target;
+	    		return this.hasClasses(target,["drag-target"]);
 	    	} 
 	    });
 		
 	    dragulaService.setOptions('section-bag', {
-	    	copy: true,
+	    	copy: (e, container, handle) => {
+	
+				return this.hasClasses(e,["drag-static"]);
+			},
 	    	copySortSource: false,
 	    	moves:(e, container, handle) => {
-	    		
-	    		return handle.className == "drag-handle";
+	    		let canMove = this.hasClasses(handle,["drag-src","drag-handle"]);
+	    		return canMove;
 	    	},
 	    	accepts: (e, target, source) => {
 	    		return source !== this.layoutSectionBag.nativeElement;
@@ -98,10 +71,28 @@ export class LayoutEditorComponent {
 	    });
 
 	    dragulaService.setOptions('section-col-bag', {
-	    	copy: true,
+	    	copy: (e, container, handle) => {
+				return this.hasClasses(e,["drag-static"]);
+			},
+	    	moves:(e, container, handle) => {
+	  			
+	    		let canMove = this.hasClasses(handle,["drag-src","drag-handle"]) || 
+	    		     (this.hasClasses(handle,["drag-handle"]) && this.hasClasses(handle.parentElement.parentElement.parentElement,["drag-section-col-bag-c"]));
+	
+
+	    		return canMove;
+	    	},
 	    	accepts: (e, target, source, model) => {
-	    		console.log(target.children);
-	    		return target.children.length  <= 3;
+
+	    		let sectionIndex:number =  target.getAttribute("data-sidx");
+
+	    		if (sectionIndex == null) {
+	    			return false;
+	    		}
+
+	    		let accepts = this.layout[sectionIndex]["columns"].length  < 4;
+
+	    		return accepts;
 	    	}
 	    });
 
@@ -112,19 +103,19 @@ export class LayoutEditorComponent {
 	    // });
 	}
 
-	private onOver(args) {
-	    let [el, container, source] = args;
-	    if(container.id!=="content")
-	      el.remove();
-	}
-	  
-	//(0 - bagname, 1 - el, 2 - target, 3 - source, 4 - sibling)
-	private onDrop(value) {
-		console.log(value[2]);
-	    if (value[2] == null) //dragged outside any of the bags
-	      return;
-	    if (value[2].id !== "content" && value[2].id !== value[3].id) //dragged to a container that should not add the element
-	      value[1].remove();
+	private hasClasses(element:any,classNames:string[]) {
+
+		for ( let className of classNames ) {
+
+			let hasClass:boolean = element.className.indexOf(className) >=0;
+
+			if (!hasClass) {
+				return false;
+			}
+
+		}
+
+		return true;
 	}
 
 	save() {

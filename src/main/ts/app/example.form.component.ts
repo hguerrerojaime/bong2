@@ -1,9 +1,9 @@
 import { Component, Inject } from '@angular/core';
-import { TemplateResolver } from '../core/index';
+
 import { User } from '../models/user';
 import { LookupService } from '../services/lookup.service';
 import { UserService } from '../services/user.service';
-import { AlertManager,Notifier,SpinnerService } from '../core/index';
+import { AlertManager,Notifier,SpinnerService, TemplateResolver } from '../core/index';
 
 @Component({
     selector: 'example-form',

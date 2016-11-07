@@ -12,20 +12,35 @@
  * you're better off giving the draggable elements a unique class and styling that directly!
  */
 
-.container div div {
+.drag-src {
   margin: 5px;
+  padding: 5px;
   border: 1px solid #ccc;
+  background-color: #eee;
+
+  @shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
+  .box-shadow(@shadow);
+  #gradient > .vertical(@start-color: #eee; @end-color: darken(#eee, 2%));
+}
+
+.well.section-bag {
+  min-height: 30px;
+  //background-color: #EDF7FA !important;
+  background-image: none;
 }
 
 .drag-handle {
   cursor: move;
-  cursor: grab;
-  cursor: -moz-grab;
-  cursor: -webkit-grab;
+  //cursor: grab;
+  //cursor: -moz-grab;
+  //cursor: -webkit-grab;
 }
 
 .gu-mirror {
-  cursor: grabbing;
-  cursor: -moz-grabbing;
-  cursor: -webkit-grabbing;
+  //cursor: grabbing;
+  //cursor: -moz-grabbing;
+  //cursor: -webkit-grabbing;
 }
+
+
+#accordion .panel-body { background-color: #F2F0DA !important; }
