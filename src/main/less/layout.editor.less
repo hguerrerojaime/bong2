@@ -12,16 +12,18 @@
  * you're better off giving the draggable elements a unique class and styling that directly!
  */
 
-.container div {
+.container div div {
+  margin: 5px;
+  border: 1px solid #ccc;
+}
+
+.drag-handle {
   cursor: move;
   cursor: grab;
   cursor: -moz-grab;
   cursor: -webkit-grab;
-  border: 1px solid black;
-
-  margin: 5px;
-
 }
+
 .gu-mirror {
   cursor: grabbing;
   cursor: -moz-grabbing;

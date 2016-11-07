@@ -18,20 +18,20 @@ import { DragulaService } from 'ng2-dragula/ng2-dragula';
 		    		<div-col width="6">
 		    			<div class="row draggable wrapper">
 		    				<div class="col-md-4 container" [dragula]='"fields-bag"'>
-						        <div>UID</div>
-						        <div>Name</div>
-						        <div>Manager</div>
+						        <div class="drag-handle">UID</div>
+						        <div class="drag-handle">Name</div>
+						        <div class="drag-handle">Manager</div>
 				    		</div>
 		    				<div class="col-md-4 container" [dragula]='"static-bag"'>
-						        <div>Space</div>
-						        <div>Label</div>
+						        <div class="drag-handle">Space</div>
+						        <div class="drag-handle">Label</div>
 				    		</div>
 				    		<div class="col-md-4 container" >
 							    <div [dragula]="'section-bag'" [dragulaModel]="[sectionElement]">
 							    	<div class="drag-handle">Section</div>
 							    </div>
 							    <div [dragula]='"section-col-bag"' [dragulaModel]="[columnElement]">
-							    	<div>Section Column</div>
+							    	<div class="drag-handle">Section Column</div>
 							    </div>
 				    		</div>
 				    	</div>
@@ -42,7 +42,7 @@ import { DragulaService } from 'ng2-dragula/ng2-dragula';
 		    			<div *ngFor='let section of layout'>
 		    				<div class="drag-handle" > {{ section.name }}  </div>
 		    				<div class="row" [dragula]="'section-col-bag'" [dragulaModel]="section.columns"> 
-		    					<div *ngFor="let col of section.columns; let i = index" class="col-md-{{ 12 / section.columns.length }}">
+		    					<div *ngFor="let col of section.columns; let i = index" class="drag-handle col-md-{{ 12 / section.columns.length }}">
 		    						Column
 		    					</div>
 		    				</div>
