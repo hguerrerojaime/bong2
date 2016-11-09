@@ -34,7 +34,7 @@ export class LayoutEditorComponent {
 	private spaceElement = {};
 
 
-	private layout:Object = {
+	private layout:any = {
 		sections:[]
 	};
 
@@ -130,6 +130,18 @@ export class LayoutEditorComponent {
 
 	saveSectionTitle(section) {
 		delete section.editing;
+	}
+
+	removeSection(index) {
+		this.layout["sections"].splice(index,1);
+	}
+
+	removeColumn(sectIdx,colIdx) {
+		this.layout.sections[sectIdx].columns.splice(colIdx,1);
+	}
+
+	removeComponent(sectIdx,colIdx,cmpIdx) {
+		this.layout.sections[sectIdx].columns[colIdx].components.splice(cmpIdx,1);
 	}
 
 }

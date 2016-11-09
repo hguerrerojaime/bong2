@@ -42,7 +42,12 @@
 					<div class="section" *ngFor='let section of layout.sections; let i = index;'>
 						
 						<div> 
-							<legend *ngIf="!section.editing">{{ section.title }} <command-button label="Edit" icon="fa fa-edit" size="xs" (click)="editSectionTitle(section)" ></command-button></legend>
+							<legend *ngIf="!section.editing">{{ section.title }} 
+
+								<command-button label="Edit" icon="fa fa-edit" size="xs" (click)="editSectionTitle(section)" ></command-button>
+
+								<command-button label="Delete" brand="danger" icon="fa fa-close" size="xs" (click)="removeSection(i)" ></command-button>
+							</legend>
 							
 							<div class="input-group" *ngIf="section.editing">
 						      <input type="text" class="form-control" [(ngModel)]="section.title" name="section.title">
@@ -55,17 +60,19 @@
 						<div [attr.data-sidx]="i" class="row drag-section-col-bag-c section-bag" [dragula]="'section-col-bag'" [dragulaModel]="section.columns"> 
 							
 							<strong *ngIf="section.columns.length == 0">Drag Colums here</strong>	
-							<div *ngFor="let column of section.columns" class="drag-target col-md-{{ 12 / section.columns.length }}">
+							<div *ngFor="let column of section.columns; let j = index;" class="drag-target col-md-{{ 12 / section.columns.length }}">
 								<span class="btn btn-default btn-xs">
 			    					<i class="fa fa-arrows drag-handle drag-col" aria-hidden="true"></i>
 			    				</span>
+			    				<command-button label="Delete" brand="danger" icon="fa fa-close" size="xs" (click)="removeColumn(i,j)" ></command-button>
 								
 								<div class="drag-target drag-component-bag-c" [dragula]="'component-bag'" [dragulaModel]="column.components">
 									<strong *ngIf="column.components.length==0">Drag Components Here</strong>
-									<div *ngFor="let component of column.components" class="drag-handle">
+									<div *ngFor="let component of column.components; let k = index;" class="drag-handle">
 										<span class="btn btn-default btn-xs">
 					    					<i class="fa fa-arrows drag-handle drag-comp" aria-hidden="true"></i>
 					    				</span>
+					    				<command-button label="Delete" brand="danger" icon="fa fa-close" size="xs" (click)="removeComponent(i,j,k)" ></command-button>
 										{{ component.label ? component.label : "--" }}
 									</div>
 								</div>
