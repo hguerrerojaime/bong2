@@ -23,6 +23,15 @@ components.push(LookupGridComponent);
 import { PanelComponent } from './panel.component';
 export { PanelComponent } from './panel.component';
 components.push(PanelComponent);
+
+import { AccordionComponent } from './accordion.component';
+export { AccordionComponent } from './accordion.component';
+components.push(AccordionComponent);
+
+import { AccordionPanelComponent } from './accordion.panel.component';
+export { AccordionPanelComponent } from './accordion.panel.component';
+components.push(AccordionPanelComponent);
+
 import { InputRadiogroupComponent } from './input.radiogroup.component';
 export { InputRadiogroupComponent } from './input.radiogroup.component';
 components.push(InputRadiogroupComponent);

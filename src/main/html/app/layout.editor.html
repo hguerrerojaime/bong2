@@ -6,75 +6,77 @@
        </div>
 	
     	<div-row>
-    		<div-col width="6">
-    			<panel title="Control Palette - Drag Elements into the Canvas" brand="info">
-					<div class="panel-group draggable wrapper" id="accordion" role="tablist" aria-multiselectable="true">
-						<div class="panel panel-default">
-						    <div class="panel-heading" role="tab" id="headingOne">
-						      <h4 class="panel-title">
-						        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-						          Fields
-						        </a>
-						      </h4>
-						    </div>
-						    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-						      <div class="panel-body">
-						        <div class="drag-component-bag" [dragula]='"component-bag"' [dragulaModel]="availableFields">
-							        <div class="drag-handle drag-src" *ngFor="let field of availableFields">
-							        	{{ field.label }}
-							        </div>
-					    		</div>
-						      </div>
-						    </div>
-						  </div>
-					</div>				    			
-
-	    			<div class="row draggable wrapper">
-	    			    
-	    				<div class="col-md-4 container drag-component-bag" [dragula]='"component-bag"' [dragulaModel]="[spaceElement]">
-					        <div class="drag-handle drag-src drag-static">Space</div>
-			    		</div>
-	    				
-			    		<div class="col-md-4 container" >
-			 
-						    <div class="drag-section-bag" [dragula]="'section-bag'" [dragulaModel]="[sectionElement]">
+    		<div-col width="3">
+    			<panel title="Control Palette" [affix]="true">
+					<accordion>
+						<acc-panel title="Containers">
+							<div class="drag-section-bag" [dragula]="'section-bag'" [dragulaModel]="[sectionElement]">
 						    	<div class="drag-handle drag-src drag-static">Section</div>
 						    </div>
 						    <div class="drag-section-col-bag" [dragula]='"section-col-bag"' [dragulaModel]="[columnElement]">
 						    	<div class="drag-handle drag-src drag-static">Section Column</div>
 						    </div>
-			    		</div>
-			    	</div>
+						</acc-panel>
+						<acc-panel title="Fields">
+							<div class="drag-component-bag" [dragula]='"component-bag"' [dragulaModel]="availableFields">
+						        <div class="drag-handle drag-src" *ngFor="let field of availableFields">
+						        	{{ field.label }}
+						        </div>
+				    		</div>
+						</acc-panel>
+						<acc-panel title="Static Elements">
+							<div class="drag-component-bag" [dragula]='"component-bag"' [dragulaModel]="[spaceElement]">
+						        <div class="drag-handle drag-src drag-static">Space</div>
+				    		</div>
+						</acc-panel>
+					</accordion>
+
+					
 		    	</panel>
     		</div-col>
-    	</div-row>
-    
-		<div #layoutSectionBag class="well section-bag drag-section-bag-c" [dragula]="'section-bag'" [dragulaModel]="layout">
-			<h4 *ngIf="layout.length == 0">Canvas - Drag Sections here</h4>	
+    		<div-col width="9">
+    			<div #layoutSectionBag class="well section-bag drag-section-bag-c" [dragula]="'section-bag'" [dragulaModel]="layout.sections">
+					<h4 *ngIf="layout.sections.length == 0">Canvas - Drag Sections here</h4>	
 
-			<div class="section" *ngFor='let section of layout; let i = index;'>
-				
-				<div> 
-					<legend>{{ section.name }}</legend>
-				</div>
-				<div [attr.data-sidx]="i" class="row drag-section-col-bag-c" [dragula]="'section-col-bag'" [dragulaModel]="section.columns"> 
-					<div *ngFor="let column of section.columns" class="drag-target col-md-{{ 12 / section.columns.length }}">
-						<span class="btn btn-default btn-xs">
-	    					<i class="fa fa-arrows drag-handle drag-col" aria-hidden="true"></i>
-	    				</span>
-						<strong>Column - Drag Components Here</strong>
-						<div class="drag-target drag-component-bag-c" [dragula]="'component-bag'" [dragulaModel]="column.components">
-							<div *ngFor="let component of column.components" class="drag-handle">
+
+					<div class="section" *ngFor='let section of layout.sections; let i = index;'>
+						
+						<div> 
+							<legend *ngIf="!section.editing">{{ section.title }} <command-button label="Edit" icon="fa fa-edit" size="xs" (click)="editSectionTitle(section)" ></command-button></legend>
+							
+							<div class="input-group" *ngIf="section.editing">
+						      <input type="text" class="form-control" [(ngModel)]="section.title" name="section.title">
+						      <span class="input-group-btn">
+						        <button class="btn btn-default" type="button" (click)="saveSectionTitle(section)"><i class="fa fa-save"></i></button>
+						      </span>
+						    </div>
+							
+						</div>
+						<div [attr.data-sidx]="i" class="row drag-section-col-bag-c section-bag" [dragula]="'section-col-bag'" [dragulaModel]="section.columns"> 
+							
+							<strong *ngIf="section.columns.length == 0">Drag Colums here</strong>	
+							<div *ngFor="let column of section.columns" class="drag-target col-md-{{ 12 / section.columns.length }}">
 								<span class="btn btn-default btn-xs">
-			    					<i class="fa fa-arrows drag-handle drag-comp" aria-hidden="true"></i>
+			    					<i class="fa fa-arrows drag-handle drag-col" aria-hidden="true"></i>
 			    				</span>
-								{{ component.label ? component.label : "--" }}
+								
+								<div class="drag-target drag-component-bag-c" [dragula]="'component-bag'" [dragulaModel]="column.components">
+									<strong *ngIf="column.components.length==0">Drag Components Here</strong>
+									<div *ngFor="let component of column.components" class="drag-handle">
+										<span class="btn btn-default btn-xs">
+					    					<i class="fa fa-arrows drag-handle drag-comp" aria-hidden="true"></i>
+					    				</span>
+										{{ component.label ? component.label : "--" }}
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
+    		</div-col>
+    	</div-row>
+    
+		
     
     	<div class="well well-sm">
             <submit-button label="Save" icon="fa fa-save"  brand="primary"></submit-button>

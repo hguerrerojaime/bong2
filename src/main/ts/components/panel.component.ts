@@ -3,7 +3,10 @@ import { Component, Input } from '@angular/core';
 @Component({
     selector: 'panel',
     template: `
-        <div class="panel panel-{{ brand }} shadow {{ mainClass }}">
+        <div class="panel panel-{{ brand }} shadow {{ mainClass }}" 
+                [attr.data-spy]="affix ? 'affix' : null"
+                [attr.data-offset-top]="10"
+        >
             <div class="panel-heading">
                 <h4 class="panel-title">{{ title }}</h4>
             </div>
@@ -26,5 +29,8 @@ export class PanelComponent {
 
     @Input()
     mainClass:string;
+
+    @Input()
+    affix:boolean = false;
     
 }

@@ -13,9 +13,9 @@ import { DragulaService } from 'ng2-dragula/ng2-dragula';
 		'.drag-section-bag div { border-left: 5px solid #AEDE81; }',
 		'.drag-section-col-bag div { border-left: 5px solid #FFD078; }',
 		'.drag-component-bag div { border-left: 5px solid #ABB9E0; }',
-		'.drag-section-bag-c { background-color: #AEDE81; }',
-		'.drag-section-col-bag-c { background-color: #FFD078; }',
-		'.drag-component-bag-c { background-color: #ABB9E0; }'
+		'.drag-section-bag-c { border: 3px dotted #AEDE81; }',
+		'.drag-section-col-bag-c { border: 3px dotted #FFD078; }',
+		'.drag-component-bag-c { border: 3px dotted #ABB9E0; }'
 	]
 })
 export class LayoutEditorComponent {
@@ -23,7 +23,7 @@ export class LayoutEditorComponent {
 	@ViewChild("layoutSectionBag")
 	private layoutSectionBag:ElementRef;
 
-	private sectionElement = { name:"New Section",columns:[ { components:[] } ] };
+	private sectionElement = { title:"New Section",columns:[ { components:[] } ] };
 	private columnElement = { components:[] };
 	private availableFields = [
 		{ label:"UUID" },
@@ -34,7 +34,9 @@ export class LayoutEditorComponent {
 	private spaceElement = {};
 
 
-	private layout:Object[] = [];
+	private layout:Object = {
+		sections:[]
+	};
 
 
 
@@ -90,7 +92,7 @@ export class LayoutEditorComponent {
 	    			return false;
 	    		}
 
-	    		let accepts = this.layout[sectionIndex]["columns"].length  < 4;
+	    		let accepts = this.layout["sections"][sectionIndex]["columns"].length  < 4;
 
 	    		return accepts;
 	    	}
@@ -120,6 +122,14 @@ export class LayoutEditorComponent {
 
 	save() {
 		console.log(this.layout);
+	}
+
+	editSectionTitle(section) {
+		section.editing = true;
+	}
+
+	saveSectionTitle(section) {
+		delete section.editing;
 	}
 
 }
