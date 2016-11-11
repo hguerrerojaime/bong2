@@ -8,7 +8,7 @@ declare var noty;
 
 @Injectable()
 export class Notifier {
-
+ 
     alert(message:string):void {
     	this.popupNoty(message,'alert','fa fa-bell');
     }

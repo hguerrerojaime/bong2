@@ -9,20 +9,20 @@ const URL:string = "http://localhost:3001/user/lookup";
 @Injectable()
 export class LookupService  {
 
-    constructor(@Inject(Http) private http: Http,private notifier:Notifier) {}
+    constructor(@Inject(Http) private http: Http,@Inject(Notifier) private notifier:Notifier) {}
     
     
     public lookupAll(view:string = null) : Observable<Object[]> {
         return this.http.get(URL)
-                    .map(this.extractData)
-                    .catch(this.handleError);
+                   .map(this.extractData)
+                   .catch(this.handleError);
         
     }
 
     public lookupByKey(key:string) : Observable<Object> {
         return this.http.get(URL+"/"+key)
-                    .map(this.extractData)
-                    .catch(this.handleError);
+                   .map(this.extractData)
+                   .catch(this.handleError);
         
     }
 
@@ -42,7 +42,7 @@ export class LookupService  {
       } else {
         errMsg = error.message ? error.message : error.toString();
       }
-      console.error(errMsg);
+      console.log(this.notifier); 
       return Observable.throw(errMsg);
     }
     

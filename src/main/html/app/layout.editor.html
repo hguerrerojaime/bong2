@@ -68,12 +68,12 @@
 								
 								<div class="drag-target drag-component-bag-c" [dragula]="'component-bag'" [dragulaModel]="column.components">
 									<strong *ngIf="column.components.length==0">Drag Components Here</strong>
-									<div *ngFor="let component of column.components; let k = index;" class="drag-handle">
+									<div *ngFor="let component of column.components; let k = index;" class="drag-handle drag-target">
 										<span class="btn btn-default btn-xs">
 					    					<i class="fa fa-arrows drag-handle drag-comp" aria-hidden="true"></i>
 					    				</span>
 					    				<command-button label="Delete" brand="danger" icon="fa fa-close" size="xs" (click)="removeComponent(i,j,k)" ></command-button>
-										{{ component.label ? component.label : "--" }}
+										<strong>{{ component.label ? component.label : "--" }}</strong>
 									</div>
 								</div>
 							</div>

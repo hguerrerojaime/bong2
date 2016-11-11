@@ -9,7 +9,7 @@ import { DragulaService } from 'ng2-dragula/ng2-dragula';
 	styles: [
 		'.section-bag h4 { text-align: center; }',
 		'.container h5 { padding-left: 5px; }',
-		'.drag-target { min-height: 10px; padding: 5px !important; }',
+		'.drag-target { min-height: 10px; padding: 5px !important; margin-top: 2px; margin-bottom: 2px;}',
 		'.drag-section-bag div { border-left: 5px solid #AEDE81; }',
 		'.drag-section-col-bag div { border-left: 5px solid #FFD078; }',
 		'.drag-component-bag div { border-left: 5px solid #ABB9E0; }',
@@ -124,24 +124,67 @@ export class LayoutEditorComponent {
 		console.log(this.layout);
 	}
 
-	editSectionTitle(section) {
+	private editSectionTitle(section) {
 		section.editing = true;
 	}
 
-	saveSectionTitle(section) {
+	private saveSectionTitle(section) {
 		delete section.editing;
 	}
 
-	removeSection(index) {
-		this.layout["sections"].splice(index,1);
+	private removeSection(index) {
+		let section = this.layout["sections"].splice(index,1)[0];
+
+		let removedComponents = this.findSectionFieldComponents(section);
+
+		this.availableFields = this.availableFields.concat(removedComponents);
 	}
 
-	removeColumn(sectIdx,colIdx) {
-		this.layout.sections[sectIdx].columns.splice(colIdx,1);
+	private removeColumn(sectIdx,colIdx) {
+		let column = this.layout.sections[sectIdx].columns.splice(colIdx,1)[0];
+
+		let removedComponents = this.findColumnFieldComponents(column);
+
+		this.availableFields = this.availableFields.concat(removedComponents);
 	}
 
-	removeComponent(sectIdx,colIdx,cmpIdx) {
-		this.layout.sections[sectIdx].columns[colIdx].components.splice(cmpIdx,1);
+	private removeComponent(sectIdx,colIdx,cmpIdx) {
+		let component = this.layout.sections[sectIdx].columns[colIdx].components.splice(cmpIdx,1)[0];
+
+		if (this.isFieldComponent(component)) {
+			this.availableFields.push(component);
+		}
 	}
+
+	private findSectionFieldComponents(section) {
+
+		let sectionComponents = [];
+
+		for (let column of section.columns) {
+
+			let colFieldComps = this.findColumnFieldComponents(column);
+			sectionComponents = sectionComponents.concat(colFieldComps);
+
+		}
+
+		return sectionComponents;
+
+	}
+
+	private findColumnFieldComponents(column) {
+
+		let fieldComponents = column.components.filter((component) => {
+			return this.isFieldComponent(component);
+		});
+
+		return fieldComponents;
+
+	}
+
+	private isFieldComponent(component):boolean {
+		return component.label != null && typeof component.label !== "undefined";
+	}
+
+
 
 }
