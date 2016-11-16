@@ -4,13 +4,15 @@ import { routing }        from '../init/app.routing';
 import { SpinnerComponent } from '../components/index';
 import { AlertManager, Notifier,SpinnerService } from '../core/index';
 import { BrowserModule }  from '@angular/platform-browser';
-import { FormsModule }    from '@angular/forms';
-
+import { CommonModule }    from '@angular/common';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
 
   imports: [
-    BrowserModule
+    BrowserModule,
+    CommonModule,
+    HttpModule,
   ],
   entryComponents: [SpinnerComponent],
   providers: [

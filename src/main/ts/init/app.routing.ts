@@ -8,6 +8,8 @@ import { ExampleFormComponent } from '../app/example.form.component';
 import { LayoutEditorComponent } from '../app/layout.editor.component';
 
 const appRoutes: Routes = [
+
+  //{ path: '', loadChildren: '../scripts/app/index.component.js#IndexComponent' },
   { path: '', component: IndexComponent },
   { path: 'forms', component: FormsComponent },
   { path: 'tables', component: TablesComponent },

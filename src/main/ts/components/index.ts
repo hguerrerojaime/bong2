@@ -59,12 +59,7 @@ components.push(FormElementComponent);
 import { InputDatetimeComponent } from './input.datetime.component';
 export { InputDatetimeComponent } from './input.datetime.component';
 components.push(InputDatetimeComponent);
-import { DdMenuComponent } from './dd.menu.component';
-export { DdMenuComponent } from './dd.menu.component';
-components.push(DdMenuComponent);
-import { MenuItemComponent } from './menu.item.component';
-export { MenuItemComponent } from './menu.item.component';
-components.push(MenuItemComponent);
+
 import { InputLookupComponent } from './input.lookup.component';
 export { InputLookupComponent } from './input.lookup.component';
 components.push(InputLookupComponent);
@@ -117,29 +112,29 @@ import { InputQueryBuilderComponent } from './input.query.builder.component';
 export { InputQueryBuilderComponent } from './input.query.builder.component';
 components.push(InputQueryBuilderComponent);
 
-import { AppMenuComponent } from './app.menu.component';
-export { AppMenuComponent } from './app.menu.component';
-components.push(AppMenuComponent);
+// import { AppMenuComponent } from './app.menu.component';
+// export { AppMenuComponent } from './app.menu.component';
+// components.push(AppMenuComponent);
 
-import { AppNavbarComponent } from './app.navbar.component';
-export { AppNavbarComponent } from './app.navbar.component';
-components.push(AppNavbarComponent);
+// import { AppNavbarComponent } from './app.navbar.component';
+// export { AppNavbarComponent } from './app.navbar.component';
+// components.push(AppNavbarComponent);
 
-import { AppSidebarComponent } from './app.sidebar.component';
-export { AppSidebarComponent } from './app.sidebar.component';
-components.push(AppSidebarComponent);
+// import { AppSidebarComponent } from './app.sidebar.component';
+// export { AppSidebarComponent } from './app.sidebar.component';
+// components.push(AppSidebarComponent);
 
-import { SidebarSearchComponent } from './sidebar.search.component';
-export { SidebarSearchComponent } from './sidebar.search.component';
-components.push(SidebarSearchComponent);
+// import { SidebarSearchComponent } from './sidebar.search.component';
+// export { SidebarSearchComponent } from './sidebar.search.component';
+// components.push(SidebarSearchComponent);
 
-import { AppBodyComponent } from './app.body.component';
-export { AppBodyComponent } from './app.body.component';
-components.push(AppBodyComponent);
+// import { AppBodyComponent } from './app.body.component';
+// export { AppBodyComponent } from './app.body.component';
+// components.push(AppBodyComponent);
 
-import { AppComponent } from './app.component';
-export { AppComponent } from './app.component';
-components.push(AppComponent);
+// import { AppComponent } from './app.component';
+// export { AppComponent } from './app.component';
+// components.push(AppComponent);
 
 import { KeyCombinationDirective } from './key.combination.directive';
 export { KeyCombinationDirective } from './key.combination.directive';
