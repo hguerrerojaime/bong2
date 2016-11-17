@@ -53,35 +53,28 @@
 
 
 import { NgModule,Component,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { ElementRef } from '@angular/core';
+
 import { BrowserModule }  from '@angular/platform-browser';
-import { BaseComponent } from '../components/base.component';
-import { BONG_COMPONENTS } from '../components/index';
-import { FormsModule } from '@angular/forms';
+//import { BongModule } from '../core/index'; 
+//import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app',
-  template: 'Hi'
+  template: 'Hey'
 })
-class MyComponent extends BaseComponent {
+class MyComponent {
 
-  constructor(elementRef:ElementRef) {
-      super(elementRef);
-  }
 
 }
 
 @NgModule({
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
-  ],
+
   imports: [
-     BrowserModule,
-     FormsModule
+     BrowserModule
+     //BongModule
   ],
   declarations: [
-     MyComponent,
-     BONG_COMPONENTS
+     MyComponent
   ],
   bootstrap: [ MyComponent ]
 })

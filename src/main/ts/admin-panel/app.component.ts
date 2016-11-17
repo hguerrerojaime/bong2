@@ -3,7 +3,7 @@ import { Router,Event,NavigationStart, NavigationEnd, NavigationError } from '@a
 import { AppBodyComponent } from './app.body.component';
 import { AppMenuComponent } from './app.menu.component';
 import {SlimLoadingBarService} from 'ng2-slim-loading-bar';
-import { AlertComponent } from './alert.component';
+import { AlertComponent } from '../components/index';
 import { AlertManager } from '../core/alert.manager';
 
 declare var jQuery:any;

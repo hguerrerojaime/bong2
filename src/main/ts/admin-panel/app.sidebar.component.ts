@@ -1,6 +1,6 @@
 import { Component, OnInit,Inject,ElementRef } from '@angular/core';
 import { SidebarSearchComponent } from './sidebar.search.component';
-import { DefaultJqueryComponent } from './default.jquery.component';
+import { DefaultJqueryComponent } from '../components/index';
 import { ArrayUtils } from '../core/index';
 
 import '@plugins/node/metismenu/dist/metisMenu.js';
