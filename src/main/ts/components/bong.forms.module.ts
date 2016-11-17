@@ -7,13 +7,8 @@ import {
 	InputRichtextComponent,
 	InputCheckboxComponent,
 	LookupGridComponent,
-	PanelComponent,
-	AccordionComponent,
-	AccordionPanelComponent,
 	InputRadiogroupComponent,
 	SubmitButtonComponent,
-	DivRowComponent,
-	ModalComponent,
 	OutputComponent,
 	InputTimeComponent,
 	InputNumberComponent,
@@ -22,62 +17,26 @@ import {
 	InputLookupComponent,
 	InputDateComponent,
 	InputCurrencyComponent,
-	DivColComponent,
 	InputSelectComponent,
 	InputSelectLookupComponent,
 	InputTextareaComponent,
-	CommandButtonComponent,
-	LinkButtonComponent,
-	InlineLoaderComponent,
 	InputDetailGridComponent,
 	InputDetailGridColumnComponent,
-	ContainerComponent,
-	AlertComponent,
-	SpinnerComponent,
 	InputQueryBuilderComponent,
 	KeyCombinationDirective,
-
-	PanelComponent,
-	AccordionComponent,
-	AccordionPanelComponent,
-	DivRowComponent,
-	ModalComponent,
-	DivColComponent,
-	CommandButtonComponent,
-	LinkButtonComponent,
-	InlineLoaderComponent,
-	ContainerComponent,
-	AlertComponent,
-	SpinnerComponent
+	BongComponentsModule
 
 } from './index';
 
 
 
 const BONG_COMPONENTS = [
-PanelComponent,
-	AccordionComponent,
-	AccordionPanelComponent,
-	DivRowComponent,
-	ModalComponent,
-	DivColComponent,
-	CommandButtonComponent,
-	LinkButtonComponent,
-	InlineLoaderComponent,
-	ContainerComponent,
-	AlertComponent,
-	SpinnerComponent
-  	InputTextComponent,
+	InputTextComponent,
 	InputRichtextComponent,
 	InputCheckboxComponent,
 	LookupGridComponent,
-	PanelComponent,
-	AccordionComponent,
-	AccordionPanelComponent,
 	InputRadiogroupComponent,
 	SubmitButtonComponent,
-	DivRowComponent,
-	ModalComponent,
 	OutputComponent,
 	InputTimeComponent,
 	InputNumberComponent,
@@ -86,18 +45,11 @@ PanelComponent,
 	InputLookupComponent,
 	InputDateComponent,
 	InputCurrencyComponent,
-	DivColComponent,
 	InputSelectComponent,
 	InputSelectLookupComponent,
 	InputTextareaComponent,
-	CommandButtonComponent,
-	LinkButtonComponent,
-	InlineLoaderComponent,
 	InputDetailGridComponent,
 	InputDetailGridColumnComponent,
-	ContainerComponent,
-	AlertComponent,
-	SpinnerComponent,
 	InputQueryBuilderComponent,
 	KeyCombinationDirective
 ];
@@ -110,11 +62,11 @@ PanelComponent,
   declarations: BONG_COMPONENTS,
   imports: [
   	FormsModule,
-  	CommonModule
+  	CommonModule,
+	BongComponentsModule
   ],
-  exports: [ BONG_COMPONENTS, CommonModule ],
-  entryComponents: [SpinnerComponent]
+  exports: [ BONG_COMPONENTS, CommonModule, FormsModule ]
   
 })
-export class BongFormsComponentsModule {}
+export class BongFormsModule {}
 

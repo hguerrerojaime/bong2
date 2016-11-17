@@ -17,7 +17,7 @@ declare var jQuery:any;
           <app-menu></app-menu>
           <div id="page-wrapper" style="min-height: 261px;">
             <inline-loader *ngIf="loading"></inline-loader>
-            <app-body></app-body>
+            <app-body *ngIf="!loading"></app-body>
           </div>
           
           <alert #alert></alert>

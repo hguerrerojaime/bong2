@@ -47,5 +47,5 @@ const BONG_COMPONENTS = [
   entryComponents: [SpinnerComponent]
   
 })
-export class BongCommonComponentsModule {}
+export class BongComponentsModule {}
 

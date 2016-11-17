@@ -40,11 +40,11 @@ export class AppSidebarComponent extends DefaultJqueryComponent {
     
     private fullMenu:any[] = [
         { label: "Index", routerLink:"/", icon: "fam fam-application-home" },
-        { label: "Forms", routerLink:"/forms", icon: "fam fam-application-form" },
-        { label: "Tables", routerLink:"/tables", icon: "fam fam-table" },
-        { label: "Query Builder", routerLink:"/query-builder", icon: "fam fam-magnifier" },
-        { label: "Example Form", routerLink:"/example-form", icon: "fam fam-user" },
-        { label: "Layout Editor", routerLink:"/layout-editor", icon: "fam fam-application-form-edit" }
+       // { label: "Forms", routerLink:"/forms", icon: "fam fam-application-form" },
+        // { label: "Tables", routerLink:"/tables", icon: "fam fam-table" },
+        // { label: "Query Builder", routerLink:"/query-builder", icon: "fam fam-magnifier" },
+        { label: "Example Form", routerLink:"/example-form", icon: "fam fam-user" }
+        // { label: "Layout Editor", routerLink:"/layout-editor", icon: "fam fam-application-form-edit" }
     ];
     
     private menu:any[];

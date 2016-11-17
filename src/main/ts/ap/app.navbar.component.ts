@@ -16,17 +16,19 @@ import { Component, OnInit,Inject,ElementRef } from '@angular/core';
         <a class="navbar-brand" href="#"><ng-content select="navbar-brand"></ng-content></a>
     </div>
     <ul class="nav navbar-nav navbar-top-links navbar-right">
-        <menu-item href="/">Realm Home</menu-item>
-        <dd-menu label="Applications">
-            <menu-item>Payroll</menu-item>
-            <menu-item>Employees</menu-item>
-            <menu-item>POS</menu-item>
-        </dd-menu>
+        <li><a href="#">Realm Home </a></li>
+        <li class="dropdown">
+            <a href="#" 
+                    class="dropdown-toggle" 
+                    data-toggle="dropdown" 
+                    role="button" aria-haspopup="true"
+                    >Applications</a>
+            <ul class="dropdown-menu">
+                <li><a href="javascript:void(0);">Payroll</a></li>
+            </ul>
+        </li>
 
-        <dd-menu label="Humberto Guerrero Jaime">
-              <menu-item>Settings</menu-item>
-              <menu-item>Logout</menu-item>
-        </dd-menu>
+   
       </ul>
     `
 })

@@ -38,6 +38,7 @@ export { InputQueryBuilderComponent } from './input.query.builder.component';
 export { KeyCombinationDirective } from './key.combination.directive';
 
 export { BongComponentsModule } from './bong.components.module';
+export { BongFormsModule } from './bong.forms.module';
 
 // import { AppMenuComponent } from './app.menu.component';
 // export { AppMenuComponent } from './app.menu.component';
