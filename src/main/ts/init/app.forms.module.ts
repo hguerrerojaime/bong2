@@ -2,22 +2,17 @@ import { NgModule,Component } from '@angular/core';
 import { RouterModule,Routes } from '@angular/router';
 //import { ExampleFormComponent }   from '../app/example.form.component';
 //import { FormsModule } from '@angular/forms';
-//import { BongFormsModule, BongComponentsModule } from '../components/index';
+import { BongFormsModule, BongComponentsModule } from '../components/index';
 
 //import { LookupService, UserService } from '../services/index';
 
 
 @Component({
     selector:'<mycomp>',
-    template:'<router-outlet></router-outlet>'
+    template:'<input-richtext></input-richtext>'
 })
 class MyComp {}
 
-@Component({
-    selector:'<mycomp2>',
-    template:'yesaaa'
-})
-class MyComp2 {}
 
 
 const routes: Routes = [
@@ -32,10 +27,10 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [ MyComp, MyComp2 ],
+  declarations: [ MyComp ],
   imports: [
-    // BongFormsModule,
-    // BongComponentsModule,
+    BongFormsModule,
+    BongComponentsModule,
     RouterModule.forChild(routes)
   ],
   exports: [
