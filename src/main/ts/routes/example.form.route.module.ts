@@ -28,4 +28,4 @@ const routes: Routes = [
   ],
   providers: [ LookupService, UserService ]
 })
-export class AppFormsModule {}
+export class ExampleFormRouteModule {}

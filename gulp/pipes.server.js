@@ -36,8 +36,7 @@ pipes.server = function () {
                 enable: true
             },
             open: true,
-            fallback: 'index.html',
-			log: false
+            fallback: 'index.html'
     }));
     
 };

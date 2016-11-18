@@ -1,28 +1,31 @@
 import { Routes, RouterModule } from '@angular/router';
 
-import { IndexComponent } from '../app/index.component';
+
 import { NgModule,Component } from '@angular/core';
-import { BongPanelModule } from '../ap/index';
+import { BongComponentsModule } from '../components/index';
+import { AppBodyComponent } from '../ap/app.body.component';
+//import { ExampleFormComponent }   from '../app/example.form.component';
 
 const routes: Routes = [
-
-  { path: '', component: IndexComponent },
+  
   { 
+    path: '',
+    loadChildren: '../scripts/routes/index.route.module#IndexRouteModule'
+    
+  }, {
     path: 'example-form',
-    loadChildren: '../scripts/init/app.forms.module#AppFormsModule'
+    loadChildren: '../scripts/routes/example.form.route.module#ExampleFormRouteModule'
+    
   }
-
+  
 ];
-
-
-
-
 
 
 @NgModule({
 
   imports: [
-    RouterModule.forRoot(routes),
+    BongComponentsModule,
+    RouterModule.forRoot(routes)
   ],
   exports: [ RouterModule ]
 })
