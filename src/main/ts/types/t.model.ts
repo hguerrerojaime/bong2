@@ -11,8 +11,7 @@ export abstract class TModel extends DataType<Object,Object> {
 
 		this.nativeValue = this;
 	}
-	
+		
 	public abstract json():Object;
-
 
 }

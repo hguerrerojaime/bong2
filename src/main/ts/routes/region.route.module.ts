@@ -6,17 +6,23 @@ import { HttpModule } from '@angular/http';
 
 import { RegionFormComponent } from '../app/region/region.form.component';
 import { RegionShowComponent } from '../app/region/region.show.component';
+import { RegionListComponent } from '../app/region/region.list.component';
+import { RegionViewListComponent } from '../app/region/region.view.list.component';
+
 
 import { RouterModule,Routes } from '@angular/router';
 
 let routes: Routes = [
+  { path: '', redirectTo: 'list' },
+  { path: 'list', component: RegionListComponent },
+  { path: 'view', redirectTo: 'view/list' },
+  { path: 'view/list', component: RegionViewListComponent },
   { path: 'new', component: RegionFormComponent },
 	{ path: ":id", component: RegionShowComponent }
-
 ];
 
 @NgModule({
-  declarations: [ RegionFormComponent, RegionShowComponent ],
+  declarations: [ RegionFormComponent, RegionShowComponent, RegionListComponent, RegionViewListComponent ],
   imports: [
     BongFormsModule,
     HttpModule,

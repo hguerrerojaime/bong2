@@ -1,5 +1,7 @@
 import { TModel } from '../types/index';
 
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 export class Region extends TModel {
 
     public id:string;
@@ -16,5 +18,6 @@ export class Region extends TModel {
             description: this.description
     	};
     }
+    
     
 }

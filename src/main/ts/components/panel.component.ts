@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
                 [attr.data-spy]="affix ? 'affix' : null"
                 [attr.data-offset-top]="10"
         >
-            <div class="panel-heading">
+            <div class="panel-heading {{ headingClass }}">
                 <h4 class="panel-title">{{ title }}</h4>
             </div>
             <div class="panel-body {{bodyClass}}">
@@ -23,6 +23,9 @@ export class PanelComponent {
     
     @Input()
     title:string = "My Panel";
+
+    @Input()
+    headingClass:string;
 
     @Input()
     bodyClass:string;

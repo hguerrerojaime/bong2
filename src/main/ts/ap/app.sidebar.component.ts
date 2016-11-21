@@ -44,7 +44,7 @@ export class AppSidebarComponent extends DefaultJqueryComponent {
         // { label: "Tables", routerLink:"/tables", icon: "fam fam-table" },
         // { label: "Query Builder", routerLink:"/query-builder", icon: "fam fam-magnifier" },
         { label: "Example Form", routerLink:"/example-form", icon: "fam fam-user" },
-        { label: "Regions", routerLink:"/region/new", icon: "fam fam-application-cascade" }
+        { label: "Regions", routerLink:"/region", icon: "fam fam-application-cascade" }
         // { label: "Layout Editor", routerLink:"/layout-editor", icon: "fam fam-application-form-edit" }
     ];
     
