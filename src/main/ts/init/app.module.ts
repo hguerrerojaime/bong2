@@ -6,8 +6,6 @@ import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import { AppRoutingModule }        from './app.routing.module';
 import { AppComponent, BongPanelModule } from '../ap/index';
 
-
-
 @NgModule({
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

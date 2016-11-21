@@ -1,0 +1,30 @@
+<panel title="Show Region" brand="primary">
+    <div class="form-horizontal">
+
+        <div class="well well-sm">
+            <link-button routerLink="/" label="Go Back" icon="fa fa-close"></link-button>
+        </div>
+        <fieldset>
+            <legend>User Data</legend>
+            <div-row>
+                <div-col width="6">
+                    <form-element label="Name">
+                        <span class="form-control">{{ region ? region.name : null }}</span>
+                    </form-element>
+                </div-col>
+            </div-row>
+            <div-row>
+                <div-col width="6">
+                    <form-element label="Description">
+                        <span class="form-control">{{ region ? region.description : null }}</span>
+                    </form-element>
+                </div-col>
+            </div-row>
+        </fieldset>
+        <div class="well well-sm">
+            <link-button routerLink="/" label="Go Back" icon="fa fa-close"></link-button>
+        </div>
+      
+    </div>
+
+</panel>

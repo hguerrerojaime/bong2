@@ -13,13 +13,13 @@ declare var jQuery:any;
   template: `
         
         <div id="wrapper">
-          
           <app-menu></app-menu>
           <div id="page-wrapper" style="min-height: 261px;">
             <inline-loader *ngIf="loading"></inline-loader>
-            <app-body *ngIf="!loading"></app-body>
+            <div [ngClass]="{hidden:loading}">
+              <app-body></app-body>
+            </div>
           </div>
-          
           <alert #alert></alert>
         </div>
         

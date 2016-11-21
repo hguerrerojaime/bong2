@@ -1,0 +1,36 @@
+<ol class="breadcrumb shadow">
+  <li><a href="#">Region</a></li>
+  <li class="active">New</li>
+</ol>
+
+<panel title="New Region" brand="primary">
+    <form class="form-horizontal" #f="ngForm" (ngSubmit)="save()">
+
+        <div class="well well-sm">
+            <submit-button label="Save" icon="fa fa-save" brand="primary"></submit-button>
+            <link-button routerLink="/" label="Cancel" icon="fa fa-close"></link-button>
+        </div>
+        <fieldset>
+            <legend>Region Data</legend>
+            <div-row>
+                <div-col width="6">
+                    <form-element label="Name">
+                        <input-text  [(ngModel)]="region.name" name="region-name" textCase="upper"></input-text>
+                    </form-element>
+                </div-col>
+            </div-row>
+            <div-row>
+                <div-col width="6">
+                    <form-element label="Description">
+                        <input-textarea  [(ngModel)]="region.description" name="region-description" textCase="upper"></input-textarea>
+                    </form-element>
+                </div-col>
+            </div-row>
+        </fieldset>
+        <div class="well well-sm">
+            <submit-button label="Save" icon="fa fa-save" brand="primary"></submit-button>
+            <link-button routerLink="/" label="Cancel" icon="fa fa-close"></link-button>
+        </div>
+    </form>
+
+</panel>

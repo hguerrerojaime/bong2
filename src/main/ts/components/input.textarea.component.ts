@@ -5,7 +5,12 @@ import { ProviderUtils } from '../core/provider.utils';
 @Component({
     selector: 'input-textarea',
     template: `
-        <textarea class="form-control" rows="{{ rows }}"></textarea>
+        <textarea
+            [(ngModel)]="value"
+            (ngModelChange)="changeTextCase()"
+            (blur)="onBlur()"
+            class="form-control" rows="{{ rows }}">
+        </textarea>
     `,
     providers: [
         ProviderUtils.createAccessorProvider(InputTextareaComponent)

@@ -16,6 +16,12 @@ const routes: Routes = [
     path: 'example-form',
     loadChildren: '../scripts/routes/example.form.route.module#ExampleFormRouteModule'
     
+  },
+
+  {
+    path: 'region',
+    loadChildren: '../scripts/routes/region.route.module#RegionRouteModule'
+    
   }
   
 ];

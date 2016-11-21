@@ -12,5 +12,6 @@ export { Notifier } from './notifier';
 export { SpinnerService } from './spinner.service';
 export { ConfirmEvent } from './confirm.event';
 export { AgentFeatureSupportChecker } from './agent.feature.support.checker';
+export { BongProvidersModule } from './bong.providers.module';
 
 

@@ -83,6 +83,9 @@
   };
   System.config(config);
   
+  //rxjs/add/operator/map
+  //rxjs/Rx
+
   var modules = ['jquery','bootstrap','app'];
     
   function importModules(modules) {

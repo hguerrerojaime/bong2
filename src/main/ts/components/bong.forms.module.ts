@@ -65,7 +65,7 @@ const BONG_COMPONENTS = [
   	CommonModule,
 	BongComponentsModule
   ],
-  exports: [ BONG_COMPONENTS, CommonModule, FormsModule ]
+  exports: [ BONG_COMPONENTS, CommonModule, FormsModule, BongComponentsModule ]
   
 })
 export class BongFormsModule {}
