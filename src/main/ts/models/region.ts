@@ -1,6 +1,8 @@
 import { TModel } from '../types/index';
 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ValidatorFn } from '@angular/forms';
+
+import { ConstraintMap } from '../validation/constraint.map';
 
 export class Region extends TModel {
 
@@ -19,5 +21,8 @@ export class Region extends TModel {
     	};
     }
     
-    
+    static constraints:ConstraintMap = {
+        name: [Validators.required,Validators.maxLength(5)],
+        description: [Validators.maxLength(5)]
+    };
 }

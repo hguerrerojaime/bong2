@@ -1,6 +1,7 @@
 import { NgModule, Component,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Validator } from '../validation/index'
 
 import { 
 	InputTextComponent,
@@ -65,6 +66,7 @@ const BONG_COMPONENTS = [
   	CommonModule,
 	BongComponentsModule
   ],
+  providers: [ Validator ],
   exports: [ BONG_COMPONENTS, CommonModule, FormsModule, BongComponentsModule ]
   
 })

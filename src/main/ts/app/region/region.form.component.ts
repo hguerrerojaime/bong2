@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { TemplateResolver, Notifier, AlertManager, SpinnerService } from '../../core/index';
 
 import { Region } from '../../models/region';
-import { RegionService } from '../../services';
+import { RegionService } from '../../services/index';
 import { Router } from '@angular/router';
-
+import { Validator } from '../../validation/validator';
 import { Validators } from '@angular/forms';
 
 @Component({
@@ -19,16 +19,22 @@ export class RegionFormComponent implements OnInit {
 		private regionService:RegionService,
 		private alertManager:AlertManager,
 		private notifier:Notifier,
-		private spinnerService:SpinnerService
+		private spinnerService:SpinnerService,
+		private validator:Validator
 	) {}
 	
 	ngOnInit() {
-	
+		
 	}
 
 	save() {
+	
+		let isValid = this.validator.validate(this.region);
 		
-		console.log(this.region);
+		console.log(isValid);
+		console.log(this.region.errors);
+		
+		
 		
 		// this.alertManager.confirmInfo("Are you sure you want to create this region?")
 		// 		.confirm(()=>{

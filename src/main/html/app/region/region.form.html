@@ -4,10 +4,10 @@
 </ol>
 
 <panel title="New Region" brand="primary">
-    <form class="form-horizontal" #f="ngForm" (ngSubmit)="save()">
+    <form class="form-horizontal" #f="ngForm" >
 
         <div class="well well-sm">
-            <submit-button label="Save" icon="fa fa-save" brand="primary"></submit-button>
+            <command-button label="Save" icon="fa fa-save" brand="primary" (click)="save()"></command-button>
             <link-button routerLink="/" label="Cancel" icon="fa fa-close"></link-button>
         </div>
         <fieldset>
