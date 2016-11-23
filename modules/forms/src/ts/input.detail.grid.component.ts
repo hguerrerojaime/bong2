@@ -11,15 +11,23 @@ import {
     QueryList,
     forwardRef
 } from '@angular/core';
+
+import {
+    DivRowComponent,
+    DivColComponent,
+    CommandButtonComponent,
+    ModalComponent,
+    ContainerComponent
+} from '../../../components/index';
+
+import { array as arrayProto } from '../../../prototypes/index';
+
 import { InputComponent } from './input.component';
-import { DivRowComponent } from './div.row.component';
-import { DivColComponent } from './div.col.component';
-import { CommandButtonComponent } from './command.button.component';
 import { SubmitButtonComponent } from './submit.button.component';
-import { ModalComponent } from './modal.component';
+
 import { FormElementComponent } from './form.element.component';
-import { ContainerComponent } from './container.component';
-import { ArrayUtils } from '../core/array.utils';
+
+
 import { InputDetailGridColumnComponent } from './input.detail.grid.column.component';
 
 @Component({
@@ -104,7 +112,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
         '.detail-grid .chk-col { width: 35px; text-align:center; border-right: 1px solid #ccc;  }'
     ]
 })
-export class InputDetailGridComponent extends InputComponent<any> implements OnInit {
+export class InputDetailGridComponent extends InputComponent<any[]> implements OnInit {
     
     @ViewChild("itemModal")
     itemModal:ModalComponent;
@@ -139,11 +147,9 @@ export class InputDetailGridComponent extends InputComponent<any> implements OnI
     
     toggleAll($event) {
         
-        ArrayUtils.
-            withFilter(this.value,() => true)
-            .doWithItem((item) => {
-                item.selected = this.selectAll;
-            });
+        this.value.map((item) => {
+            item.selected = this.selectAll;
+        });
         
     }
     
@@ -155,14 +161,14 @@ export class InputDetailGridComponent extends InputComponent<any> implements OnI
     
     removeSelectedItems($event) {
         
-        ArrayUtils
-            .withFilter(this.value,(item) => item.selected === true)
-            .removeAll();
+        this.value
+            .find((item) => item.selected === true)
+            .removeFrom(this.value);
         
     }
     
     getSelectedItemCount():number {
-        return ArrayUtils.findAll(this.value,(item) => item.selected === true).length;
+        return this.value.find((item) => item.selected === true).length;
     }
     
     get createComponentInstance() {

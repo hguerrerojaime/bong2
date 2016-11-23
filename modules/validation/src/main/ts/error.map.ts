@@ -1,3 +1,3 @@
 export interface ErrorMap {
-    [s:string]:any[];
+    [key:string]:any;
 }

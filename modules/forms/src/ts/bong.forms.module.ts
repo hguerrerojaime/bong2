@@ -27,7 +27,7 @@ import {
 	KeyCombinationDirective,
 	BongComponentsModule
 
-} from './index';
+} from './forms';
 
 
 
