@@ -1,0 +1,12 @@
+{
+	"name":"admin-panel",
+	
+	"src": {
+		"main":{
+			"ts": [
+				"src/main/ts/**/*.ts"
+			]
+		}
+	}
+
+}
