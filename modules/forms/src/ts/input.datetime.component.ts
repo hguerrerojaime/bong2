@@ -1,6 +1,7 @@
 import { Component, ElementRef } from '@angular/core';
 import { InputJqueryComponent } from './input.jquery.component';
-import { AgentFeatureSupportChecker } from '../core/agent.feature.support.checker';
+import { ProviderUtils } from '../../../core/src/ts/provider.utils';
+import { AgentFeatureSupportChecker } from '../../../core/src/ts/agent.feature.support.checker';
 
 import '@plugins/node/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js';
 

@@ -1,6 +1,6 @@
 import { ElementRef,Inject, AfterViewInit } from '@angular/core';
 import { InputComponent } from './input.component';
-import { JqueryComponent } from './jquery.component';
+import { JqueryComponent } from '../../../components/src/ts/jquery.component';
 
 declare var jQuery:any;
 

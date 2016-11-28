@@ -1,1 +1,1 @@
-export * from './src/main/ts/admin.panel';
+export * from './src/ts/admin.panel';

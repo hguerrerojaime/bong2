@@ -12,22 +12,12 @@ import {
     forwardRef
 } from '@angular/core';
 
-import {
-    DivRowComponent,
-    DivColComponent,
-    CommandButtonComponent,
-    ModalComponent,
-    ContainerComponent
-} from '../../../components/index';
+import { ModalComponent } from '../../../components/src/ts/modal.component';
+import { ContainerComponent} from '../../../components/src/ts/container.component';
 
-import { array as arrayProto } from '../../../prototypes/index';
 
+import '../../../prototypes/src/ts/array';
 import { InputComponent } from './input.component';
-import { SubmitButtonComponent } from './submit.button.component';
-
-import { FormElementComponent } from './form.element.component';
-
-
 import { InputDetailGridColumnComponent } from './input.detail.grid.column.component';
 
 @Component({

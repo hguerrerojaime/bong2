@@ -1,1 +1,1 @@
-export * from './src/main/ts/forms';
+export * from './src/ts/forms';

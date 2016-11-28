@@ -1,7 +1,9 @@
 import { Input, Component, OnInit, Inject, ElementRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { DomUtils, ValueLoader } from '../core/index';
-import { InlineLoaderComponent } from './inline.loader.component';
+
+import { DomUtils } from '../../../core/src/ts/dom.utils';
+import { ValueLoader } from '../../../core/src/ts/value.loader';
+import { InlineLoaderComponent } from '../../../components/src/ts/inline.loader.component';
 
 @Component({
     selector: 'output',

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ElementRef } from '@angular/core';
 import { InputComponent } from './input.component';
-import { ProviderUtils } from '../core/provider.utils';
+import { ProviderUtils } from '../../../core/src/ts/provider.utils';
 
 @Component({
     selector: 'input-textarea',

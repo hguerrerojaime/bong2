@@ -1,1 +1,1 @@
-export * from './src/main/ts/validation';
+export * from './src/ts/validation';

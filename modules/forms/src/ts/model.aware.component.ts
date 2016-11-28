@@ -1,6 +1,6 @@
 import { Inject, ElementRef } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
-import { BaseComponent } from './base.component';
+import { BaseComponent } from '../../../components/src/ts/base.component';
 
 const noop = () => {};
 

@@ -1,16 +1,8 @@
 import { Component,ElementRef,OnInit,OnDestroy,ViewChild,Inject } from '@angular/core';
 import { InputJqueryComponent } from './input.jquery.component';
-import { ProviderUtils } from '../core/provider.utils';
-import { AgentFeatureSupportChecker } from '../core/index';
-import { TCurrency } from '../types/index';
-
-import {
-    DivRowComponent,
-    DivColComponent,
-    CommandButtonComponent,
-    ModalComponent,
-    ContainerComponent
-} from '../../../types/index';
+import { ProviderUtils } from '../../../core/src/ts/provider.utils';
+import { AgentFeatureSupportChecker } from '../../../core/src/ts/agent.feature.support.checker';
+import { TCurrency } from '../../../types/src/ts/t.currency';
 
 declare var jQuery;
 

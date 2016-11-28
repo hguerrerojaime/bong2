@@ -1,10 +1,11 @@
 import { Component,Input, Output, ViewChild,EventEmitter } from '@angular/core';
-import { CommandButtonComponent } from './command.button.component';
-import { InlineLoaderComponent } from './inline.loader.component';
 import { InputTextComponent } from './input.text.component';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { ValueLoader, ArrayUtils,StringUtils } from '../core/index';
+import { ValueLoader } from '../../../core/src/ts/value.loader';
+import { StringUtils } from '../../../core/src/ts/string.utils';
+
+import '../../../prototypes/src/ts/array';
 
 @Component({
     selector: 'lookup-grid',
@@ -108,9 +109,9 @@ export class LookupGridComponent implements ValueLoader {
 
         
         if (isNarrowedSearch && hasSearchData) {
-            this.data = ArrayUtils.findAllLike(this.data,this.search);
+            this.data = this.data.findLike(this.search);
         } else {
-            this.data = ArrayUtils.findAllLike(this.fullData,this.search);
+            this.data = this.fullData.findLike(this.search);
         }
 
         this.pagedData = this.data.length > LookupGridComponent.PAGE_SIZE ?

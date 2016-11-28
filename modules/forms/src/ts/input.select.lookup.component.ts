@@ -1,6 +1,6 @@
 import { Component,Input,forwardRef,ElementRef } from '@angular/core';
 import { InputJqueryComponent } from './input.jquery.component';
-import { ProviderUtils, ArrayUtils } from '../core/index';
+import { ProviderUtils } from '../../../core/src/ts/provider.utils';
 import '@plugins/node/select2/dist/js/select2.min.js';
 
 @Component({

@@ -1,8 +1,8 @@
 import { Component,Input,ElementRef } from '@angular/core';
 import { InputJqueryComponent } from './input.jquery.component';
-import { AgentFeatureSupportChecker } from '../core/agent.feature.support.checker';
-import { ProviderUtils } from '../core/provider.utils';
-import { TDate } from '../types/index';
+import { ProviderUtils } from '../../../core/src/ts/provider.utils';
+import { AgentFeatureSupportChecker } from '../../../core/src/ts/agent.feature.support.checker';
+import { TDate } from '../../../types/src/ts/t.date';
 import { utc } from 'moment/moment';
 
 declare var jQuery:any;

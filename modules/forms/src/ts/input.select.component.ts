@@ -1,7 +1,9 @@
 import { Component,Input,forwardRef,ElementRef } from '@angular/core';
 import { InputJqueryComponent } from './input.jquery.component';
-import { ProviderUtils, ArrayUtils } from '../core/index';
+import { ProviderUtils } from '../../../core/src/ts/provider.utils';
 import '@plugins/node/select2/dist/js/select2.min.js';
+
+import '../../../prototypes/src/ts/array';
 
 declare var jQuery;
 
@@ -76,8 +78,8 @@ export class InputSelectComponent extends InputJqueryComponent<string[]> {
                     
                     
                     jqElement.on('change',(event)=>{
-                        let tmpValues = ArrayUtils.replaceText(jqElement.val(),new RegExp("([0-9]:\\s){1}",'g'),"");
-                        this.value = ArrayUtils.replaceText(tmpValues,new RegExp("'",'g'),"");
+                        let tmpValues = jqElement.val().replaceAll(new RegExp("([0-9]:\\s){1}",'g'),"");
+                        this.value = tmpValues.replaceAll(new RegExp("'",'g'),"");
                     });
 
                 });
@@ -90,7 +92,7 @@ export class InputSelectComponent extends InputJqueryComponent<string[]> {
     
     private initAllOptions() {
         if (this.tags && this.value) {
-            this.allOptions =  ArrayUtils.arrayUnique(this.options.concat(this.value));
+            this.allOptions =  this.options.concat(this.value).unique();
         } else {
             this.allOptions = this.options;
         }

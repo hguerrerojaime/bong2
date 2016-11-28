@@ -1,15 +1,13 @@
 import { Component, ViewChild, Input, Output, OnInit, Inject, EventEmitter, ElementRef } from '@angular/core';
 import { InputJqueryComponent } from './input.jquery.component';
-import { ModalComponent } from './modal.component';
-import { DivRowComponent } from './div.row.component';
-import { DivColComponent } from './div.col.component';
+import { ModalComponent } from '../../../components/src/ts/modal.component';
 import { OutputComponent } from './output.component';
 import { InputTextComponent } from './input.text.component';
 import { LookupGridComponent } from './lookup.grid.component';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { ProviderUtils, ArrayUtils } from '../core/index';
-import { TLookup } from '../types/index';
+import { ProviderUtils } from '../../../core/src/ts/provider.utils';
+import { TLookup } from '../../../types/src/ts/t.lookup';
 
 declare var jQuery:any;
 

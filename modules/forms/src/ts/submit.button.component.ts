@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ButtonComponent } from './button.component';
+import { ButtonComponent } from '../../../components/src/ts/button.component';
 
 @Component({
     selector:'submit-button',

@@ -1,0 +1,56 @@
+
+{   
+    "modules":[
+        "prototypes",
+        "types",
+        "core",
+        "components",
+        "forms",
+        "validation",
+        "admin-panel"
+    ],
+
+    "core": {
+        "src": [
+            "node_modules/core-js/shim.min.js",
+            "node_modules/zone.js/dist/zone.js",
+            "node_modules/reflect-metadata/Reflect.js",
+            "node_modules/systemjs/dist/system.src.js",
+            "node_modules/moment/moment.js"
+        ]
+    },
+
+    "src": {
+        "ts": ["modules/{moduleName}/**/*.ts"],
+        "html": ["modules/application/src/html/**/*.html"]
+    },
+
+    "skin":{
+        "src":"modules/admin-panel/src/less/skin.less",
+        "paths": ["modules/admin-panel/src/less", "node_modules/bootstrap/less"],
+        "filename": "skin.min.css"
+    },
+
+    "target": {
+        "dir": "server",
+        "ts":"server/scripts",
+        "html":"server/templates",
+        "less":"server/styles",
+        "core":"server/core"
+    },
+
+    "server": {
+        "dir":"server",
+        "port":3000,
+        "watchSources":{
+            "ts": ["modules/*/src/ts/**/*.ts"],
+            "html": ["modules/application/src/html/**/*.html"],
+            "less": ["modules/*/src/less/**/*.ts"]
+        }
+    },
+
+    "dependencies": {
+        "nodeModules":"server/vendors/node_modules",
+        "vendors":"server/vendors"
+    }
+}
