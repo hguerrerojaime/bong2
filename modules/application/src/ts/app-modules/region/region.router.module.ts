@@ -1,16 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BongFormsModule } from '../../../../bong.forms';
 import { BongComponentsModule } from '../../../../bong.components';
+import { BongValidationModule } from '../../../../bong.validation';
 import { RegionService } from '../../services/index';
 import { HttpModule } from '@angular/http';
-
-
 import { RegionFormComponent } from './region.form.component';
 import { RegionShowComponent } from './region.show.component';
 import { RegionListComponent } from './region.list.component';
 import { RegionViewListComponent } from './region.view.list.component';
-
-
 import { RouterModule,Routes } from '@angular/router';
 
 let routes: Routes = [
@@ -27,6 +24,7 @@ let routes: Routes = [
   imports: [
     BongComponentsModule,
     BongFormsModule,
+    BongValidationModule,
     HttpModule,
     RouterModule.forChild(routes)
   ],
