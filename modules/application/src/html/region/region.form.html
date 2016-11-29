@@ -10,6 +10,9 @@
             <command-button label="Save" icon="fa fa-save" brand="primary" (click)="save()"></command-button>
             <link-button routerLink="/" label="Cancel" icon="fa fa-close"></link-button>
         </div>
+          
+        <error-box [clientErrors]="region.errors"></error-box>
+
         <fieldset>
             <legend>Region Data</legend>
             <div-row>

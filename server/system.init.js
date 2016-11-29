@@ -91,9 +91,7 @@
   var modules = ['jquery','bootstrap','app'];
     
   function importModules(modules) {
-    
-    
-	  
+
 	  if (modules.length > 0) {
 		  var module = modules.shift();
       
