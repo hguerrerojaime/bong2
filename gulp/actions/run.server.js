@@ -3,6 +3,7 @@
 const gulp = require('gulp');
 const server = require('gulp-server-livereload');
 const buildConfig = require('../build.config.json');
+const CUR_DIR = require('../../gulp.dirname');
 
 module.exports = (_callbacks) => {
 
@@ -17,17 +18,27 @@ module.exports = (_callbacks) => {
     let templatesSrc = buildConfig.server.watchSources.html;
 
     gulp.watch(scriptsSrc,(event) => {
-        let src = event.path;
+
+        let src = event.path.replace(CUR_DIR+"\\","");
         let target = buildConfig.target.ts;
+
+        console.log('<- script change detected, rebuilding... ->');
+
         callbacks.buildScripts(src,target)
     });
 
     gulp.watch(templatesSrc,(event) => {
-        let src = event.path;
+        let src = event.path.replace(CUR_DIR+"\\","");
         let target = buildConfig.target.html;
+
+        console.log('<- template change detected, rebuilding... ->');
+
         callbacks.buildTemplates(src,target)
     });
     gulp.watch(skinSrc,(event) => {
+
+        console.log('<- skin change detected, rebuilding... ->');
+
         callbacks.buildSkin();
     });
 

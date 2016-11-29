@@ -2,7 +2,7 @@
 
 const gulp = require('gulp');
 const ts = require('gulp-typescript');
-const actions = require('./actions');
+const minify = require('gulp-minify');
 const compilerOptions = require('../../tsconfig.json')["compilerOptions"];
 
 module.exports = (src,target) => {

@@ -12,7 +12,12 @@ module.exports = () => {
 
     return gulp.src(coreSrc)
         .pipe(concat('core.js'))
-        .pipe(minify())
+        .pipe(minify({
+            ext: {
+                min:'.min.js'
+            },
+            noSource: true
+        }))
         .pipe(gulp.dest(coreTarget))
     ;
 
