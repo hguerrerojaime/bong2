@@ -22,11 +22,12 @@
     'angular2-datatable':         'vendors/node_modules/angular2-datatable',
     'ng2-dragula':                'vendors/node_modules/ng2-dragula',
     'lodash':                     'vendors/node_modules/lodash',
-    'dragula':                    'vendors/node_modules/dragula/dist'
+    'dragula':                    'vendors/node_modules/dragula/dist',
+    'typescript':                 'vendors/node_modules/typescript'
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
-    'app':                        { main: 'init/boot',  defaultExtension: 'js' },
+    'app':                        { main: 'application/src/ts/init/boot',  defaultExtension: 'js' },
     'core':                       { defaultExtension: 'js' },
     'commons':                    { defaultExtension: 'js' },
     'rxjs':                       { defaultExtension: 'js' },
@@ -38,7 +39,8 @@
     'angular2-datatable':         { main: 'index.js', defaultExtension: 'js' },
     'lodash':                     { main: 'index.js', defaultExtension: 'js' },
     'ng2-dragula':                { main: 'ng2-dragula.js', defaultExtension: 'js' },
-    'dragula':                    { main: 'dragula.js', defaultExtension: 'js' } 
+    'dragula':                    { main: 'dragula.js', defaultExtension: 'js' },
+    'typescript':                 { main: 'lib/typescript.js', defaultExtension: 'js' }
   };
   var ngPackageNames = [
     'common',

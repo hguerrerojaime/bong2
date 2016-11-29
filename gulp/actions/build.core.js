@@ -8,7 +8,7 @@ const buildConfig = require('../build.config.json');
 module.exports = () => {
 
     let coreSrc = buildConfig.core.src;
-    let coreTarget = buildCore.target.core;
+    let coreTarget = buildConfig.target.core;
 
     return gulp.src(coreSrc)
         .pipe(concat('core.js'))

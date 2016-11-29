@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { TemplateResolver, Notifier, AlertManager, SpinnerService } from '../../core/index';
+import { TemplateResolver, Notifier, AlertManager, SpinnerService } from '../../../../bong.core';
 
 import { Region } from '../../models/region';
 import { RegionService } from '../../services/index';
 import { Router } from '@angular/router';
-import { Validator } from '../../validation/validator';
+
 import { Validators } from '@angular/forms';
 
 @Component({
-	templateUrl: TemplateResolver.resolve(RegionFormComponent,'app/region')
+	templateUrl: TemplateResolver.resolve(RegionFormComponent,'region')
 })
 export class RegionFormComponent implements OnInit {
 
@@ -19,8 +19,7 @@ export class RegionFormComponent implements OnInit {
 		private regionService:RegionService,
 		private alertManager:AlertManager,
 		private notifier:Notifier,
-		private spinnerService:SpinnerService,
-		private validator:Validator
+		private spinnerService:SpinnerService
 	) {}
 	
 	ngOnInit() {
@@ -29,7 +28,7 @@ export class RegionFormComponent implements OnInit {
 
 	save() {
 	
-		let isValid = this.validator.validate(this.region);
+		let isValid = this.region.validate();
 		
 		console.log(isValid);
 		console.log(this.region.errors);

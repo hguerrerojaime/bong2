@@ -6,7 +6,6 @@ import { routes } from '../routes/app.routes';
 @NgModule({
 
   imports: [
-    BongComponentsModule,
     RouterModule.forRoot(routes)
   ],
   exports: [ RouterModule ]

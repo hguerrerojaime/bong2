@@ -1,10 +1,6 @@
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA,Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { IndexComponent }   from '../app/index.component';
-import { FormsModule } from '@angular/forms';
-import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
-import { AppRoutingModule }        from './app.routing.module';
-import { AppComponent, BongPanelModule } from '../ap/index';
+import { AppRouterModule }        from '../app-modules/app.router.module';
+import { AppComponent, BongPanelModule } from '../../../bong.admin.panel';
 
 @NgModule({
   schemas: [
@@ -12,7 +8,7 @@ import { AppComponent, BongPanelModule } from '../ap/index';
   ],
   imports: [
     BongPanelModule,
-    SlimLoadingBarModule.forRoot()
+    AppRouterModule
   ],
   bootstrap: [ AppComponent ]
 })

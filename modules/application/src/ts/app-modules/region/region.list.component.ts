@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
-import { TemplateResolver } from '../../core/index';
+import { TemplateResolver } from '../../../../bong.core';
 
 @Component({
-	templateUrl: TemplateResolver.resolve(RegionListComponent,'app/region')
+	templateUrl: TemplateResolver.resolve(RegionListComponent,'region')
 })
 export class RegionListComponent {
 

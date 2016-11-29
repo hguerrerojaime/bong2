@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
-import { BongFormsModule, BongComponentsModule } from '../components/index';
-import { LookupService, UserService } from '../services/index';
-import { IndexComponent } from '../app/index.component';
-import { singleChildRoute } from './routing.utils';
+import { BongComponentsModule } from '../../../../bong.components';
+import { IndexComponent } from './index.component';
+import { singleChildRoute } from '../../../../bong.admin.panel';
 
 @NgModule({
   declarations: [ IndexComponent ],
@@ -11,4 +10,4 @@ import { singleChildRoute } from './routing.utils';
     singleChildRoute(IndexComponent)
   ]
 })
-export class IndexRouteModule {}
+export class IndexRouterModule {}

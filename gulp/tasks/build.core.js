@@ -1,10 +1,10 @@
 "use strict";
 
 const gulp = require('gulp');
-const actions = require('../actions/index');
+const buildCore = require('../actions/build.core');
 
 gulp.task('build-core',() => {
 
-    actions.buildCore();
+    buildCore();
 
 });

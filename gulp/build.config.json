@@ -7,7 +7,8 @@
         "components",
         "forms",
         "validation",
-        "admin-panel"
+        "admin-panel",
+        "application"
     ],
 
     "core": {
@@ -43,7 +44,7 @@
         "dir":"server",
         "port":3000,
         "watchSources":{
-            "ts": ["modules/*/src/ts/**/*.ts"],
+            "ts": ["modules/**/*.ts"],
             "html": ["modules/application/src/html/**/*.html"],
             "less": ["modules/*/src/less/**/*.ts"]
         }

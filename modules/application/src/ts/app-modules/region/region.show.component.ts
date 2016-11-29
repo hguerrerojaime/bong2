@@ -1,15 +1,15 @@
 import { Component,OnInit } from '@angular/core';
-import { TemplateResolver } from '../../core/index';
+import { TemplateResolver } from '../../../../bong.core';
 
 import { Region } from '../../models/region';
-import { RegionService } from '../../services';
+import { RegionService } from '../../services/index';
 
 import { ActivatedRoute, Params } from '@angular/router';
 
 import 'rxjs/add/operator/switchMap';
 
 @Component({
-	templateUrl: TemplateResolver.resolve(RegionShowComponent,'app/region')
+	templateUrl: TemplateResolver.resolve(RegionShowComponent,'region')
 })
 export class RegionShowComponent implements OnInit {
 

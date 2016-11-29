@@ -5,3 +5,4 @@ export { SidebarSearchComponent } from './sidebar.search.component';
 export { AppBodyComponent } from './app.body.component';
 export { AppComponent } from './app.component';
 export { BongPanelModule } from './bong.panel.module';
+export * from './routing.utils';

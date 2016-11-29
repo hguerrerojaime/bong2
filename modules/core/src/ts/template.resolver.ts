@@ -7,7 +7,9 @@ export class TemplateResolver {
         let sourcePath:string = BONG_CONFIG.templateSrc + (path == "" ? path : "/"+path );
         let resourceName:string = StringUtils.getResourceNameFromClass(componentClass).replace("component","");
 
-        return sourcePath+"/"+resourceName+"html";
+        let templatePath:string = sourcePath+"/"+resourceName+"html";
+
+        return templatePath;
     }
     
     public static compile(template:string,scope:any) {
