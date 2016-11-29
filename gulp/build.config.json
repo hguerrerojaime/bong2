@@ -45,8 +45,8 @@
         "port":3000,
         "watchSources":{
             "ts": ["modules/**/*.ts"],
-            "html": ["modules/application/src/html/**/*.html"],
-            "less": ["modules/*/src/less/**/*.ts"]
+            "html": ["modules/**/*.html"],
+            "less": ["modules/**/*.less"]
         }
     },
 

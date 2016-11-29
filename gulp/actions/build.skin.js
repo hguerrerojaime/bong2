@@ -12,6 +12,8 @@ module.exports = () => {
     let skinFilename = buildConfig.skin.filename;
     let skinTarget = buildConfig.target.less;
 
+    console.log(skinSrc);
+
     return gulp.src(skinSrc)
         .pipe(less({
             compress: true,
