@@ -32,9 +32,7 @@ export class RegionFormComponent implements OnInit {
 		
 		console.log(isValid);
 		console.log(this.region.errors);
-		
-		
-		
+
 		// this.alertManager.confirmInfo("Are you sure you want to create this region?")
 		// 		.confirm(()=>{
 
