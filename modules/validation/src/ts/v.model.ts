@@ -38,6 +38,8 @@ export abstract class VModel extends TModel {
             
             if (fieldControl.invalid) {
                 model.errors[key] = fieldControl.errors;
+            } else {
+                delete model.errors[key];
             }
         }
         

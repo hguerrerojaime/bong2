@@ -4,3 +4,4 @@ server/scripts/
 server/styles/
 server/templates/
 target/
+.vscode/
