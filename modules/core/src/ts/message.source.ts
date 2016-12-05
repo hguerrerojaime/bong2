@@ -1,6 +1,6 @@
 export class MessageSource {
 
-    private constructor(private messages:any) {}
+    constructor(private messages:any) {}
 
     public static from(messages:any) {
         return new MessageSource(messages);

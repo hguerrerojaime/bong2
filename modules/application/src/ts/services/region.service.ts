@@ -22,8 +22,6 @@ export class RegionService  {
 
     getRegion(id:string):Observable<Region> {
 
-        console.log(id);
-
     	return this.http.get(`http://localhost:8080/api/builder/region/${id}.json`)
     				.map(res =>  new Region(res.json()))
     				.catch(()=> Observable.throw("error"));
@@ -31,5 +29,10 @@ export class RegionService  {
     }
 
     
-
+    listRegions(domain:string = ""):Observable<Region[]> {
+        return this.http.get("http://localhost:8080/api/builder/region.json")
+                    .map(res => res.json())
+                    .catch(()=> Observable.throw("error"))
+        ; 
+    }
 }

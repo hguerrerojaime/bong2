@@ -1,4 +1,5 @@
 export { InputComponent } from './input.component';
+export { ModelAwareComponent } from './model.aware.component';
 export { InputJqueryComponent } from './input.jquery.component';
 export { InputTextComponent } from './input.text.component';
 export { InputRichtextComponent } from './input.richtext.component';
