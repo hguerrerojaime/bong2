@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Region } from '../models/region';
+import { Notifier } from '../../../bong.core';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -9,7 +10,10 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class RegionService  {
 
-	constructor(private http:Http) {}
+	constructor(
+        private http:Http,
+        private notifier:Notifier
+    ) {}
 
     createRegion(region:Region):Observable<any> {
 
@@ -29,10 +33,13 @@ export class RegionService  {
     }
 
     
-    listRegions(domain:string = ""):Observable<Region[]> {
+    listRegions(domain:string = ""):Observable<any> {
         return this.http.get("http://localhost:8080/api/builder/region.json")
                     .map(res => res.json())
-                    .catch(()=> Observable.throw("error"))
+                    .catch((error)=> {
+                        this.notifier.error(error);
+                        return new Observable<EvalError>();
+                    })
         ; 
     }
 }
