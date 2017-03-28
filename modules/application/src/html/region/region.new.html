@@ -1,0 +1,24 @@
+<ol class="breadcrumb shadow" style="border: 1px solid #aaa">
+  <li><a routerLink="/region">Region</a></li>
+  <li class="active">New</li>
+</ol>
+
+<error-box [clientErrors]="region.errors"></error-box>
+
+<panel title="New Region" brand="primary">
+    <form class="form-horizontal" #f="ngForm" >
+        
+        <div class="well well-sm">
+            <command-button label="Save" icon="fa fa-save" brand="primary" (click)="save()"></command-button>
+            <link-button routerLink="/" label="Cancel" icon="fa fa-close"></link-button>
+        </div>
+
+        <region-form [value]="region" name="region"></region-form>
+        
+        <div class="well well-sm">
+            <submit-button label="Save" icon="fa fa-save" brand="primary"></submit-button>
+            <link-button routerLink="/" label="Cancel" icon="fa fa-close"></link-button>
+        </div>
+    </form>
+
+</panel>

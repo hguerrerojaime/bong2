@@ -22,13 +22,9 @@ export class RegionShowComponent implements OnInit {
 
 	ngOnInit() {
 
-		console.log("iniciando");
-
 		this.route.params
 			.switchMap((params:Params) => this.service.getRegion(params['id']))
 			.subscribe((region:Region) => {
-				console.log("encoontro region");
-				console.log(region);
 				this.region = region;
 			});
 

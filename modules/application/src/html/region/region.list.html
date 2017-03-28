@@ -6,20 +6,6 @@
 
       <div class="well well-sm">
           <link-button label="New Region" brand="success" routerLink="/region/new"></link-button>
-          
-          <div class="pull-right col-md-6">
-                 
-                <div-row>
-                    <div-col width="6">
-                    <input-select-lookup [options]="[{key:'all',value:'View All'},{ key:'active',value:'View Active'}]"></input-select-lookup>  
-                    </div-col>
-                    <div-col width="6">
-                    <command-button label="Change View" icon="fa fa-search" brand="info" (click)="clearData()"></command-button>
-                    <link-button label="My Views" icon="fa fa-list" routerLink="/region/view"></link-button> 
-                    </div-col>
-                </div-row>
-   
-          </div>
       </div>
       <table class="table table-striped table-condensed">
         <thead>
@@ -35,7 +21,7 @@
         <tbody>
         <tr *ngFor="let item of data">
             <td>
-                <a routerLink="/"> {{item.name}}</a>
+                <a routerLink="/region/{{item.id}}"> {{item.name}}</a>
 
             </td>
             <td>{{item.description}}</td>

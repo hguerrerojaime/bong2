@@ -20,8 +20,8 @@ export class Region extends VModel {
     }
     
     static constraints:ConstraintMap = {
-        name: [Validators.required,Validators.maxLength(5)],
-        description: [Validators.maxLength(5)]
+        name: [Validators.required,Validators.pattern("[A-Z]{1}[A-Z0-9]*"),Validators.maxLength(5)]
     };
 }
 
+        
